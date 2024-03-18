@@ -1,0 +1,23 @@
+---
+interface Props {
+	src: string;
+	alt: string;
+	caption: string;
+}
+const props = Astro.props;
+import { Image } from "astro:assets";
+---
+
+<figure class="md:-mx-5">
+	<Image
+		src={props.src}
+		alt={props.alt}
+		quality="100"
+		class="rounded-md border-2 border-stone-300 md:shadow-lg shadow-stone-300"
+		height={500}
+		width={800}
+	/>
+	<figcaption class="my-2 text-center text-stone-500">
+		{props.caption}
+	</figcaption>
+</figure>

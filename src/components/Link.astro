@@ -1,0 +1,11 @@
+---
+const props = Astro.props;
+---
+
+<a
+  {...props}
+  class:list={[
+    "hover:decoration-stone-600 underline hover:decoration-2 decoration-stone-300 transition-all",
+    props.styles,
+  ]}><slot /></a
+>
