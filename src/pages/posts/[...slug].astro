@@ -1,0 +1,32 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content";
+import BlogPost from "../../layouts/BlogPost.astro";
+import Aside from "../../components/BaseMDXComponents/Aside.astro";
+import Callout from "../../components/Callout.tsx";
+import Img from "../../components/BaseMDXComponents/Img.astro";
+import { Code } from "astro:components";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: post,
+  }));
+}
+type Props = CollectionEntry<"blog">;
+
+const post = Astro.props;
+const { Content } = await post.render();
+---
+
+<BlogPost {...post.data}>
+    <Content
+      components={{
+        Aside,
+        Img,
+        Code,
+        Callout,
+      }}
+    />
+  <p class="h-60"></p>
+</BlogPost>

@@ -1,0 +1,18 @@
+---
+import "@fontsource-variable/vollkorn";
+import "@fontsource/rakkas";
+import "@fontsource/ibm-plex-mono";
+import BaseHead from "../components/BaseHead.astro";
+import Link from "../components/Link.astro";
+const props = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="h-full">
+  <BaseHead title="Home" description="Blog about romance and science" />
+  <body class="h-full flex justify-center bg-stone-50">
+    <main class="w-1/3 h-full">
+      <slot />
+    </main>
+  </body>
+</html>
