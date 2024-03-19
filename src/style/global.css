@@ -1,9 +1,9 @@
 pre.astro-code {
-  @apply px-5 py-3 rounded-xl !bg-stone-100 ;
+  @apply px-5 py-3 rounded-xl !bg-[#f2f1e9] border-amber-800/10 border-2
 }
 
 code.astro-code {
-  @apply text-sm px-1 rounded-md py-[2px]
+  @apply text-sm px-1 rounded-md py-[2px] !bg-[#f2f1e9]
 }
 
 .prose p {
@@ -13,9 +13,18 @@ code.astro-code {
 .prose h1 {
   @apply text-4xl font-display
 }
+.prose > p:first-of-type:first-letter {
+  @apply bg-amber-950 pb-2 pl-2 mr-2 text-6xl float-left pt-2 pr-2 font-semibold text-amber-400
+}
 
 .prose h2 {
   @apply font-display text-2xl 
+}
+.prose blockquote {
+  @apply border-l-amber-800 border-l-4 pl-2 py-5 bg-amber-400/10
+}
+.prose a {
+  @apply text-amber-800 underline-offset-2 underline decoration-2 decoration-stone-100 hover:decoration-amber-700   hover:border-b-yellow-800 transition-all
 }
 
 .prose h3 {
@@ -25,7 +34,7 @@ code.astro-code {
 @apply space-y-3 text-lg [li>&]:mt-3 [&>li]:relative [&>li]:pl-7 before:[&>li]:absolute before:[&>li]:left-1 before:[&>li]:top-3 before:[&>li]:h-1.5 before:[&>li]:w-1.5 before:[&>li]:rounded-full before:[&>li]:bg-stone-900/20
 }
 .prose kbd {
-@apply rounded-lg bg-inherit border-stone-400 border-b-4 border-t-2 text-sm py-px px-1 relative bottom-px hover:border-b-2 hover:top-px top-0 cursor-default transition-all border-x-2
+@apply rounded-lg bg-inherit border-amber-900/40 border-b-4 border-t-2 text-sm py-px px-1 relative bottom-px hover:border-b-2 hover:top-px top-0 cursor-default transition-all border-x-2
 }
 .prose table {
 @apply font-serif w-full table-auto [&>thead]:border-b-2 [&>thead>tr>th]:p-2 [&>thead]:bg-stone-300 border-2 border-stone-500 [&>tbody>tr>td]:p-2 [&>tbody>tr>td]:bg-stone-200 [&>thead]:rounded-t-lg rounded-lg border-separate
