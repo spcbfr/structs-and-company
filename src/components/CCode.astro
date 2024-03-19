@@ -3,4 +3,4 @@ import { Code } from "astro:components";
 const props = Astro.props;
 ---
 
-<Code {...props} theme={"vitesse-light"} inline />
+<Code code={props.code} {...props} theme={"vitesse-light"} inline />
