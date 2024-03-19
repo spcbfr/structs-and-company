@@ -24,7 +24,6 @@ const groupedByYear: GroupedObj = posts.reduce((acc: GroupedObj, item) => {
 	acc[year].push(item);
 	return acc;
 }, {});
-console.log(groupedByYear);
 
 // Step 2: Convert object to array
 const resultArray: { year: number; items: typeof posts }[] = Object.entries(
@@ -45,7 +44,10 @@ resultArray.forEach((group) => {
 });
 ---
 
-<BaseLayout>
+<BaseLayout
+	title="All Articles | S&C"
+	description="All the articles I've ever wrote"
+>
 	<nav class="flex text-xl my-2 font-medium font-serif justify-between">
 		<Link href="/">home/</Link>
 		<Link href="/posts">posts/</Link>

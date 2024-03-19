@@ -3,11 +3,17 @@ import "@fontsource-variable/vollkorn";
 import "@fontsource/rakkas";
 import "@fontsource/ibm-plex-mono";
 import BaseHead from "../components/BaseHead.astro";
+interface Props {
+  title: string;
+  description: string;
+  ogImage?: string;
+}
+const props = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en" class="h-full">
-  <BaseHead title="Home" description="Blog about romance and science" />
+  <BaseHead {...props} />
   <body class="h-full flex justify-center bg-[#faf9f5]">
     <main class="xl:w-1/3 lg:w-1/2 w-3/4 h-full">
       <slot />

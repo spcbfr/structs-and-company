@@ -11,7 +11,10 @@ const posts = (await getCollection("blog"))
   .slice(0, 3);
 ---
 
-<BaseLayout>
+<BaseLayout
+  title="Structs & Company"
+  description="A blog by Yusuf Bouzekri on tech, romance, movies and jokes"
+>
   <nav class="flex text-xl my-2 font-medium font-serif justify-between">
     <Link href="/">home/</Link>
     <Link href="/posts">posts/</Link>
