@@ -14,7 +14,13 @@ code.astro-code {
   @apply text-4xl font-display
 }
 .prose > p:first-of-type:first-letter {
-  @apply bg-amber-950 pb-2 pl-2 mr-2 text-6xl float-left pt-2 pr-2 font-semibold text-amber-400
+  @apply text-amber-400 text-6xl float-left font-semibold bg-amber-950 -mb-2 leading-[0.7] pt-[13px] pr-2 pl-2 mr-2 pb-1 
+}
+@-moz-document url-prefix(){
+  .prose > p:first-of-type:first-letter {
+    @apply leading-normal p-2 mr-2
+
+  }
 }
 
 .prose h2 {
