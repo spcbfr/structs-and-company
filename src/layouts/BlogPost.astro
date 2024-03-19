@@ -2,7 +2,8 @@
 import "../style/global.css";
 import BaseHead from "../components/BaseHead.astro";
 import Link from "../components/Link.astro";
-let { title, pubDate, description } = Astro.props.frontmatter || Astro.props;
+let { title, pubDate, description, slug } =
+  Astro.props.frontmatter || Astro.props;
 if (typeof pubDate == "string") {
   pubDate = new Date(pubDate);
 }
@@ -11,23 +12,15 @@ if (typeof pubDate == "string") {
 <!doctype html>
 <html lang="en" class="h-full">
   <BaseHead title={title} description={description} />
-  <body class="h-full flex justify-center bg-stone-50">
-    <main class="w-1/3 font-serif h-full">
-      <nav
-        class="flex text-xl my-2 font-medium underline font-serif justify-between"
-      >
+  <body class="flex flex-col min-h-full items-center justify-center bg-[#faf9f5]">
+    <main class="xl:w-1/3 pb-10 flex-grow lg:w-1/2 w-3/4 font-serif">
+      <nav class="flex text-xl my-2 font-medium font-serif justify-between">
+        <Link href="/">home/</Link>
         <Link href="/posts">posts/</Link>
         <Link href="/about">about/</Link>
-        <Link href="/now">now/</Link>
       </nav>
       <div class="flex mt-8 justify-between items-center">
-        <a
-          href="/"
-          class="font-bold text-lg bg-stone-900 text-white px-3 py-1 max-w-fit"
-          onclick="history.back()"
-        >
-          Back
-        </a>
+        <p></p>
         <p class="text-lg font-bold">
           {
             pubDate.toLocaleDateString("en-US", {
@@ -44,6 +37,33 @@ if (typeof pubDate == "string") {
       <article class="prose space-y-5">
         <slot />
       </article>
+      <div class="flex gap-3 mt-4">
+        <a
+          href={"https://news.ycombinator.com/submitlink?t=" +
+            encodeURIComponent(title) +
+            "&u=" +
+            encodeURIComponent("https://yusuf.fyi/posts/" + slug)}
+          class="text-white text-lg font-semibold bg-black p-2 pb-1 block w-fit mt-3"
+          >Share on Hackernews</a
+        >
+
+        <a
+          href="https://ko-fi.com/spacebuffer"
+          class="bg-amber-700 text-lg font-semibold text-white p-2 pb-1 block w-fit mt-3"
+          >Donate on Ko-fi</a
+        >
+      </div>
     </main>
+    <footer class="font-serif mb-5 text-center ">
+      <div class="text-xl mb-2 flex justify-between">
+        <Link href="/rss">RSS/</Link>
+        <Link href="/now">now/</Link>
+        <Link href="/about">about/</Link>
+      </div>
+      <div>
+        <img src="/bowling.png" class="w-40 mb-2 mx-auto" />
+        <p class="font-smallcaps"> Carbon::now() &copy; Yusuf Bouzekri</p>
+      </div
+    </footer>
   </body>
 </html>
