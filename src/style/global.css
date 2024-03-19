@@ -1,9 +1,21 @@
 pre.astro-code {
-  @apply px-5 py-3 rounded-xl !bg-[#f2f1e9] border-amber-800/10 border-2
+  @apply py-3  rounded-xl !bg-[#fbfbf9] border-amber-800/10 border-2
+
+}
+pre.astro-code > code {
+
+  @apply grid
+
+}
+pre > code > .line {
+  @apply px-5 
 }
 
 code.astro-code {
   @apply text-sm px-1 rounded-md py-[2px] !bg-[#f2f1e9]
+}
+.highlighted {
+  @apply bg-amber-800/5
 }
 
 .prose p {
