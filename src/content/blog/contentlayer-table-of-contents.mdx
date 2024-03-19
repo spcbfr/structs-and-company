@@ -186,7 +186,7 @@ headings: {
 
 Now that most of the logic is done, move to your posts page, mine is <Code code="src/pages/posts/[slug].jsx" inline />, somewhere before or after the mdx component
 
-```jsx showLineNumbers
+```js showLineNumbers
 export const getStaticProps = () => {
   // your post fetching logic goes here
   return { props: { post } }
@@ -208,7 +208,7 @@ export default function singlePostPage( { post } ) {
 
 Now we'll map over the headings and display the table of contents, I've intentially made the styling pretty barebones so that you have the liberty to use whatever framework you want.
 
-```jsx
+```js
 <div>
   <h3>On this page<h3>
   <div>
@@ -259,7 +259,7 @@ headings: {
 
 now go back to <Code code="[slug].js" inline /> and add a data-attribute to the Table of contents' <Code code="\<a\>" inline /> tags.
 
-```jsx /data-level={heading.level}/
+```js /data-level={heading.level}/
 <div>
   <h3>On this page<h3>
   <div>
@@ -332,7 +332,7 @@ As a final touch let's allow ourselves to toggle the TOC on a per-post basis, on
 
 then only show the TOC when the field is set to <Code code="true" inline />
 
-```jsx {1,16}
+```js {1,16}
 {post.toc ? (
 <div>
   <h3>On this page<h3>

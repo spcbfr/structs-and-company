@@ -2,7 +2,7 @@ import { defineConfig } from "astro/config";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
-import { transformerNotationHighlight } from 'shikiji-transformers';
+import { transformerMetaWordHighlight, transformerMetaHighlight } from '@shikijs/transformers';
 
 import react from "@astrojs/react";
 
@@ -24,7 +24,8 @@ export default defineConfig({
       // Add custom transformers: https://shiki.style/guide/transformers
       // Find common transformers: https://shiki.style/packages/transformers
       transformers: [
-        transformerNotationHighlight()
+        transformerMetaWordHighlight(),
+        transformerMetaHighlight()
       ],
     }
   }

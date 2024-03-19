@@ -31,7 +31,6 @@
     "typescript": "^5.4.2"
   },
   "devDependencies": {
-    "@shikijs/transformers": "^1.2.0",
-    "shikiji-transformers": "^0.10.2"
+    "@shikijs/transformers": "^1.2.0"
   }
 }
