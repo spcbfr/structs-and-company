@@ -2,6 +2,9 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 import Link from "../components/Link.astro";
+import { Image } from "astro:assets";
+import where from "../assets/where-shall-we-stay.png";
+import face from "../assets/face.jpg";
 
 const posts = (await getCollection("blog"))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
@@ -15,9 +18,10 @@ const posts = (await getCollection("blog"))
     <Link href="/about">about/</Link>
   </nav>
   <header class="mt-5">
-    <img
-      src="/45.jpg"
-      class="h-40 mb-3 mx-auto"
+    <Image
+      src={face}
+      height={160}
+      class="mb-3 mx-auto"
       alt="A somewhat surprised white man, Black and White, light face on dark background with a broken glass effect"
     />
     <h1 class="text-5xl text-center font-display">Structs & Company</h1>
@@ -61,7 +65,7 @@ const posts = (await getCollection("blog"))
     <Link href="/posts" styles="mt-2 text-2xl block font-bold text-center">
       All Posts &rarr;
     </Link>
-    <img src="/where-shall-we-stay.png" class="-rotate-1 mt-5" alt="" />
+    <Image src={where} quality="100" class="-rotate-1 mt-5" alt="" />
   </article>
   <!-- <img src="tardis.gif" class="w-16 absolute bottom-0 left-0" alt="" /> -->
 </BaseLayout>

@@ -2,6 +2,8 @@
 import "../style/global.css";
 import BaseHead from "../components/BaseHead.astro";
 import Link from "../components/Link.astro";
+import { Image } from "astro:assets";
+import bowling from "../assets/bowling.png";
 let { title, pubDate, description, slug } =
   Astro.props.frontmatter || Astro.props;
 if (typeof pubDate == "string") {
@@ -12,7 +14,9 @@ if (typeof pubDate == "string") {
 <!doctype html>
 <html lang="en" class="h-full">
   <BaseHead title={title} description={description} />
-  <body class="flex flex-col min-h-full items-center justify-center bg-[#faf9f5]">
+  <body
+    class="flex flex-col min-h-full items-center justify-center bg-[#faf9f5]"
+  >
     <main class="xl:w-1/3 pb-10 flex-grow lg:w-1/2 w-3/4 font-serif">
       <nav class="flex text-xl my-2 font-medium font-serif justify-between">
         <Link href="/">home/</Link>
@@ -54,16 +58,21 @@ if (typeof pubDate == "string") {
         >
       </div>
     </main>
-    <footer class="font-serif mb-5 text-center ">
+    <footer class="font-serif mb-5 text-center">
       <div class="text-xl mb-2 flex justify-between">
         <Link href="/rss">RSS/</Link>
         <Link href="/now">now/</Link>
         <Link href="/about">about/</Link>
       </div>
       <div>
-        <img src="/bowling.png" class="w-40 mb-2 mx-auto" />
-        <p class="font-smallcaps"> Carbon::now() &copy; Yusuf Bouzekri</p>
-      </div
+        <Image
+          src={bowling}
+          width={160}
+          class="mb-2 mx-auto"
+          alt="Bowling ball striking"
+        />
+        <p class="font-smallcaps">Carbon::now() &copy; Yusuf Bouzekri</p>
+      </div>
     </footer>
   </body>
 </html>
