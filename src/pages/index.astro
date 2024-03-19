@@ -67,14 +67,9 @@ const starred = posts.filter((post) => post.data.starred);
     </ul>
   </article>
   <article class="mt-5 font-serif text-xl">
-    <h2
-      class="text-2xl font-bold mt-3 leading-none text-amber-700 font-smallcaps"
-    >
+    <h2 class="text-2xl font-bold mt-3 mb-2 text-amber-700 font-smallcaps">
       ★ La crème de la crème
     </h2>
-    <small class="!text-sm"
-      >The posts I've enjoyed writing the most / got positive feedback</small
-    >
     <ul class="list-disc space-y-3 list-inside">
       {
         starred.map((post) => (
