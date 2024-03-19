@@ -14,7 +14,7 @@ Setting it to the super key makes some keybindings easier to type. for example, 
 
 I also set it to <kbd>esc</kbd> when pressed once because I use escape regularly as a Vim user.
 
-You can add this script to the top of your shell profile or in your <Code code=".xsession" inline /> if that's what you use, but you need to have <Code code="setxkbmap" inline />, <Code code="xmodmap" inline />, <Code code="xset" inline />, and <Code code="xcape" inline /> installed
+You can add this script to the top of your shell profile or in your <Code lang="bash" code=".xsession" inline /> if that's what you use, but you need to have <Code lang="bash" code="setxkbmap" inline />, <Code lang="bash" code="xmodmap" inline />, <Code lang="bash" code="xset" inline />, and <Code lang="bash" code="xcape" inline /> installed
 
 ```bash title=".zshrc"
 # Map the caps lock key to super...
@@ -34,9 +34,9 @@ When trying to edit files files that require elevated privileges, you will at so
 - You forget to run your editor with `sudo` and are thus unable to save your changes
 - In case you run your editor with sudo, you use your editor with its default configuration rather than your precious config that you perfected to oblivion. gross.
 
-Both problems can be solved with <Code code="sudoedit" inline />, simply run <Code code="sudoedit /etc/your-protected-file.sh" inline /> and it will open the file in your preferred `$EDITOR` with your config.
+Both problems can be solved with <Code lang="bash" code="sudoedit" inline />, simply run <Code lang="bash" code="sudoedit /etc/your-protected-file.sh" inline /> and it will open the file in your preferred `$EDITOR` with your config.
 
-In case, it opens in `nano` then you likely didn't set up your <Code code="$EDITOR" inline /> correctly, add the following line to your shell config and `source` it to fix the issue.
+In case, it opens in `nano` then you likely didn't set up your <Code code="$EDITOR" lang="bash" inline /> correctly, add the following line to your shell config and `source` it to fix the issue.
 
 ```bash title=".zshrc"
 export EDITOR="nvim" # or any other editor

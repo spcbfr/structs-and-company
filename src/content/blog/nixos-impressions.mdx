@@ -18,11 +18,11 @@ The installer is fantastic, first of all, you get a desktop environment in the I
 
 When installing the system you can choose to either use a graphical installer, common on distros such as Ubuntu, or go the hard way and install the system by running commands (or rather editing files) in your terminal
 
-if you choose the command line route then nixOS provides a handy <Code code="nixos-generate-config" inline /> that generates a base configuration for you to edit, it makes things so much easier, it has things like <Code code="sound.enable = true" inline /> already in there for you toy around with. almost everything you do to install nixOS (except partitioning the drives) is done in the 2 generated <Code code=".nix" inline /> files
+if you choose the command line route then nixOS provides a handy <Code lang="bash" code="nixos-generate-config" /> that generates a base configuration for you to edit, it makes things so much easier, it has things like <Code code="sound.enable = true" lang="nix"/> already in there for you toy around with. almost everything you do to install nixOS (except partitioning the drives) is done in the 2 generated <Code code=".nix" inline /> files
 
 You can switch between stable and unstable packages **WITHOUT** reinstalling, so I never felt stuck on either one, this is maybe the best feature of nixOS aside from the declarative stuff. I'd like to also note that nix's package repository, <Code code="nixpkgs" inline />, is one of the biggest out there with [just over 80k packages](https://repology.org/repositories/statistics/total), which was very surprising to me considering how uncommon it is in the Linux community
 
-nixOS has many options for doing things other than installing packages, for example, I was able to get my ThinkPad's TrackPoint working without too much hassle by adding 3 config options in the <Code code="configuration.nix" inline /> file and rebuilding my config using <Code code="nixos-rebuild" inline />:
+nixOS has many options for doing things other than installing packages, for example, I was able to get my ThinkPad's TrackPoint working without too much hassle by adding 3 config options in the <Code code="configuration.nix" inline /> file and rebuilding my config using <Code code="nixos-rebuild" lang="bash"/>:
 
 ```nix
 {
@@ -47,7 +47,7 @@ and finally, there is the <Code code="nix-shell -p" inline /> which creates a sh
 
 I don't like the language, some people say it's like JSON with functions, but I disagree, usually with tools such as vim and emacs that have their own language. it's pretty easy to grasp the language just by looking at someone else's config, but that's not the case with nix, even after watching a ton of tutorials I still don't feel like I grasp the basics of the language, I think that's due to it being a functional language and I am not very familiar with this type of languages as are most other people
 
-Most of the documentation references <Code code="nix-env" inline />, a tool that all nixOS users recommend against using due to its slowness and the problems that it causes, yet the devs haven't removed it from the documentation.
+Most of the documentation references <Code code="nix-env" lang="bash" />, a tool that all nixOS users recommend against using due to its slowness and the problems that it causes, yet the devs haven't removed it from the documentation.
 
 there is no _good_ way to search for packages from the terminal: there is a [website](https://search.nixos.org) but most people prefer to use the terminal and unfortunately a tool to search from the terminal doesn't exist as of right now unless you're willing to enable experimental features
 

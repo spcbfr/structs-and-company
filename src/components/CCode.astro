@@ -1,0 +1,10 @@
+---
+import { Code } from "astro:components";
+interface Props {
+	lang?: string;
+	code: string;
+}
+const props = Astro.props;
+---
+
+<Code {...props} theme={"vitesse-light"} inline />

@@ -9,18 +9,25 @@ const posts = (await getCollection("blog")).sort(
 
 // Sample array of objects
 
-// Step 1: Group by year
-const groupedByYear = posts.reduce((acc, item) => {
-	const year = item.data.pubDate.getFullYear();
+// Step 1: Group by y
+type GroupedObj = {
+	[P: string]: typeof posts;
+};
+
+const groupedByYear: GroupedObj = posts.reduce((acc: GroupedObj, item) => {
+	const year = item.data.pubDate.getFullYear().toString();
 	if (!acc[year]) {
 		acc[year] = [];
 	}
 	acc[year].push(item);
 	return acc;
 }, {});
+console.log(groupedByYear);
 
 // Step 2: Convert object to array
-const resultArray = Object.entries(groupedByYear).map(([year, items]) => ({
+const resultArray: { year: number; items: typeof posts }[] = Object.entries(
+	groupedByYear,
+).map(([year, items]) => ({
 	year: parseInt(year),
 	items,
 }));
@@ -30,17 +37,17 @@ resultArray.sort((a, b) => b.year - a.year);
 
 // Optionally, Step 4: Sort items within each year
 resultArray.forEach((group) => {
-	group.items.sort((a, b) => b.data.pubDate - a.data.pubDate);
+	group.items.sort(
+		(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+	);
 });
 ---
 
 <BaseLayout>
-	<nav
-		class="flex text-xl my-2 font-medium underline font-serif justify-between"
-	>
+	<nav class="flex text-xl my-2 font-medium font-serif justify-between">
 		<Link href="/">home/</Link>
+		<Link href="/posts">posts/</Link>
 		<Link href="/about">about/</Link>
-		<Link href="/now">now/</Link>
 	</nav>
 	<header class="mt-5">
 		<img
@@ -59,8 +66,15 @@ resultArray.forEach((group) => {
 					</h2>
 					<ul class="space-y-2 ">
 						{item.items.map((post) => (
-							<li class="font-serif text-xl">
-								{" "}
+							<li class="font-serif flex gap-4  text-xl">
+								<time
+									datetime={post.data.pubDate.toISOString()}
+									class="font-smallcaps text-stone-700 w-8"
+								>
+									{post.data.pubDate.toLocaleString("en-US", {
+										month: "short",
+									})}
+								</time>
 								<Link href={"/posts/" + post.slug}>
 									{post.data.title}
 								</Link>

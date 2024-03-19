@@ -30,9 +30,9 @@ sudo pacman -S mpd
 sudo apt install mpd
 ```
 
-now create a new file `~/.config/mpd/mpd.conf` (you may also need to create the mpd directory as well), we'll configure the daemon here
+now create a new file <Code code="~/.config/mpd/mpd.conf"  /> (you may also need to create the mpd directory as well), we'll configure the daemon here
 
-Begin by setting a few config variables, most importantly set the `music_directory` to where you actually have your music downloaded
+Begin by setting a few config variables, most importantly set the <Code code="music_directory"/> to where you actually have your music downloaded
 
 ```conf title="mpd.conf"
 music_directory "~/Music/"
@@ -111,8 +111,8 @@ and so on..
 
 Now MPD on it's own isn't very useful, that is because it wasn't made for the normal user to use, you're supposed to install a client that interfaces with MPD, there are many good clients but the two I am going to use today are:
 
-- **mpc**: it's a commandline tool, so you can use commands like <Code code="mpc next" inline /> and <Code code="mpc update" inline /> to use it, it's really useful, for configuring system keybindings to pause/go to the next or previous song
-- **ncmpcpp**: it's similar to mpc as it runs in the terminal too, but the difference is that it has an actual TUI interface (like <Code code="htop" inline /> for example)
+- **mpc**: it's a commandline tool, so you can use commands like <Code code="mpc next" lang="bash" /> and <Code code="mpc update" lang="bash" /> to use it, it's really useful, for configuring system keybindings to pause/go to the next or previous song
+- **ncmpcpp**: it's similar to mpc as it runs in the terminal too, but the difference is that it has an actual <abbr title="Terminal User Interface">TUI</abbr> interface (like <Code code="htop" lang="bash" /> for example)
 
 let's start by installing the two of them
 

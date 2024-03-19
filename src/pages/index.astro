@@ -9,12 +9,10 @@ const posts = (await getCollection("blog"))
 ---
 
 <BaseLayout>
-  <nav
-    class="flex text-xl my-2 font-medium underline font-serif justify-between"
-  >
+  <nav class="flex text-xl my-2 font-medium font-serif justify-between">
+    <Link href="/">home/</Link>
     <Link href="/posts">posts/</Link>
     <Link href="/about">about/</Link>
-    <Link href="/now">now/</Link>
   </nav>
   <header class="mt-5">
     <img
@@ -23,9 +21,7 @@ const posts = (await getCollection("blog"))
       alt="A somewhat surprised white man, Black and White, light face on dark background with a broken glass effect"
     />
     <h1 class="text-5xl text-center font-display">Structs & Company</h1>
-    <p class="italic font-serif text-lg text-center">
-      A digital garden by <strong>Yusuf Bouzekri</strong>
-    </p>
+    <p class="italic font-serif text-xl text-center">A Hacker's Best Friend</p>
     <article class="font-serif mt-5 text-xl">
       <p class="">
         Hello, I Hope you're doing well today. My name is Yusuf and I write
@@ -40,7 +36,7 @@ const posts = (await getCollection("blog"))
     </article>
   </header>
   <article class="font-serif text-xl mt-5">
-    <h2 class="text-2xl font-bold mt-3 font-smallcaps text-red-600">
+    <h2 class="text-2xl font-bold mt-3 mb-2 text-amber-700 font-smallcaps">
       Latest posts
     </h2>
     <ul class="list-disc space-y-3 list-inside">
@@ -62,7 +58,7 @@ const posts = (await getCollection("blog"))
       }
     </ul>
 
-    <Link href="/posts" styles="mt-2 block font-bold text-center">
+    <Link href="/posts" styles="mt-2 text-2xl block font-bold text-center">
       All Posts &rarr;
     </Link>
     <img src="/where-shall-we-stay.png" class="-rotate-1 mt-5" alt="" />
