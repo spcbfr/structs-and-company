@@ -71,18 +71,28 @@ resultArray.forEach((group) => {
 					</h2>
 					<ul class="space-y-2 ">
 						{item.items.map((post) => (
-							<li class="font-serif flex gap-4  text-xl">
-								<time
-									datetime={post.data.pubDate.toISOString()}
-									class="font-smallcaps text-stone-700 w-8"
-								>
-									{post.data.pubDate.toLocaleString("en-US", {
-										month: "short",
-									})}
-								</time>
-								<Link href={"/posts/" + post.slug}>
-									{post.data.title}
-								</Link>
+							<li class="font-serif flex justify-between text-xl">
+								<div class="flex gap-4">
+									<time
+										datetime={post.data.pubDate.toISOString()}
+										class="font-smallcaps text-stone-700 w-8"
+									>
+										{post.data.pubDate.toLocaleString(
+											"en-US",
+											{
+												month: "short",
+											},
+										)}
+									</time>
+									<Link href={"/posts/" + post.slug}>
+										{post.data.title}
+									</Link>
+								</div>
+								{post.data.starred ? (
+									<span class="text-2xl text-amber-900/40">
+										★
+									</span>
+								) : null}
 							</li>
 						))}
 					</ul>
