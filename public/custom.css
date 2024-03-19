@@ -1,0 +1,51 @@
+
+/* custom.css */
+
+/* Styles for .container-md */
+.container-md {
+  max-width: 768px; /* Example width */
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* Styles for .px-3 */
+.px-3 {
+  padding-left: 0.75rem; /* Example padding */
+  padding-right: 0.75rem;
+}
+
+/* Styles for .py-3 */
+.py-3 {
+  padding-top: 0.75rem; /* Example padding */
+  padding-bottom: 0.75rem;
+}
+
+/* Styles for .markdown-body */
+.markdown-body {
+  font-family: Arial, sans-serif; /* Example font */
+  font-size: 16px; /* Example font size */
+  line-height: 1.5; /* Example line height */
+  word-wrap: break-word;
+}
+
+.mb-0 {
+  margin-bottom: 0px;
+}
+
+/* Styles for .bg-yellow-light */
+
+.text-gray {
+    color: #586069 !important
+}
+.bg-yellow-light {
+  background-color: #fff5b1 !important; /* Example background color */
+}
+
+mb-5 {
+		margin-bottom: 32px;
+}
+
+a {
+		color: #0366d6;
+		text-decoration: none
+}
