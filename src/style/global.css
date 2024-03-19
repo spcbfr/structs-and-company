@@ -34,7 +34,7 @@ code.astro-code {
 @apply space-y-3 text-lg [li>&]:mt-3 [&>li]:relative [&>li]:pl-7 before:[&>li]:absolute before:[&>li]:left-1 before:[&>li]:top-3 before:[&>li]:h-1.5 before:[&>li]:w-1.5 before:[&>li]:rounded-full before:[&>li]:bg-stone-900/20
 }
 .prose kbd {
-@apply rounded-lg bg-inherit border-amber-900/40 border-b-4 border-t-2 text-sm py-px px-1 relative bottom-px hover:border-b-2 hover:top-px top-0 cursor-default transition-all border-x-2
+@apply rounded-lg bg-inherit border-amber-900/40 border-b-4 border-t-2 text-sm py-px px-1 relative bottom-px hover:border-b-2 hover:top-0 -top-[2px] cursor-default transition-all border-x-2
 }
 .prose table {
 @apply font-serif w-full table-auto [&>thead]:border-b-2 [&>thead>tr>th]:p-2 [&>thead]:bg-stone-300 border-2 border-stone-500 [&>tbody>tr>td]:p-2 [&>tbody>tr>td]:bg-stone-200 [&>thead]:rounded-t-lg rounded-lg border-separate

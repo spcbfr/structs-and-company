@@ -31,12 +31,12 @@ xset -q | grep "Caps Lock:\s*on" && xdotool key Caps_Lock
 
 When trying to edit files files that require elevated privileges, you will at some point run into one of these problems
 
-- You forget to run your editor with `sudo` and are thus unable to save your changes
+- You forget to run your editor with  <Code code="sudo" lang="bash" />and are thus unable to save your changes
 - In case you run your editor with sudo, you use your editor with its default configuration rather than your precious config that you perfected to oblivion. gross.
 
-Both problems can be solved with <Code lang="bash" code="sudoedit" inline />, simply run <Code lang="bash" code="sudoedit /etc/your-protected-file.sh" inline /> and it will open the file in your preferred `$EDITOR` with your config.
+Both problems can be solved with <Code lang="bash" code="sudoedit" />, simply run <Code lang="bash" code="sudoedit /etc/your-protected-file.sh" /> and it will open the file in your preferred <Code code="$EDITOR" lang="bash" /> with your config.
 
-In case, it opens in `nano` then you likely didn't set up your <Code code="$EDITOR" lang="bash" inline /> correctly, add the following line to your shell config and `source` it to fix the issue.
+In case, it opens in <Code code="nano" lang="bash" /> then you likely didn't set up your <Code code="$EDITOR" lang="bash" /> correctly, add the following line to your shell config and <Code code="source" /> it to fix the issue.
 
 ```bash title=".zshrc"
 export EDITOR="nvim" # or any other editor
