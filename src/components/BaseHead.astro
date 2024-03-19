@@ -8,11 +8,12 @@ import "../style/global.css";
 interface Props {
 	title: string;
 	description: string;
+	image?: string;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const { title, description } = Astro.props;
+const { title, description, image } = Astro.props;
 ---
 
 <!-- Global Metadata -->
@@ -28,3 +29,9 @@ const { title, description } = Astro.props;
 <title>{title}</title>
 <meta name="title" content={title} />
 <meta name="description" content={description} />
+
+<!-- OpenGraph -->
+<meta property="og:title" content={title} />
+<meta property="og:type" content={title} />
+<meta property="og:image" content={image ? image : "/og-image.png"} />
+<meta property="og:site_name" content="Structs & Company" />
