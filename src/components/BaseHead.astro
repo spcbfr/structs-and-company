@@ -32,6 +32,7 @@ const { title, description, image } = Astro.props;
 
 <!-- OpenGraph -->
 <meta property="og:title" content={title} />
-<meta property="og:type" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:type" content="website" />
 <meta property="og:image" content={image ? image : "/og-image.png"} />
 <meta property="og:site_name" content="Structs & Company" />
