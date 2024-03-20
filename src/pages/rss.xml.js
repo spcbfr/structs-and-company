@@ -13,7 +13,7 @@ export async function GET(context) {
 		items: posts.map((post) => ({
 			...post.data,
 			link: `/posts/${post.slug}/`,
-			author: "yusufbouzekri@gmail.com (Yusuf Bouzekri)"
+			author: "yusufbouzekri@gmail.com - (Yusuf Bouzekri)"
 		})),
 	});
 }

@@ -17,7 +17,7 @@ if (typeof pubDate == "string") {
   <body
     class="flex flex-col min-h-full items-center justify-center bg-[#faf9f5]"
   >
-    <main class="xl:w-1/3 pb-10 flex-grow lg:w-1/2 w-3/4 font-serif">
+    <main class="xl:w-1/3 pb-10 h-entry flex-grow lg:w-1/2 w-3/4 font-serif">
       <nav
         class="flex print:hidden text-xl my-2 font-medium font-serif justify-between"
       >
@@ -29,7 +29,7 @@ if (typeof pubDate == "string") {
         <p></p>
         <time
           datetime={pubDate.toLocaleDateString("en-US")}
-          class="text-lg font-bold"
+          class="text-lg font-bold dt-published"
         >
           {
             pubDate.toLocaleDateString("en-US", {
@@ -41,9 +41,9 @@ if (typeof pubDate == "string") {
           }
         </time>
       </div>
-      <h1 class="text-5xl mb-5 mt-3 font-display">{title}</h1>
+      <h1 class="text-5xl mb-5 mt-3 font-display p-name">{title}</h1>
 
-      <article class="prose space-y-5">
+      <article class="prose space-y-5 e-content">
         <slot />
       </article>
       <section class="flex gap-3 mt-4 print:hidden">

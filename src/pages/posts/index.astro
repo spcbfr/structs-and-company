@@ -62,7 +62,20 @@ resultArray.forEach((group) => {
 		/>
 		<h1 class="text-5xl text-center font-display">Structs & Company</h1>
 	</header>
-	<section>
+	<section class="h-feed">
+		<h2 class="p-name hidden">Articles</h2>
+		<h3 class="p-summary hidden">
+			A blog about tech, romance, movies and jokes
+		</h3>
+		<address class="p-author hidden author h-card vcard">
+			<a
+				href="https://yusuf.fyi"
+				class="u-url url p-name fn"
+				rel="author"
+			>
+				Yusuf Bouzekri
+			</a>
+		</address>
 		{
 			resultArray.map((item) => (
 				<article class="mb-5">
@@ -71,11 +84,11 @@ resultArray.forEach((group) => {
 					</h2>
 					<ul class="space-y-2 ">
 						{item.items.map((post) => (
-							<li class="font-serif flex justify-between text-xl">
+							<li class="font-serif flex p-entry justify-between text-xl">
 								<div class="flex gap-4">
 									<time
 										datetime={post.data.pubDate.toISOString()}
-										class="font-smallcaps text-stone-700 w-8"
+										class="font-smallcaps dt-published text-stone-700 w-8"
 									>
 										{post.data.pubDate.toLocaleString(
 											"en-US",
@@ -84,9 +97,15 @@ resultArray.forEach((group) => {
 											},
 										)}
 									</time>
-									<Link href={"/posts/" + post.slug}>
+									<Link
+										href={"/posts/" + post.slug}
+										styles="p-name u-url u-uid"
+									>
 										{post.data.title}
 									</Link>
+									<p class="p-summary entry-summary hidden">
+										{post.data.description}
+									</p>
 								</div>
 								{post.data.starred ? (
 									<span class="text-2xl text-amber-900/40">
