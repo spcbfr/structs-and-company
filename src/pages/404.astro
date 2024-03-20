@@ -1,0 +1,25 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Link from "../components/Link.astro"
+---
+
+<BaseLayout
+  title="404 Not Found"
+  description="The page you're looking for was not found"
+>
+  <nav class="flex text-xl my-2 font-medium font-serif justify-between">
+    <Link href="/">home/</Link>
+    <Link href="/posts">posts/</Link>
+    <Link href="/about">about/</Link>
+  </nav>
+  <div
+    class="h-[calc(100vh-266px-28px)] flex-col  flex justify-center items-center">
+    <h1 class="text-9xl font-display w-fit mx-auto"
+  >
+    404
+    </h1>
+    <h2 class="text-2xl">The page you are looking for was not found ( ͡° ʖ̯ ͡°)</h2>
+
+  <img src="tardis.gif" class="w-32 " alt="" />
+  </div>
+</BaseLayout>
