@@ -34,7 +34,7 @@ if (typeof pubDate == "string") {
         >
         <a class="u-url" href={Astro.site + "posts/" + slug}></a>
         <time
-          datetime={pubDate.toLocaleDateString("en-US")}
+          datetime={pubDate.toISOString()}
           class="text-lg font-semibold dt-published"
         >
           {

@@ -33,7 +33,7 @@ const starred = posts.filter((post) => post.data.starred);
     <article class="font-serif mt-5 p-note text-xl">
       <p>
         Hello, I Hope you're doing well today. My name is <Link
-          href={Astro.site}
+          href="@spacebuffer@fosstodon.org "
           styles="u-url p-name"
           rel="me"
           ><span class="p-given-name">Yusuf</span><span
@@ -63,7 +63,7 @@ const starred = posts.filter((post) => post.data.starred);
           <li class="flex justify-between items-baseline">
             <Link href={"posts/" + post.slug}>{post.data.title}</Link>
             <time
-              datetime={post.data.pubDate.toString()}
+              datetime={post.data.pubDate.toISOString()}
               class="italic tabular-nums text-sm"
             >
               {post.data.pubDate.toLocaleDateString("en-US", {
@@ -86,7 +86,7 @@ const starred = posts.filter((post) => post.data.starred);
           <li class="flex justify-between items-baseline">
             <Link href={"posts/" + post.slug}>{post.data.title}</Link>
             <time
-              datetime={post.data.pubDate.toString()}
+              datetime={post.data.pubDate.toISOString()}
               class="italic tabular-nums text-sm"
             >
               {post.data.pubDate.toLocaleDateString("en-US", {
