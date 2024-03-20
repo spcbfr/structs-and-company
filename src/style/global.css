@@ -1,5 +1,5 @@
 pre.astro-code {
-  @apply pb-3  rounded-xl !bg-[#fbfbf9] border-amber-800/10 border-2;
+  @apply py-3  rounded-xl !bg-[#fbfbf9] border-amber-800/10 border-2;
 }
 pre.astro-code > code {
   @apply grid;
@@ -9,6 +9,10 @@ pre > code > .line {
 }
 pre > .code-title {
   @apply block  bg-stone-200 text-stone-950 font-bold py-px px-2 font-smallcaps mb-3;
+}
+
+pre:has(.code-title) {
+  @apply !pt-0
 }
 
 code.astro-code {
