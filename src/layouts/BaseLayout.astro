@@ -3,9 +3,8 @@ import "@fontsource-variable/vollkorn";
 import "@fontsource/rakkas";
 import "@fontsource/ibm-plex-mono";
 import BaseHead from "../components/BaseHead.astro";
-import Link from "../components/Link.astro";
-import { Image } from "astro:assets";
-import bowling from "../assets/bowling.png";
+
+import Footer from "../components/Footer.astro";
 interface Props {
   title: string;
   description: string;
@@ -23,22 +22,6 @@ const props = Astro.props;
     <main class="xl:w-1/3 pb-10 flex-grow lg:w-1/2 w-3/4 font-serif">
       <slot />
     </main>
-
-    <footer class="font-serif mb-5 text-center">
-      <div class="text-xl mb-2 flex justify-between">
-        <Link href="/rss.xml">RSS/</Link>
-        <Link href="/now">now/</Link>
-        <Link href="/about">about/</Link>
-      </div>
-      <div>
-        <Image
-          src={bowling}
-          width={160}
-          class="mb-2 mx-auto"
-          alt="Bowling ball striking"
-        />
-        <p class="font-smallcaps">Carbon::now() &copy; Yusuf Bouzekri</p>
-      </div>
-    </footer>
+    <Footer />
   </body>
 </html>

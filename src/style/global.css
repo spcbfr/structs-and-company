@@ -53,7 +53,7 @@ figure > img {
   @apply border-l-amber-800 border-l-4 pl-2 py-5 bg-amber-400/10;
 }
 .prose a {
-  @apply text-amber-800 underline-offset-2 underline decoration-2 decoration-stone-100 hover:decoration-amber-700   hover:border-b-yellow-800 transition-all print:no-underline print:font-bold print:text-black;
+  @apply text-amber-800 underline-offset-2 underline decoration-2 decoration-amber-800/20 hover:decoration-amber-700   hover:border-b-yellow-800 transition-all print:no-underline print:font-bold print:text-black;
 }
 
 .prose h3 {

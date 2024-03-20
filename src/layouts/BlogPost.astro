@@ -2,8 +2,7 @@
 import "../style/global.css";
 import BaseHead from "../components/BaseHead.astro";
 import Link from "../components/Link.astro";
-import { Image } from "astro:assets";
-import bowling from "../assets/bowling.png";
+import Footer from "../components/Footer.astro";
 let { title, pubDate, description, slug } =
   Astro.props.frontmatter || Astro.props;
 if (typeof pubDate == "string") {
@@ -32,7 +31,7 @@ if (typeof pubDate == "string") {
           styles="p-author h-card text-lg font-semibold"
           href="/">Yusuf Bouzekri</Link
         >
-        <a class="u-url" href={Astro.site + "posts/" + slug}></a>
+        <a class="u-url hidden" href={Astro.site + "posts/" + slug}></a>
         <time
           datetime={pubDate.toISOString()}
           class="text-lg font-semibold dt-published"
@@ -69,21 +68,6 @@ if (typeof pubDate == "string") {
         >
       </section>
     </main>
-    <footer class="font-serif mb-5 text-center print:hidden">
-      <div class="text-xl mb-2 flex justify-between">
-        <Link href="/rss.xml">RSS/</Link>
-        <Link href="/now">now/</Link>
-        <Link href="/about">about/</Link>
-      </div>
-      <div>
-        <Image
-          src={bowling}
-          width={160}
-          class="mb-2 mx-auto"
-          alt="Bowling ball striking"
-        />
-        <p class="font-smallcaps">Carbon::now() &copy; Yusuf Bouzekri</p>
-      </div>
-    </footer>
+    <Footer />
   </body>
 </html>
