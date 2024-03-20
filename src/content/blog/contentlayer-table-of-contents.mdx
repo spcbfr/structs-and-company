@@ -6,7 +6,7 @@ starred: true
 pubDate: "nov 14 2022"
 ---
 
-import Callout from "../../components/Callout.tsx";
+import Callout from "../../components/Callout.astro";
 
 Last weekend I learned how to make a Table of Contents utilizing Contentlayer's computed fields, today I am sharing it with you guys! Here is what we'll be building today:
 
@@ -122,7 +122,7 @@ headings: {
 ```
 
 
-<Callout title="Explaining the Regex 🗿" client:load>
+<Callout title="Explaining the Regex 🗿">
   In short, <Code lang="md" code="Hi ## It's me" inline /> and <Code lang="md" code="###nospace" inline /> won't match, but <Code code="# Hello World" inline lang="md" /> will. Along with it 2 properties will be returned. <Code code='flag = "#"' lang="js" inline /> and <Code lang="js" code='content= "Hello World"' inline /> which we'll be using later.
   <details class="text-black text-lg">
     <summary class="cursor-pointer">Show More</summary>
