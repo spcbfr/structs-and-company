@@ -1,0 +1,50 @@
+---
+title: My blog has regenerated!
+description: After a nearly 7 month long haitus from working on this site, I am back to blogging once again. this time with a new blog design.
+pubDate: "March 20 2024 10:58"
+---
+
+import homepage from "../../assets/new-design.png"
+import about from "../../assets/about.png"
+
+After a nearly 7 month long hiatus from working on this site, I am back to blogging once again. This time with a major blog overhaul. One of the reasons I stopped writing is the amount of work required to push new articles. The new system is much easier and will hopefully allow me to stay consistent.
+
+With that out of the way, here's everything about the new site.
+
+# The Design
+<br />
+<div class="grid place-content-center place-items-center">
+  <Img src="/og-image.png"  alt=""  class="sm:w-[36rem] w-[30rem] -rotate-12 [grid-row:1] [grid-column:1]"  />
+  <Img src={homepage} alt="" class="sm:w-[30rem] w-[24rem] -rotate-6 [grid-row:1] [grid-column:1] delay-[1s]"/>
+  <Img src={about} alt="Screenshot of about page" class="sm:w-[30rem] w-[24rem] rotate-12 [grid-row:1] [grid-column:1]  "  />
+</div>
+<p class="!text-sm !text-stone-600/90 italic text-center">A snapshot of the current design</p>
+
+<br />
+<Aside>Oh, You've redecorated! I don't like it — The `10`th Doctor </Aside>
+
+For this iteration, I wanted to try something completely new for me. Initially I had a very old-school, 1930s magazine-esque style in mind. The final design didn't turn out as _“out there”_ as I had imagined, but I am nonetheless very happy with what I turned out with.
+
+I chose to go with a serif only collection of fonts, to suit the old-school aesthetic. It looks very elegant and pairs surprisingly well with monospace code blocks.
+
+One UX decision I spent a long time thinking about is whether to list all the articles on the homepage — which is what I had been doing before — or in a separate /posts page, eventually I settled on the second option, because the number of posts is only going to grow and the homepage won't handle that well. I still list my favorite articles on the homepage for better discoverability.
+
+# Framework change
+
+I've switched from NextJS + Contentlayer to Astro. contentlayer had very good premise but it's sadly no longer maintained (well, [_barely_ maintained](https://github.com/contentlayerdev/contentlayer/issues/429)) and NextJS seemed like an overkill for my needs. On the other hand, Astro implements syntax highlighting out of the box and it's syntax is closer to vanilla JS. I am sure problems with astro will eventually crop up but so far it's been very stable.
+
+I was very tempted to switch to [`11`ty](11ty.dev) instead but a fully static site can't handle the experiments I run every now and then. 11ty remains a very good choice for most people, check it out if you haven't already.
+
+One more thing: I am dropping the webmentions support and spotify widget for the time being, I can't delay this overhaul any further. They'll back soon though.
+
+# There's more
+
+and now for a couple of small _Quality of Life_ improvements:
+
+- Cleaner layout when printing an article. I basically hide everything that's not content (headers, navigation, etc..) and display the full URL after links. Thanks to [Juhis](https://hamatti.org/posts/recent-evolution-of-my-note-taking-systems) for the idea
+- my [RSS feed](/rss) is now styled when opened in a browser. Yes, you can style an RSS feed, and it's cool as heck. Oh and don't worry, the feed is still parse-able by your reader
+- made a [now/](/now), can I be one of the cool kids now?
+
+That's all folks, i will see you ~in the next yearly blog redesign~ next week.
+
+
