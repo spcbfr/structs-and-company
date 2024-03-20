@@ -1,19 +1,15 @@
 ---
-interface Props {
-	src: string;
-	alt: string;
-	caption: string;
-}
 const props = Astro.props;
 import { Image } from "astro:assets";
+import { cn } from "../../utils.ts";
 ---
 
-<figure class="md:-mx-5">
+<figure class={cn("md:-mx-5", props.class)}>
 	<Image
 		src={props.src}
 		alt={props.alt}
 		quality="100"
-		class="rounded-md border-2 border-stone-300 md:shadow-lg shadow-stone-300"
+		class={"rounded-md border-[3px] imaag border-white shadow-stone-300"}
 		height={500}
 		width={800}
 	/>

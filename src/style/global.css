@@ -22,6 +22,10 @@ code.astro-code {
   @apply relative font-serif text-lg leading-relaxed text-stone-900
 }
 
+figure > img {
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 2px, rgba(0, 0, 0, 0.2) 0px 8px 16px
+}
+
 .prose h1 {
   @apply text-4xl font-display
 }
