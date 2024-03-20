@@ -99,7 +99,12 @@ const starred = posts.filter((post) => post.data.starred);
       }
     </ul>
   </article>
-  <Link href="/posts" styles="mt-2 text-2xl block font-bold text-center">
+  <Link
+    href="/posts"
+    rel="alternate"
+    type="text/mf2+html"
+    styles="mt-2 text-2xl block font-bold text-center"
+  >
     All Posts &rarr;
   </Link>
 </BaseLayout>
