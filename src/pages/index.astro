@@ -21,20 +21,23 @@ const starred = posts.filter((post) => post.data.starred);
     <Link href="/posts">posts/</Link>
     <Link href="/about">about/</Link>
   </nav>
-  <header class="mt-5">
+  <header class="mt-5 h-card">
     <Image
       src={face}
       height={160}
-      class="mb-3 mx-auto"
-      alt="A somewhat surprised white man, Black and White, light face on dark background with a broken glass effect"
+      class="mb-3 mx-auto u-photo"
+      alt="A somewhat surprised white man, Black and White Picture, light face on dark background with a broken glass effect"
     />
     <h1 class="text-5xl text-center font-display">Structs & Company</h1>
     <p class="italic font-serif text-xl text-center">A Hacker's Best Friend</p>
     <article class="font-serif mt-5 text-xl">
       <p>
-        Hello, I Hope you're doing well today. My name is Yusuf and I write
-        articles on this blog. I work as a software engineer. in my free time I
-        go hiking, play boardgames or edit my neovim config.
+        Hello, I Hope you're doing well today. My name is <Link
+          href="https://yusuf.fyi"
+          styles="u-url"
+          rel="me">Yusuf<span class="hidden"> Bouzekri</span></Link
+        > and I write articles on this blog. I work as a software engineer. in my
+        free time I go hiking, play boardgames or edit my neovim config.
       </p>
       <div class="h-2"></div>
       <p>
