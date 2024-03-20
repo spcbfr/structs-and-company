@@ -1,3 +1,8 @@
+html, body {
+  min-height: 100%
+}
+
+
 pre.astro-code {
   @apply py-3  rounded-xl !bg-[#fbfbf9] border-amber-800/10 border-2;
 }

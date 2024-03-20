@@ -14,11 +14,9 @@ const props = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en" class="h-full">
+<html lang="en">
   <BaseHead {...props} />
-  <body
-    class="flex flex-col min-h-full items-center justify-center bg-[#faf9f5]"
-  >
+  <body class="flex flex-col items-center justify-center bg-[#faf9f5]">
     <main class="xl:w-1/3 pb-10 flex-grow lg:w-1/2 w-3/4 font-serif">
       <slot />
     </main>
