@@ -17,7 +17,7 @@ const rand = Math.floor(Math.random() * currentTime.length);
 ---
 
 <footer class="font-serif mb-5 text-center print:hidden">
-	<div class="text-xl mb-2 flex justify-between">
+	<div class="sm:text-xl text-lg mb-2 flex justify-between">
 		<Link href="/rss.xml">RSS/</Link>
 		<Link href="/now">now/</Link>
 		<Link href="/about">about/</Link>
@@ -26,9 +26,11 @@ const rand = Math.floor(Math.random() * currentTime.length);
 		<Image
 			src={bowling}
 			width={160}
-			class="mb-2 mx-auto"
+			class="mb-2 sm:w-auto w-32 mx-auto"
 			alt="Bowling ball striking"
 		/>
-		<p class="font-smallcaps">{currentTime[rand]} &copy; Yusuf Bouzekri</p>
+		<p class="font-smallcaps text-sm">
+			{currentTime[rand]} &copy; Yusuf Bouzekri
+		</p>
 	</div>
 </footer>
