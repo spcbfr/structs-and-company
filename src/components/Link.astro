@@ -1,11 +1,12 @@
 ---
 const props = Astro.props;
+import { cn } from "../utils";
 ---
 
 <a
   {...props}
-  class:list={[
+  class={cn(
     "hover:decoration-stone-600 underline-offset-2 underline hover:decoration-2 decoration-stone-300 transition-all",
     props.styles,
-  ]}><slot /></a
+  )}><slot /></a
 >
