@@ -25,7 +25,22 @@ export default defineConfig({
       // Find common transformers: https://shiki.style/packages/transformers
       transformers: [
         transformerMetaWordHighlight(),
-        transformerMetaHighlight()
+        transformerMetaHighlight(),
+        {
+          pre(node) {
+            if (!this.options.meta) {
+              return
+            }
+
+            if (!this.options.meta.__raw) {
+              return
+            }
+            const meta = this.options.meta.__raw
+            const titleMatch = meta.match(/title="([^"]*)"/);
+            const title = titleMatch?.[1] ?? null;
+            node.properties['data-title'] = title
+          }
+        }
       ],
     }
   }

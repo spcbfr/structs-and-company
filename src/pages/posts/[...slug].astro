@@ -29,3 +29,14 @@ const { Content } = await post.render();
     }}
   />
 </BlogPost>
+
+<script>
+  const pres = document.querySelectorAll("[data-title]");
+  pres.forEach((pre) => {
+    const titleValue = pre.getAttribute("data-title");
+    const titleBlock = document.createElement("span");
+    titleBlock.textContent = titleValue;
+    titleBlock.classList.add("code-title");
+    pre.prepend(titleBlock);
+  });
+</script>

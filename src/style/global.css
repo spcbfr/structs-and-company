@@ -1,70 +1,73 @@
 pre.astro-code {
-  @apply py-3  rounded-xl !bg-[#fbfbf9] border-amber-800/10 border-2
-
+  @apply pb-3  rounded-xl !bg-[#fbfbf9] border-amber-800/10 border-2;
 }
 pre.astro-code > code {
-
-  @apply grid
-
+  @apply grid;
 }
 pre > code > .line {
-  @apply px-5 
+  @apply px-5;
+}
+pre > .code-title {
+  @apply block  bg-stone-200 text-stone-950 font-bold py-px px-2 font-smallcaps mb-3;
 }
 
 code.astro-code {
-  @apply text-sm px-1 rounded-md py-[2px] !bg-[#f2f1e9]
+  @apply text-sm px-1 rounded-md py-[2px] !bg-[#f2f1e9];
 }
 .highlighted {
-  @apply bg-amber-800/5
+  @apply bg-amber-700/5 py-1 border-l-amber-700 border-l-4;
+}
+
+.highlighted-word {
+  @apply bg-stone-200/40 p-1 rounded-md;
 }
 
 .prose p {
-  @apply relative font-serif text-lg leading-relaxed text-stone-900
+  @apply relative font-serif text-lg leading-relaxed text-stone-900;
 }
 
 figure > img {
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 2px, rgba(0, 0, 0, 0.2) 0px 8px 16px
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 2px, rgba(0, 0, 0, 0.2) 0px 8px 16px;
 }
 
 .prose h1 {
-  @apply text-4xl font-display
+  @apply text-4xl font-display;
 }
 .prose > p:first-of-type:first-letter {
-  @apply text-amber-400 text-6xl float-left font-semibold bg-amber-950 -mb-2 leading-[0.7] pt-[13px] pr-2 pl-2 mr-2 pb-1 
+  @apply text-amber-400 text-6xl float-left font-semibold bg-amber-950 -mb-2 leading-[0.7] pt-[13px] pr-2 pl-2 mr-2 pb-1;
 }
-@-moz-document url-prefix(){
+@-moz-document url-prefix() {
   .prose > p:first-of-type:first-letter {
-    @apply leading-normal p-2 mr-2
-
+    @apply leading-normal p-2 mr-2;
   }
 }
 
 .prose h2 {
-  @apply font-display text-2xl 
+  @apply font-display text-2xl;
 }
 .prose blockquote {
-  @apply border-l-amber-800 border-l-4 pl-2 py-5 bg-amber-400/10
+  @apply border-l-amber-800 border-l-4 pl-2 py-5 bg-amber-400/10;
 }
 .prose a {
-  @apply text-amber-800 underline-offset-2 underline decoration-2 decoration-stone-100 hover:decoration-amber-700   hover:border-b-yellow-800 transition-all print:no-underline print:font-bold print:text-black
+  @apply text-amber-800 underline-offset-2 underline decoration-2 decoration-stone-100 hover:decoration-amber-700   hover:border-b-yellow-800 transition-all print:no-underline print:font-bold print:text-black;
 }
 
 .prose h3 {
-  @apply font-bold text-lg font-smallcaps
+  @apply font-bold text-lg font-smallcaps;
 }
 .prose ul {
-@apply space-y-3 text-lg [li>&]:mt-3 [&>li]:relative [&>li]:pl-7 before:[&>li]:absolute before:[&>li]:left-1 before:[&>li]:top-3 before:[&>li]:h-1.5 before:[&>li]:w-1.5 before:[&>li]:rounded-full before:[&>li]:bg-stone-900/20
+  @apply space-y-3 text-lg [li>&]:mt-3 [&>li]:relative [&>li]:pl-7 before:[&>li]:absolute before:[&>li]:left-1 before:[&>li]:top-3 before:[&>li]:h-1.5 before:[&>li]:w-1.5 before:[&>li]:rounded-full before:[&>li]:bg-stone-900/20;
 }
 .prose kbd {
-@apply rounded-lg bg-inherit border-amber-900/40 border-b-4 border-t-2 text-sm py-px px-1 relative bottom-px hover:border-b-2 hover:top-0 -top-[2px] cursor-default transition-all border-x-2
+  @apply rounded-lg bg-inherit border-amber-900/40 border-b-4 border-t-2 text-sm py-px px-1 relative bottom-px hover:border-b-2 hover:top-0 -top-[2px] cursor-default transition-all border-x-2;
 }
 .prose table {
-@apply font-serif w-full table-auto [&>thead]:border-b-2 [&>thead>tr>th]:p-2 [&>thead]:bg-stone-300 border-2 border-stone-500 [&>tbody>tr>td]:p-2 [&>tbody>tr>td]:bg-stone-200 [&>thead]:rounded-t-lg rounded-lg border-separate
+  @apply font-serif w-full table-auto [&>thead]:border-b-2 [&>thead>tr>th]:p-2 [&>thead]:bg-stone-300 border-2 border-stone-500 [&>tbody>tr>td]:p-2 [&>tbody>tr>td]:bg-stone-200 [&>thead]:rounded-t-lg rounded-lg border-separate;
 }
 
 /* Credit to Juha-Matti Santala (hamatti.org)*/
 @media print {
-  a::after{
+  a::after {
     content: " (" attr(href) ") ";
   }
   a[href^="/"]::after {
