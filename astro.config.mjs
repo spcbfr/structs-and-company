@@ -3,8 +3,9 @@ import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 import { transformerMetaWordHighlight, transformerMetaHighlight } from '@shikijs/transformers';
-
 import react from "@astrojs/react";
+
+import vercel from "@astrojs/vercel/serverless";
 
 // https://astro.build/config
 export default defineConfig({
@@ -23,25 +24,26 @@ export default defineConfig({
       wrap: false,
       // Add custom transformers: https://shiki.style/guide/transformers
       // Find common transformers: https://shiki.style/packages/transformers
-      transformers: [
-        transformerMetaWordHighlight(),
-        transformerMetaHighlight(),
-        {
-          pre(node) {
-            if (!this.options.meta) {
-              return
-            }
-
-            if (!this.options.meta.__raw) {
-              return
-            }
-            const meta = this.options.meta.__raw
-            const titleMatch = meta.match(/title="([^"]*)"/);
-            const title = titleMatch?.[1] ?? null;
-            node.properties['data-title'] = title
+      transformers: [transformerMetaWordHighlight(), transformerMetaHighlight(), {
+        pre(node) {
+          if (!this.options.meta) {
+            return;
           }
+          if (!this.options.meta.__raw) {
+            return;
+          }
+          const meta = this.options.meta.__raw;
+          const titleMatch = meta.match(/title="([^"]*)"/);
+          const title = titleMatch?.[1] ?? null;
+          node.properties['data-title'] = title;
         }
-      ],
+      }]
     }
-  }
+  },
+  output: "server",
+  adapter: vercel({
+    webAnalytics: {
+      enabled: true,
+    },
+  })
 });
