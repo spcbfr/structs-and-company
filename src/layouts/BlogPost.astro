@@ -14,6 +14,7 @@ if (typeof pubDate == "string") {
 <!doctype html>
 <html lang="en" class="h-full">
   <BaseHead title={title} description={description} />
+
   <body
     class="flex flex-col min-h-full items-center justify-center bg-[#faf9f5]"
   >
@@ -26,10 +27,15 @@ if (typeof pubDate == "string") {
         <Link href="/about">about/</Link>
       </nav>
       <div class="flex mt-8 justify-between items-center">
-        <p></p>
+        <Link
+          rel="author"
+          styles="p-author h-card text-lg font-semibold"
+          href="/">Yusuf Bouzekri</Link
+        >
+        <a class="u-url" href={Astro.site + "posts/" + slug}></a>
         <time
           datetime={pubDate.toLocaleDateString("en-US")}
-          class="text-lg font-bold dt-published"
+          class="text-lg font-semibold dt-published"
         >
           {
             pubDate.toLocaleDateString("en-US", {
@@ -51,7 +57,7 @@ if (typeof pubDate == "string") {
           href={"https://news.ycombinator.com/submitlink?t=" +
             encodeURIComponent(title) +
             "&u=" +
-            encodeURIComponent("https://yusuf.fyi/posts/" + slug)}
+            encodeURIComponent(Astro.site + "posts/" + slug)}
           class="text-white text-lg font-semibold bg-black p-2 pb-1 block w-fit mt-3"
           >Share on Hackernews</a
         >
