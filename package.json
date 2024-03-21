@@ -23,6 +23,7 @@
     "@fontsource/rakkas": "^5.0.19",
     "@fontsource/vollkorn": "^5.0.19",
     "@fontsource/vollkorn-sc": "^5.0.12",
+    "@jill64/svelte-sanitize": "^1.2.11",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
     "@vercel/analytics": "^1.2.2",

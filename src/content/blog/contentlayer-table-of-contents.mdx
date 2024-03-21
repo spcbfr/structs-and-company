@@ -133,9 +133,11 @@ headings: {
   - finally <Code code="g" inline /> stands for global and is used to catch all the instances that match the expression and not just the first one
   </details>
 </Callout>
+
 Now we'll map over the array of matches in the document and return the data that we'll need, which is derived from the regex **Named Control Groups**, notice how we used <Code code="flag.length" inline /> to count the number of hashtags in the heading thus getting the heading's level. finally let's return the data we've mapped over.
-```js /headings/2-3 title="contentlayer.config.js"
-headings: {
+
+```js title="contentlayer.config.js"
+ headings: {
   type: "json",
   resolve: async (doc) => {
     const regXHeader = /\n(?<flag>#{1,6})\s+(?<content>.+)/g;
@@ -158,7 +160,7 @@ headings: {
 
 We also need to generate a slug from the contents of the headings, which _crucially_ needs to be the same as the one we generated earlier, that's why we'll use **github-slugger because it uses the same generation method rehype-slug**. we made sure to check whether content is empty or not to avoid getting an error if there is an empty heading somewhere.
 
-```js {1,2,15,7} /slugger/2-3 title="contentlayer.config.js"
+```js {1,2,15,7} title="contentlayer.config.js"
 // make sure to have this import at the top of the file
 import GithubSlugger from "github-slugger"
 headings: {
