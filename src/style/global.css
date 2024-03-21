@@ -3,13 +3,13 @@ html, body {
 }
 
 pre.astro-code {
-  @apply py-3  rounded-xl !bg-[#fbfbf9] border-amber-800/10 border-2;
+  @apply py-3  rounded-xl !bg-[#fbfbf9] border-amber-800/10 border-2 -mx-9; 
 }
 pre.astro-code > code {
   @apply grid;
 }
 pre > code > .line {
-  @apply px-5;
+  @apply px-3;
 }
 pre > .code-title {
   @apply block  bg-stone-200 text-stone-950 font-bold py-px px-2 font-smallcaps mb-3;
@@ -27,7 +27,7 @@ code.astro-code {
 }
 
 .highlighted-word {
-  @apply bg-stone-200/40 p-1 rounded-md;
+  @apply bg-orange-100 text-orange-950 border-b-2 border-b-orange-600 font-semibold px-1 py-px rounded-md;
 }
 
 .prose p {

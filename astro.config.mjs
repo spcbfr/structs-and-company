@@ -3,14 +3,14 @@ import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 import { transformerMetaWordHighlight, transformerMetaHighlight } from '@shikijs/transformers';
-import react from "@astrojs/react";
+import vercel from "@astrojs/vercel/serverless";
 
-import vercel from "@astrojs/vercel/static";
+import svelte from "@astrojs/svelte";
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://yusuf.fyi",
-  integrations: [mdx(), sitemap(), tailwind(), react()],
+  integrations: [mdx(), sitemap(), tailwind(), svelte()],
   markdown: {
     shikiConfig: {
       // Choose from Shiki's built-in themes (or add your own)
@@ -21,7 +21,7 @@ export default defineConfig({
       // https://shiki.style/languages
       langs: [],
       // Enable word wrap to prevent horizontal scrolling
-      wrap: false,
+      wrap: true,
       // Add custom transformers: https://shiki.style/guide/transformers
       // Find common transformers: https://shiki.style/packages/transformers
       transformers: [transformerMetaWordHighlight(), transformerMetaHighlight(), {
@@ -40,10 +40,10 @@ export default defineConfig({
       }]
     }
   },
-  output: "static",
+  output: "server",
   adapter: vercel({
     webAnalytics: {
-      enabled: true,
-    },
+      enabled: true
+    }
   })
 });
