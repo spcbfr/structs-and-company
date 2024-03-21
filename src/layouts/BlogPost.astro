@@ -3,6 +3,8 @@ import "../style/global.css";
 import BaseHead from "../components/BaseHead.astro";
 import Link from "../components/Link.astro";
 import Footer from "../components/Footer.astro";
+import { Image } from "astro:assets";
+import yusuf from "../assets/yusuf1.webp";
 let { title, pubDate, description, slug } =
   Astro.props.frontmatter || Astro.props;
 if (typeof pubDate == "string") {
@@ -26,11 +28,20 @@ if (typeof pubDate == "string") {
         <Link href="/about">about/</Link>
       </nav>
       <div class="flex mt-8 justify-between items-center">
-        <Link
-          rel="author"
-          styles="p-author h-card text-lg sm:block hidden font-semibold"
-          href="/">Yusuf Bouzekri</Link
-        >
+        <div class="h-card items-center gap-3 flex u-auther">
+          <img
+            src="/yusuf.jpg"
+            alt={"A white young man wearing a coat, outside a home, early morning, misty weather"}
+            width="64"
+            class="u-photo hidden"
+          />
+          <Link
+            rel="author"
+            styles="p-author p-name u-url text-lg sm:block hidden font-semibold"
+            href="/">Yusuf Bouzekri</Link
+          >
+        </div>
+
         <a class="u-url hidden" href={Astro.site + "posts/" + slug}></a>
         <time
           datetime={pubDate.toISOString()}
