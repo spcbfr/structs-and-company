@@ -42,7 +42,7 @@ if (typeof pubDate == "string") {
           >
         </div>
 
-        <a class="u-url hidden" href={Astro.site + "posts/" + slug}></a>
+        <a class="u-url hidden" href={Astro.site + slug}></a>
         <time
           datetime={pubDate.toISOString()}
           class="sm:text-lg font-semibold dt-published"
@@ -69,7 +69,7 @@ if (typeof pubDate == "string") {
           href={"https://news.ycombinator.com/submitlink?t=" +
             encodeURIComponent(title) +
             "&u=" +
-            encodeURIComponent(Astro.site + "posts/" + slug)}
+            encodeURIComponent(Astro.site + slug)}
           class="text-white sm:text-lg font-semibold bg-black p-2 pb-1 block w-fit mt-3"
           >Share on Hackernews</a
         >
