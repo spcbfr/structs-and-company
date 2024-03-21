@@ -133,7 +133,6 @@ headings: {
   - finally <Code code="g" inline /> stands for global and is used to catch all the instances that match the expression and not just the first one
   </details>
 </Callout>
-
 Now we'll map over the array of matches in the document and return the data that we'll need, which is derived from the regex **Named Control Groups**, notice how we used <Code code="flag.length" inline /> to count the number of hashtags in the heading thus getting the heading's level. finally let's return the data we've mapped over.
 
 ```js title="contentlayer.config.js"
