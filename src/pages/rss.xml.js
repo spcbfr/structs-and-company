@@ -10,6 +10,10 @@ export async function GET(context) {
 		description: "A hacker's best friend",
 		stylesheet: "/styles.xsl",
 		site: context.site,
+		xmlns: {
+			atom: "http://www.w3.org/2005/Atom",
+		},
+		customData: `<atom:link href="${context.site}rss.xml" rel="self" type="application/rss+xml" />`,
 		items: posts.map((post) => ({
 			...post.data,
 			link: `/posts/${post.slug}/`,
