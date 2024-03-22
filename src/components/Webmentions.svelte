@@ -4,9 +4,43 @@
 
   export let urlSlug;
 
-  let data;
   const target = "https://yusuf.fyi/" + urlSlug;
   const reqURL = `https://webmention.io/api/mentions.jf2?target=${target}`;
+  let sourceURL;
+  let data;
+  let error;
+
+  const send = async () => {
+    try {
+      const response = await fetch(reqURL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          source: sourceURL,
+          target: target,
+        }),
+      });
+
+      if (response.ok) {
+        sourceURL = "";
+      } else {
+        error = "Failed to send webmention. Please try again later.";
+      }
+    } catch (err) {
+      error = err;
+    }
+  };
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    if (!sourceURL) {
+      error = "Please fill in the URL";
+      return;
+    }
+    await send();
+  }
 
   onMount(() => {
     fetch(reqURL)
@@ -30,11 +64,33 @@
 </script>
 
 <div>
-  {#if data}
-    {#if data.children.length !== 0}
-      <section
-        class="space-y-1 bg-[#F1EFE4] py-2 px-3 sm:static sm:mx-0 sm:w-fit relative w-screen left-1/2 right-1/2 ml-[-50vw] mr-[-50vw] rounded-sm mt-5"
+  <section
+    class="space-y-1 bg-[#F1EFE4] py-2 px-3 sm:static sm:mx-0 sm:w-full relative w-screen left-1/2 right-1/2 ml-[-50vw] mr-[-50vw] rounded-sm mt-5"
+  >
+    <form class="mb-3 space-y-1" on:submit={handleSubmit}>
+      <label for="reply" class="font-semibold"
+        >Have you written a <a
+          href="https://indieweb.org/reply"
+          class="text-amber-700 underline underline-offset-2">reply</a
+        > to this post? Let me know the URL</label
       >
+      <div class="flex gap-2">
+        <input
+          type="url"
+          name="reply"
+          class="w-full rounded-sm border-stone-300 border-2 bg-stone-100"
+          bind:value={sourceURL}
+          required
+        />
+        <button
+          class="bg-amber-900 rounded-sm font-semibold text-amber-100 hover:bg-amber-950 transition-colors px-3 py-1"
+          >Send</button
+        >
+      </div>
+      <small class="text-red-600">{error ? error : ""}</small>
+    </form>
+    {#if data}
+      {#if data.children.length !== 0}
         {#if filterLikes(data.children).length !== 0}
           <section class="flex items-center flex-wrap gap-1 mt-3">
             <span
@@ -146,7 +202,7 @@
             {/each}
           {/if}
         </section>
-      </section>
+      {/if}
     {/if}
-  {/if}
+  </section>
 </div>

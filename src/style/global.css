@@ -3,7 +3,7 @@ html, body {
 }
 
 pre.astro-code {
-  @apply py-3  rounded-xl !bg-[#fbfbf9] border-amber-800/10 border-2 -mx-9; 
+  @apply py-3  rounded-xl !bg-[#fbfbf9] border-amber-800/10 border-2 -mx-9 !mb-3; 
 }
 pre.astro-code > code {
   @apply grid;
@@ -75,6 +75,10 @@ figure > img {
 }
 .prose table {
   @apply font-serif w-full table-auto [&>thead]:border-b-2 [&>thead>tr>th]:p-2 [&>thead]:bg-stone-300 border-2 border-stone-500 [&>tbody>tr>td]:p-2 [&>tbody>tr>td]:bg-stone-200 [&>thead]:rounded-t-lg rounded-lg border-separate;
+}
+
+.p-category {
+  @apply hidden
 }
 
 /* Credit to Juha-Matti Santala (hamatti.org)*/
