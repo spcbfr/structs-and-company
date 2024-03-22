@@ -16,12 +16,9 @@
       const response = await fetch(sendingURL, {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "application/x-www-form-urlencoded",
         },
-        body: JSON.stringify({
-          source: sourceURL,
-          target: target,
-        }),
+        body: `source=${encodeURIComponent(sourceURL)}&target=${encodeURIComponent(target)}`,
       });
 
       if (response.ok) {
