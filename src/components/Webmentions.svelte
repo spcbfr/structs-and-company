@@ -171,122 +171,112 @@
       {/if}
 
       <section class="flex flex-col gap-1">
-        {#if filterComments(data).length !== 0}
-          {#each filterComments(data) as comment}
-            <article class="flex mt-3 items-start gap-3 py-1">
-              <img
-                src={comment.author.photo}
-                width={48}
-                height={48}
-                alt=""
-                class="rounded-[4px]"
-              />
-              <div>
-                <div class="flex gap-1 mb-1">
-                  <h3
-                    class="text-sm text-amber-700 font-medium hover:underline underline-offset-1"
-                  >
-                    <a href={comment.author.url}>{comment.author.name}</a>
-                  </h3>
-                  <a
-                    href={comment.author.url}
-                    class=" hover:underline underline-offset-1 text-sm text-stone-500"
-                    >{comment.author.url.replace(/(^\w+:|^)\/\//, "")}</a
-                  >
-                </div>
-                <div>
-                  {#if comment.content.html}
-                    <p class="[&_a]:text-amber-700 [&_a]:font-semibold">
-                      <Render html={comment.content.html} />
-                    </p>
-                  {:else}
-                    <p class="[&_a]:text-amber-700 [&_a]:font-semibold">
-                      {comment.content.text}
-                    </p>
-                  {/if}
-                  <a
-                    href={comment.url}
-                    class="hover:underline underline-offset-1"
-                  >
-                    <time
-                      class="text-sm text-stone-700"
-                      datetime={new Date(comment.published).toISOString()}
-                      >{new Date(comment.published).toLocaleDateString(
-                        "en-GB",
-                        {
-                          weekday: "short",
-                          day: "numeric",
-                          month: "long",
-                          year: "numeric",
-                          hour: "2-digit",
-                          minute: "2-digit",
-                        },
-                      )}</time
-                    >
-                  </a>
-                </div>
+        {#each filterComments(data) as comment}
+          <article class="flex mt-3 items-start gap-3 py-1">
+            <img
+              src={comment.author.photo}
+              width={48}
+              height={48}
+              alt=""
+              class="rounded-[4px]"
+            />
+            <div>
+              <div class="flex gap-1 mb-1">
+                <h3
+                  class="text-sm text-amber-700 font-medium hover:underline underline-offset-1"
+                >
+                  <a href={comment.author.url}>{comment.author.name}</a>
+                </h3>
+                <a
+                  href={comment.author.url}
+                  class=" hover:underline underline-offset-1 text-sm text-stone-500"
+                  >{comment.author.url.replace(/(^\w+:|^)\/\//, "")}</a
+                >
               </div>
-            </article>
-          {/each}
-        {/if}
-
-        {#if filterMentions(data).length !== 0}
-          {#each filterMentions(data) as comment}
-            <article class="flex mt-3 items-start gap-3 py-1">
-              <img
-                src={comment.author.photo}
-                width={48}
-                height={48}
-                alt=""
-                class="rounded-[4px]"
-              />
               <div>
-                <div class="flex gap-1 mb-1">
-                  <h3
-                    class="text-sm text-amber-700 font-medium hover:underline underline-offset-1"
-                  >
-                    <a href={comment.author.url}>{comment.author.name}</a>
-                  </h3>
-                  <a
-                    href={comment.author.url}
-                    class=" hover:underline underline-offset-1 text-sm text-stone-500"
-                    >{comment.author.url.replace(/(^\w+:|^)\/\//, "")}</a
-                  >
-                </div>
-
-                <div>
-                  <p>
-                    Mentioned in <a
-                      href={comment.url}
-                      class="font-medium text-amber-700"
-                      >{comment.url.replace(/(^\w+:|^)\/\//, "")}</a
-                    >
+                {#if comment.content.html}
+                  <p class="[&_a]:text-amber-700 [&_a]:font-semibold">
+                    <Render html={comment.content.html} />
                   </p>
-                  <a
-                    href={comment.url}
-                    class="hover:underline underline-offset-1"
+                {:else}
+                  <p class="[&_a]:text-amber-700 [&_a]:font-semibold">
+                    {comment.content.text}
+                  </p>
+                {/if}
+                <a
+                  href={comment.url}
+                  class="hover:underline underline-offset-1"
+                >
+                  <time
+                    class="text-sm text-stone-700"
+                    datetime={new Date(comment.published).toISOString()}
+                    >{new Date(comment.published).toLocaleDateString("en-GB", {
+                      weekday: "short",
+                      day: "numeric",
+                      month: "long",
+                      year: "numeric",
+                      hour: "2-digit",
+                      minute: "2-digit",
+                    })}</time
                   >
-                    <time
-                      class="text-sm text-stone-700"
-                      datetime={new Date(comment.published).toISOString()}
-                      >{new Date(comment.published).toLocaleDateString(
-                        "en-GB",
-                        {
-                          weekday: "short",
-                          day: "numeric",
-                          month: "long",
-                          year: "numeric",
-                          hour: "2-digit",
-                          minute: "2-digit",
-                        },
-                      )}</time
-                    >
-                  </a>
-                </div>
+                </a>
               </div>
-            </article>
-          {/each}
-        {/if}
+            </div>
+          </article>
+        {/each}
+
+        {#each filterMentions(data) as comment}
+          <article class="flex mt-3 items-start gap-3 py-1">
+            <img
+              src={comment.author.photo}
+              width={48}
+              height={48}
+              alt=""
+              class="rounded-[4px]"
+            />
+            <div>
+              <div class="flex gap-1 mb-1">
+                <h3
+                  class="text-sm text-amber-700 font-medium hover:underline underline-offset-1"
+                >
+                  <a href={comment.author.url}>{comment.author.name}</a>
+                </h3>
+                <a
+                  href={comment.author.url}
+                  class=" hover:underline underline-offset-1 text-sm text-stone-500"
+                  >{comment.author.url.replace(/(^\w+:|^)\/\//, "")}</a
+                >
+              </div>
+
+              <div>
+                <p>
+                  Mentioned in <a
+                    href={comment.url}
+                    class="font-medium text-amber-700"
+                    >{comment.url.replace(/(^\w+:|^)\/\//, "")}</a
+                  >
+                </p>
+                <a
+                  href={comment.url}
+                  class="hover:underline underline-offset-1"
+                >
+                  <time
+                    class="text-sm text-stone-700"
+                    datetime={new Date(comment.published).toISOString()}
+                    >{new Date(comment.published).toLocaleDateString("en-GB", {
+                      weekday: "short",
+                      day: "numeric",
+                      month: "long",
+                      year: "numeric",
+                      hour: "2-digit",
+                      minute: "2-digit",
+                    })}</time
+                  >
+                </a>
+              </div>
+            </div>
+          </article>
+        {/each}
       </section>
     {/await}
   </section>
