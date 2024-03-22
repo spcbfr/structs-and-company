@@ -6,13 +6,14 @@
 
   const target = "https://yusuf.fyi/" + urlSlug;
   const reqURL = `https://webmention.io/api/mentions.jf2?target=${target}`;
+  const sendingURL = "https://webmention.io/yusuf.fyi/webmention";
   let sourceURL;
   let data;
   let error;
 
   const send = async () => {
     try {
-      const response = await fetch(reqURL, {
+      const response = await fetch(sendingURL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
