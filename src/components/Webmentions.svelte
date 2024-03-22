@@ -1,16 +1,13 @@
-<script>
+<script lang="ts">
   import { onMount } from "svelte";
   import { Render } from "@jill64/svelte-sanitize";
 
   export let urlSlug;
 
-  const target = "https://yusuf.fyi/" + urlSlug;
-  const reqURL = `https://webmention.io/api/mentions.jf2?target=${target}`;
   const sendingURL = "https://webmention.io/yusuf.fyi/webmention";
-  let sourceURL;
-  let data;
-  let error;
-  let note;
+  let sourceURL: string;
+  let error: string;
+  let note: string;
 
   const send = async () => {
     try {
@@ -29,12 +26,12 @@
       } else {
         error = "Failed to send webmention. Please try again later.";
       }
-    } catch (err) {
+    } catch (err: any) {
       error = err;
     }
   };
 
-  async function handleSubmit(e) {
+  async function handleSubmit(e: any) {
     e.preventDefault();
     if (!sourceURL) {
       error = "Please fill in the URL";
@@ -43,28 +40,46 @@
     await send();
   }
 
+  const target = "https://yusuf.fyi/" + urlSlug;
+  const reqURL = `https://webmention.io/api/mentions.jf2?target=${target}`;
+  const targetDeprecated = "https://www.yusuf.fyi/" + urlSlug;
+  const reqURLDeprecated = `https://webmention.io/api/mentions.jf2?target=${targetDeprecated}`;
+
+  async function loadingWebmentions() {
+    const newData = await fetch(reqURL).then((res) => res.json());
+    const oldData = await fetch(reqURLDeprecated).then((res) => res.json());
+    return [...newData.children, ...oldData.children];
+  }
+
+  let asyncWebmentions = loadingWebmentions();
+
   onMount(() => {
-    fetch(reqURL)
-      .then((res) => res.json())
-      .then((response) => {
-        data = response;
-        console.log(data);
-      })
-      .catch((error) => console.error("Error fetching data:", error));
+    asyncWebmentions = loadingWebmentions();
+    console.log(asyncWebmentions);
   });
 
-  function filterComments(children) {
-    return children.filter((entry) => entry["wm-property"] === "in-reply-to");
+  function filterComments(children: any) {
+    return children.filter(
+      (entry: any) => entry["wm-property"] === "in-reply-to",
+    );
   }
 
-  function filterLikes(children) {
-    return children.filter((entry) => entry["wm-property"] === "like-of");
+  function filterLikes(children: any) {
+    return children.filter(
+      (entry: any) => entry["wm-property"] === "like-of" && entry.author.photo,
+    );
   }
-  function filterReposts(children) {
-    return children.filter((entry) => entry["wm-property"] === "repost-of");
+  function filterReposts(children: any) {
+    return children.filter(
+      (entry: any) =>
+        entry["wm-property"] === "repost-of" && entry.author.photo,
+    );
   }
-  function filterMentions(children) {
-    return children.filter((entry) => entry["wm-property"] === "mention-of");
+
+  function filterMentions(children: any) {
+    return children.filter(
+      (entry: any) => entry["wm-property"] === "mention-of",
+    );
   }
 </script>
 
@@ -97,15 +112,17 @@
         {note ? note : ""}
       </p>
     </form>
-    {#if data}
-      {#if data.children.length !== 0}
-        {#if filterLikes(data.children).length !== 0}
+    {#await asyncWebmentions}
+      <p>Loading Webmentions…</p>
+    {:then data}
+      {#if data.length !== 0}
+        {#if filterLikes(data).length !== 0}
           <section class="flex items-center flex-wrap gap-1 mt-3">
             <span
               class="text-3xl select-none text-stone-900/80 w-12 mr-2 text-center"
               >★</span
             >
-            {#each filterLikes(data.children) as like}
+            {#each filterLikes(data) as like}
               <span class="">
                 <img
                   src={like.author.photo}
@@ -118,7 +135,7 @@
           </section>
         {/if}
 
-        {#if filterReposts(data.children).length !== 0}
+        {#if filterReposts(data).length !== 0}
           <section class="flex items-center flex-wrap gap-1 mt-3">
             <span
               class="text-3xl relative left-2 select-none text-stone-900/80 w-12 mr-2 text-center"
@@ -135,7 +152,7 @@
                 /></svg
               >
             </span>
-            {#each filterReposts(data.children) as like}
+            {#each filterReposts(data) as like}
               <span class="">
                 <img
                   src={like.author.photo}
@@ -149,8 +166,8 @@
         {/if}
 
         <section class="flex flex-col gap-1">
-          {#if filterComments(data.children).length !== 0}
-            {#each filterComments(data.children) as comment}
+          {#if filterComments(data).length !== 0}
+            {#each filterComments(data) as comment}
               <article class="flex mt-3 items-start gap-3 py-1">
                 <img
                   src={comment.author.photo}
@@ -210,8 +227,8 @@
             {/each}
           {/if}
 
-          {#if filterMentions(data.children).length !== 0}
-            {#each filterMentions(data.children) as comment}
+          {#if filterMentions(data).length !== 0}
+            {#each filterMentions(data) as comment}
               <article class="flex mt-3 items-start gap-3 py-1">
                 <img
                   src={comment.author.photo}
@@ -271,6 +288,6 @@
           {/if}
         </section>
       {/if}
-    {/if}
+    {/await}
   </section>
 </div>
