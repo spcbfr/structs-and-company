@@ -32,7 +32,9 @@
 <div>
   {#if data}
     {#if data.children.length !== 0}
-      <section class="space-y-1 bg-[#F1EFE4] py-2 px-3 rounded-sm mt-5">
+      <section
+        class="space-y-1 bg-[#F1EFE4] py-2 px-3 sm:static sm:mx-0 sm:w-fit relative w-screen left-1/2 right-1/2 ml-[-50vw] mr-[-50vw] rounded-sm mt-5"
+      >
         {#if filterLikes(data.children).length !== 0}
           <section class="flex items-center flex-wrap gap-1 mt-3">
             <span
