@@ -10,6 +10,7 @@
   let sourceURL;
   let data;
   let error;
+  let note;
 
   const send = async () => {
     try {
@@ -23,6 +24,8 @@
 
       if (response.ok) {
         sourceURL = "";
+        note =
+          "Your webmention is being processed! please refresh this page in a couple of seconds";
       } else {
         error = "Failed to send webmention. Please try again later.";
       }
@@ -45,6 +48,7 @@
       .then((res) => res.json())
       .then((response) => {
         data = response;
+        console.log(data);
       })
       .catch((error) => console.error("Error fetching data:", error));
   });
@@ -58,6 +62,9 @@
   }
   function filterReposts(children) {
     return children.filter((entry) => entry["wm-property"] === "repost-of");
+  }
+  function filterMentions(children) {
+    return children.filter((entry) => entry["wm-property"] === "mention-of");
   }
 </script>
 
@@ -85,7 +92,10 @@
           >Send</button
         >
       </div>
-      <small class="text-red-600">{error ? error : ""}</small>
+      <p class="text-red-600 font-medium">{error ? error : ""}</p>
+      <p class="text-green-600 font-medium">
+        {note ? note : ""}
+      </p>
     </form>
     {#if data}
       {#if data.children.length !== 0}
@@ -172,6 +182,66 @@
                         {comment.content.text}
                       </p>
                     {/if}
+                    <a
+                      href={comment.url}
+                      class="hover:underline underline-offset-1"
+                    >
+                      <time
+                        class="text-sm text-stone-700"
+                        datetime={new Date(
+                          comment["wm-received"],
+                        ).toISOString()}
+                        >{new Date(comment["wm-received"]).toLocaleDateString(
+                          "en-GB",
+                          {
+                            weekday: "short",
+                            day: "numeric",
+                            month: "long",
+                            year: "numeric",
+                            hour: "2-digit",
+                            minute: "2-digit",
+                          },
+                        )}</time
+                      >
+                    </a>
+                  </div>
+                </div>
+              </article>
+            {/each}
+          {/if}
+
+          {#if filterMentions(data.children).length !== 0}
+            {#each filterMentions(data.children) as comment}
+              <article class="flex mt-3 items-start gap-3 py-1">
+                <img
+                  src={comment.author.photo}
+                  width={48}
+                  height={48}
+                  alt=""
+                  class="rounded-[4px]"
+                />
+                <div>
+                  <div class="flex gap-1 mb-1">
+                    <h3
+                      class="text-sm text-amber-700 font-medium hover:underline underline-offset-1"
+                    >
+                      <a href={comment.author.url}>{comment.author.name}</a>
+                    </h3>
+                    <a
+                      href={comment.author.url}
+                      class=" hover:underline underline-offset-1 text-sm text-stone-500"
+                      >{comment.author.url.replace(/(^\w+:|^)\/\//, "")}</a
+                    >
+                  </div>
+
+                  <div>
+                    <p>
+                      Mentioned in <a
+                        href={comment.url}
+                        class="font-medium text-amber-700"
+                        >{comment.url.replace(/(^\w+:|^)\/\//, "")}</a
+                      >
+                    </p>
                     <a
                       href={comment.url}
                       class="hover:underline underline-offset-1"
