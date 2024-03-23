@@ -3,7 +3,7 @@ html, body {
 }
 
 pre.astro-code {
-  @apply py-3  rounded-xl !bg-[#fbfbf9] border-amber-800/10 border-2 -mx-9 !mb-3; 
+  @apply py-3 -mx-4 rounded-xl !bg-[#fbfbf9] border-amber-800/10 border-2 sm:-mx-9 !mb-3; 
 }
 pre.astro-code > code {
   @apply grid;
