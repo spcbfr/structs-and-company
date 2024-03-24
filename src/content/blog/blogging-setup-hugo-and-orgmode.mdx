@@ -1,0 +1,141 @@
+---
+title: "How to make a blog with hugo and org-mode"
+description: "A tutorial on how to start your own blog using hugo and org mode"
+pubDate: 2021-10-20
+archived: true
+---
+
+Yesterday, I've rewritten my blog using [Hugo](https://gohugo.io/) , but with a spin; instead of using the usual <Code code="markdown -> hugo -> html" />, I've went with ox-hugo which adds another layer to this process so it becomes <Code code="org -> markdow -> hugo -> html"/> and I've done this for a few reasons
+
+-   I am already using org-mode for my private notes, if I ever decide to make a note public that would be very easy with both my private and public notes using the same syntax
+-   ox-hugo is really easy to use, especially since I am using [Doom Emacs](https://github.com/hlissner/doom-emacs) and it can be enabled as an org-mode flag using <Code code="(org +hugo)"/>
+
+so, with that said, let's get into the fun stuff !
+
+
+## Starting a new hugo blog
+
+go ahead and install hugo, either from your distro's package manager or using npm (<Code code="npm -g hugo-cli"/>). for me, I'll be using pacman
+
+```bash
+sudo pacman -S hugo
+```
+
+next, initialize your hugo project, using their cli
+
+```bash
+hugo new site project-name
+```
+
+this will create a directory called <Code code="project-name"/> that contains the project starter
+next, you need to pick a theme for your blog, you can find some community-made themes in [Hugo's Website](https://themes.gohugo.io/)
+
+<Img src="/hugo-themes.png" alt="A group of hugo themes" />
+
+once you've picked a theme that you like, just clone the github repo into your Hugo's theme directory (<Code code="project-name/themes" />)
+
+```bash
+git clone https://github.com/rhazdon/hugo-theme-hello-friend-ng.git themes/hello-friend-ng
+```
+
+finally update your <Code code="config.toml" /> to apply the theme that you've just downloaded, and while you're at it, you might as well update the blog's metadata (title, description, language, etc..)
+
+```toml
+baseurl      = "/"
+title        = "My Blog"
+languageCode = "en-us"
+theme        = "theme-name"
+...
+```
+
+you can now visit your site by running this command and opening localhost on port 1313
+
+```plaintext
+[youssef@tux ~/repos/hugo-blog]$ hugo server -D
+Start building sites …
+hugo v0.88.1+extended linux/amd64 BuildDate=unknown
+
+                   | EN
+-------------------+-----
+  Pages            | 16
+  Paginator pages  |  0
+  Non-page files   |  0
+  Static files     | 19
+  Processed images |  0
+  Aliases          |  4
+  Sitemaps         |  1
+  Cleaned          |  0
+
+Built in 586 ms
+Environment: "development"
+Serving pages from memory
+Running in Fast Render Mode. For full rebuilds on change: hugo server --disableFastRender
+Web Server is available at //localhost:1313/ (bind address 127.0.0.1)
+```
+
+
+## Installing and configuring ox-hugo
+
+ox-hugo is the package we are going to use to transform our org file(s) to markdown which then will be parsed by hugo
+
+
+### Installing ox-hugo
+
+
+**Vanilla emacs**
+
+you can install ox-hugo using <Code code="use-package"/>
+
+```elisp
+(use-package ox-hugo
+  :ensure t            ;Auto-install the package from Melpa (optional)
+  :after ox)
+```
+
+
+**Doom emacs**
+
+You can enable hugo by just adding the hugo flag to the org module in your <Code code="init.el" /> so it looks something like this <Code code="(org +hugo)" />
+
+
+### Integrating ox-hugo into our hugo blog
+
+there are two ways to use ox-hugo:
+
+1.  all the posts in one org file, one post per-subtree (**Recommended**)
+2.  one post per org file
+
+you may be more familiar with the second option but having all of the posts in one file has its benefits too
+
+-   makes the meta-data management for Hugo front-matter pretty effortless.
+-   you can use org mode's [Tag Inheritance](https://orgmode.org/manual/Tag-Inheritance.html) feature
+
+so now that is out of the way, start by creating an org-file in your project's root, you can call it whatever you want. next, add a local variable at the top of the page and call it <Code code="HUGO_BASE_DIR" /> and set this to the absolute path to your hugo project, for me that looks something like this
+
+```elisp
+#+HUGO_BASE_DIR: ~/repos/hugo-blog
+```
+
+
+### Write your first post!
+
+to make a new post you just need to add a new top-level heading to the org-file that we created, but you also need a bit of metadata. here is an example post:
+
+```plaintext
+* Blog Post name
+:properties:
+:export_file_name: blog-post-name-in-url
+:export_description: my cool post
+:export_date: 2021-10-18
+:export_author: your name
+:end:
+
+post's content !
+```
+
+finally to export the file to markdown you can run the <Code code="org-hugo-export-wim-to-md" /> function to export the blogpost to markdown and place it in the content folder in your hugo project
+on doom emacs, you can also use the keybinding <kbd>SPC</kbd> <kbd>m</kbd> <kbd>e</kbd> <kbd>H</kbd> <kbd>H</kbd> to do the same thing
+now if you open localhost:1313 (make sure the hugo server is still running) you will see your newly created blog post show up !
+
+And that's about it, I hope you've found this helpful, reply below and I'll make sure to check it out.
+
