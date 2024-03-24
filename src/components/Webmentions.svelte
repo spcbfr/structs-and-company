@@ -174,7 +174,7 @@
         {#each filterComments(data) as comment}
           <article class="flex mt-3 items-start gap-3 py-1">
             <img
-              src={comment.author.photo}
+              src={comment.author.photo || "/fallback-person.png"}
               width={48}
               height={48}
               alt=""
@@ -228,7 +228,7 @@
         {#each filterMentions(data) as comment}
           <article class="flex mt-3 items-start gap-3 py-1">
             <img
-              src={comment.author.photo}
+              src={comment.author.photo || "/fallback-person.png"}
               width={48}
               height={48}
               alt=""
