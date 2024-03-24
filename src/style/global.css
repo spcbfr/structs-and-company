@@ -66,7 +66,11 @@ figure > img {
 .prose ul {
   @apply space-y-3 sm:text-lg;
 }
-.prose li {
+
+.prose ol {
+  @apply list-inside list-decimal space-y-3 sm:text-lg;
+}
+.prose ul > li {
   @apply mt-3 relative pl-7 before:absolute before:left-1 before:top-3 before:h-1.5 before:w-1.5 before:rounded-full before:bg-stone-900/20
 }
 

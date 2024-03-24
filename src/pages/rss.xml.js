@@ -4,6 +4,7 @@ import { getCollection } from 'astro:content';
 export async function GET(context) {
 
 	const posts = (await getCollection("blog"))
+		.filter(post => !post.data.archived)
 		.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
 	return rss({
 		title: "Structs & Company | Yusuf Bouzekri",
