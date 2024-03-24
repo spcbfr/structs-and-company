@@ -62,6 +62,8 @@ if (typeof pubDate == "string") {
 
       <article class="prose space-y-5 e-content">
         <slot />
+        <a href="https://fed.brid.gy/" hidden="from-humans" class="u-bridgy-fed"
+        ></a>
       </article>
       <section class="flex sm:mx-0 mx-auto gap-3 mt-4 print:hidden">
         <a
@@ -79,8 +81,8 @@ if (typeof pubDate == "string") {
           >Donate on Ko-fi</a
         >
       </section>
+
       <Webmentions urlSlug={slug} client:load />
-      <a href="https://fed.brid.gy/"></a>
     </main>
     <Footer />
   </body>
