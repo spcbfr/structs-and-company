@@ -21,6 +21,12 @@ function Error(code: number, message: string) {
 		status: code
 	})
 }
+function hasOwnProperty<T, K extends PropertyKey>(
+	obj: T,
+	prop: K
+): obj is T & Record<K, unknown> {
+	return Object.prototype.hasOwnProperty.call(obj, prop);
+}
 
 
 export async function POST({ request, site, url }: APIContext) {
@@ -45,17 +51,18 @@ export async function POST({ request, site, url }: APIContext) {
 
 	const indieToken: IndieTokenResponse = await res.json()
 
-	if ('me' in indieToken && indieToken.me !== site?.toString()) {
+	if (hasOwnProperty(indieToken, 'me') && indieToken.me !== site?.toString()) {
+		return new Response(null, {
+			statusText: "Created",
+			status: 201,
+			headers: {
+				"Location": "https://yusuf.fyi/notes/2021"
+			}
+		})
+	} else {
 		return Error(401, 'invalid token')
 	}
 
 	//  TODO: Create note here
 
-	return new Response(null, {
-		statusText: "Created",
-		status: 201,
-		headers: {
-			"Location": "https://yusuf.fyi/notes/2021"
-		}
-	})
 }
