@@ -15,10 +15,10 @@ interface ErrorIndieToken {
 
 type IndieTokenResponse = SuccessfulIndieToken | ErrorIndieToken;
 
-function Error(code: number, message: string) {
+function Error(code: number, message?: string) {
 	return new Response(null, {
-		statusText: message,
-		status: code
+		statusText: message ?? undefined,
+		status: code,
 	})
 }
 function hasOwnProperty<T, K extends PropertyKey>(
@@ -29,6 +29,7 @@ function hasOwnProperty<T, K extends PropertyKey>(
 }
 
 
+
 export async function POST({ request, site, url }: APIContext) {
 	const contentType = request.headers.get('Content-type')
 	let bodyAuthToken;
@@ -37,10 +38,15 @@ export async function POST({ request, site, url }: APIContext) {
 	}
 
 	const headerAuthToken = request.headers.get("Authorization")?.replace('Bearer ', '')
-	const authToken = headerAuthToken || bodyAuthToken
-	console.log(authToken)
 
-	if (!authToken) return Error(401, 'no token')
+	// NOTE: rejecting multiple authentication attempts as per RFC 6750 
+	if (headerAuthToken && bodyAuthToken) {
+		return Error(400, 'invalid request')
+	}
+
+	const authToken = headerAuthToken || bodyAuthToken
+
+	if (!authToken) return Error(401)
 
 	const res = await fetch('https://tokens.indieauth.com/token', {
 		method: "GET",
