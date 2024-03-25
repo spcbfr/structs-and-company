@@ -6,7 +6,7 @@ export async function POST({ request, params }: APIContext) {
 	if (!authToken) {
 		return new Response(null, {
 			status: 401,
-			statusText: 'Forbidden'
+			statusText: 'Unauthorized'
 		})
 	}
 
@@ -19,6 +19,19 @@ export async function POST({ request, params }: APIContext) {
 	})
 	const indieToken = await res.json()
 
+	if (typeof indieToken.me === 'undefined' && indieToken.me !== 'https://yusuf.fyi') {
+		return new Response(null, {
+			status: 401,
+			statusText: 'Unauthorized'
+		})
+	}
 
-	return new Response(JSON.stringify(indieToken))
+
+	return new Response(null, {
+		statusText: "Created",
+		status: 201,
+		headers: {
+			"Location": "https://yusuf.fyi/notes/2021"
+		}
+	})
 }
