@@ -53,7 +53,6 @@
       (a, b) =>
         new Date(b.published).valueOf() - new Date(a.published).valueOf(),
     );
-    console.log(sortedData);
     return sortedData;
   }
 
@@ -61,7 +60,6 @@
 
   onMount(() => {
     asyncWebmentions = loadingWebmentions();
-    console.log(asyncWebmentions);
   });
 
   function filterComments(children: any) {
