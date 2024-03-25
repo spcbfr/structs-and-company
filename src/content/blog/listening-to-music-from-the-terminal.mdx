@@ -78,7 +78,7 @@ audio_output {
 
 finally select the port that you want MPD to run on, make sure no other program uses this same port
 
-```plain title="mpd.conf"
+```plaintext title="mpd.conf"
 bind_to_address "127.0.0.1"
 port "6600"
 ```
@@ -94,7 +94,7 @@ systemctl status mpd.service # run this to check for any errors
 
 here is how your music should be structured in order for MPD to recongize it properly
 
-```plain
+```plaintext
 Music directory
 -- Band 1 - Album 1
 ---- Song 1
@@ -124,7 +124,7 @@ sudo apt install ncmpcpp mpc
 
 now add this to the ncmpcpp <Code code="config" inline />
 
-```plain title=".config/ncmpcpp/config"
+```plaintext title=".config/ncmpcpp/config"
 [mpd]
 mpd_host = "localhost"
 mpd_port = "6600"
