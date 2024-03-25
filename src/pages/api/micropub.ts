@@ -24,8 +24,14 @@ function Error(code: number, message: string) {
 
 
 export async function POST({ request, site, url }: APIContext) {
+	const contentType = request.headers.get('Content-type')
+	let bodyAuthToken;
+	if (contentType === "application/x-www-form-urlencoded") {
+		bodyAuthToken = new URLSearchParams(await request.text()).get('access_token')
+	}
 
-	const authToken = request.headers.get("Authorization")?.replace('Bearer ', '')
+	const headerAuthToken = request.headers.get("Authorization")?.replace('Bearer ', '')
+	const authToken = headerAuthToken || bodyAuthToken
 
 	if (!authToken) return Error(401, 'no token')
 
