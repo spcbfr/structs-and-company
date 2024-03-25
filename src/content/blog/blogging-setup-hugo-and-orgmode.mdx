@@ -50,7 +50,7 @@ theme        = "theme-name"
 
 you can now visit your site by running this command and opening localhost on port 1313
 
-```plaintext
+```ansi
 [youssef@tux ~/repos/hugo-blog]$ hugo server -D
 Start building sites …
 hugo v0.88.1+extended linux/amd64 BuildDate=unknown
@@ -86,7 +86,7 @@ ox-hugo is the package we are going to use to transform our org file(s) to markd
 
 you can install ox-hugo using <Code code="use-package"/>
 
-```elisp
+```lisp
 (use-package ox-hugo
   :ensure t            ;Auto-install the package from Melpa (optional)
   :after ox)
@@ -112,7 +112,7 @@ you may be more familiar with the second option but having all of the posts in o
 
 so now that is out of the way, start by creating an org-file in your project's root, you can call it whatever you want. next, add a local variable at the top of the page and call it <Code code="HUGO_BASE_DIR" /> and set this to the absolute path to your hugo project, for me that looks something like this
 
-```plain
+```plaintext
 #+HUGO_BASE_DIR: ~/repos/hugo-blog
 ```
 
@@ -121,7 +121,7 @@ so now that is out of the way, start by creating an org-file in your project's r
 
 to make a new post you just need to add a new top-level heading to the org-file that we created, but you also need a bit of metadata. here is an example post:
 
-```plain
+```plaintext
 * Blog Post name
 :properties:
 :export_file_name: blog-post-name-in-url
