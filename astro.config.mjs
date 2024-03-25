@@ -11,6 +11,9 @@ import svelte from "@astrojs/svelte";
 export default defineConfig({
   site: "https://yusuf.fyi",
   integrations: [mdx(), sitemap(), tailwind(), svelte()],
+  experimental: {
+    contentCollectionCache: true,
+  },
   markdown: {
     shikiConfig: {
       // Choose from Shiki's built-in themes (or add your own)
