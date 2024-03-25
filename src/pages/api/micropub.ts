@@ -1,25 +1,39 @@
 import type { APIContext } from "astro";
 
-export async function POST({ request, site, url }: APIContext) {
+function Error(code: number, message: string) {
+	return new Response(null, {
+		status: code,
+		statusText: message
+	})
+}
 
-	const bodyAuthToken = url.searchParams.get("access_token")
+export async function POST({ request, site, url }: APIContext) {
+	const contentType = request.headers.get('Content-type')
+
+	let bodyAuthToken: string | null;
+
+	if (contentType === "application/x-www-form-urlencoded") {
+
+		let body = new URLSearchParams(await request.text())
+		bodyAuthToken = body.get('access_token')
+
+	} else if (contentType === "application/json") {
+
+		let body = await request.json()
+		bodyAuthToken = body['access_token']
+
+	} else {
+		return Error(400, 'invalid content-type')
+	}
+
 	const headerAuthToken = request.headers.get("Authorization")?.replace('Bearer ', '')
 
-	if (url.searchParams.has('access_token') && request.headers.has('Authorization')) {
-		return new Response(null, {
-			status: 400,
-			statusText: 'invalid request'
-		})
+	if (url.searchParams.has('access_token') && bodyAuthToken !== null) {
+		return Error(400, 'invalid request')
 	}
 
 	const authToken = bodyAuthToken || headerAuthToken
-
-	if (!authToken) {
-		return new Response(null, {
-			status: 401,
-			statusText: 'no token'
-		})
-	}
+	if (!authToken) return Error(400, 'no token')
 
 	const res = await fetch('https://tokens.indieauth.com/token', {
 		method: "GET",
@@ -30,12 +44,7 @@ export async function POST({ request, site, url }: APIContext) {
 	})
 	const indieToken = await res.json()
 
-	if (typeof indieToken.me === 'undefined' && indieToken.me !== site) {
-		return new Response(null, {
-			status: 401,
-			statusText: 'invalid token'
-		})
-	}
+	if (indieToken.me !== site) return Error(401, 'invalid token')
 
 	//  TODO: Create note here
 
