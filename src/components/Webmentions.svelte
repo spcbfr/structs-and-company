@@ -193,7 +193,9 @@
               </div>
               <div>
                 {#if comment.content.html}
-                  <p class="[&_a]:text-amber-700 [&_a]:font-semibold">
+                  <p
+                    class="[&_a]:text-amber-700 [&_code]:bg-stone-200 [&_code]:py-px [&_code]:text-sm [&_code]:rounded-md [&_code]:px-1 [&_a]:font-semibold"
+                  >
                     <Render html={comment.content.html} />
                   </p>
                 {:else}
