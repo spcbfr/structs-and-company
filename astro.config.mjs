@@ -4,15 +4,16 @@ import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 import { transformerMetaWordHighlight, transformerMetaHighlight } from '@shikijs/transformers';
 import vercel from "@astrojs/vercel/serverless";
-
 import svelte from "@astrojs/svelte";
+
+import db from "@astrojs/db";
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://yusuf.fyi",
-  integrations: [mdx(), sitemap(), tailwind(), svelte()],
+  integrations: [mdx(), sitemap(), tailwind(), svelte(), db()],
   experimental: {
-    contentCollectionCache: true,
+    contentCollectionCache: true
   },
   markdown: {
     shikiConfig: {
