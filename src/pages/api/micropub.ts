@@ -63,7 +63,7 @@ export async function POST({ request, site, url }: APIContext) {
 
 		//  TODO: Create note here
 
-		if (contentType === "application/json") {
+		if (contentType === "application/x-www-form-urlencoded") {
 			let body = new URLSearchParams(await request.text())
 
 			const content = body.get('content')
