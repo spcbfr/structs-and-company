@@ -1,0 +1,17 @@
+---
+import { eq } from "astro:db";
+import { db, Note } from "astro:db";
+
+const { slug } = Astro.params;
+
+const date = new Date(0);
+date.setUTCSeconds(Number(slug));
+
+const note = await db
+  .select()
+  .from(Note)
+  .where(eq(Note.published, date))
+  .limit(1);
+---
+
+{note[0].content}
