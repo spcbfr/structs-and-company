@@ -86,12 +86,13 @@ export async function POST({ request, site, url }: APIContext) {
 			const records = await db.insert(Note).values({
 				content: formBodyObject.content
 			}).returning()
+			console.log(records)
 
 			return new Response(null, {
 				statusText: "Created",
 				status: 201,
 				headers: {
-					"Location": "https://yusuf.fyi/notes/" + records[0].published
+					"Location": "https://yusuf.fyi/notes/" + records[0].published.getTime()
 				}
 			})
 		}
