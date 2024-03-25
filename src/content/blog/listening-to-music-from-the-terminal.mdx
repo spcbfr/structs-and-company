@@ -34,7 +34,7 @@ now create a new file <Code code="~/.config/mpd/mpd.conf"  /> (you may also need
 
 Begin by setting a few config variables, most importantly set the <Code code="music_directory"/> to where you actually have your music downloaded
 
-```conf title="mpd.conf"
+```plain title="mpd.conf"
 music_directory "~/Music/"
 playlist_directory "~/.config/mpd/playlists"
 db_file "~/.config/mpd/mpd.db"
@@ -62,7 +62,7 @@ pactl info | grep "Server Name"
 
 then add the following to <Code code="mpd.conf" inline />
 
-```conf title="mpd.conf"
+```plain title="mpd.conf"
 # For PulseAudio
 audio_output {
         type            "pulse"
@@ -78,7 +78,7 @@ audio_output {
 
 finally select the port that you want MPD to run on, make sure no other program uses this same port
 
-```conf title="mpd.conf"
+```plain title="mpd.conf"
 bind_to_address "127.0.0.1"
 port "6600"
 ```
@@ -94,7 +94,7 @@ systemctl status mpd.service # run this to check for any errors
 
 here is how your music should be structured in order for MPD to recongize it properly
 
-```conf
+```plain
 Music directory
 -- Band 1 - Album 1
 ---- Song 1
@@ -124,7 +124,7 @@ sudo apt install ncmpcpp mpc
 
 now add this to the ncmpcpp <Code code="config" inline />
 
-```conf title=".config/ncmpcpp/config"
+```plain title=".config/ncmpcpp/config"
 [mpd]
 mpd_host = "localhost"
 mpd_port = "6600"
@@ -149,7 +149,7 @@ Now that all the hard stuff is done let's make ncmpcpp look better
 
 First we'll change how the progress bar looks, all the following should be added to ncmpcpp's config file <Code code=".config/ncmpcpp/config" inline />
 
-```conf
+```plain
 progressbar_look = "=>-"
 progressbar_color = black:b
 progressbar_elapsed_color = blue:b
@@ -157,7 +157,7 @@ progressbar_elapsed_color = blue:b
 
 and make the columns mode the default for every view
 
-```conf
+```plain
 playlist_editor_display_mode = "columns"
 search_engine_display_mode = "columns"
 browser_display_mode = "columns"
@@ -174,7 +174,7 @@ Just add the contents of [this pastebin](https://pastebin.com/YBN13W1T) to a new
 
 You can have a cool music visualizer by adding this to your mpd config, don't forget to restart the systemd unit if you're using it
 
-```conf title="mpd.conf"
+```plain title="mpd.conf"
 audio_output {
     type                    "fifo"
     name                    "my_fifo"
