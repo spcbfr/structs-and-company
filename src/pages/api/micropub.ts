@@ -1,5 +1,6 @@
 import type { APIContext } from "astro";
 import { db, Note } from "astro:db";
+import { record } from "zod";
 
 interface SuccessfulIndieToken {
 	me: string;
@@ -28,14 +29,25 @@ function hasOwnProperty<T, K extends PropertyKey>(
 ): obj is T & Record<K, unknown> {
 	return Object.prototype.hasOwnProperty.call(obj, prop);
 }
+function paramsToObject(entries: any) {
+	const result: any = {}
+	for (const [key, value] of entries) { // each 'entry' is a [key, value] tupple
+		result[key] = value;
+	}
+	return result;
+}
 
 
 
 export async function POST({ request, site, url }: APIContext) {
 	const contentType = request.headers.get('Content-type')
 	let bodyAuthToken;
+	let formBodyObject;
 	if (contentType === "application/x-www-form-urlencoded") {
-		bodyAuthToken = new URLSearchParams(await request.text()).get('access_token')
+		let formBody = new URLSearchParams(await request.text())
+		formBodyObject = paramsToObject(formBody)
+
+		bodyAuthToken = formBody.get('access_token')
 	}
 
 	const headerAuthToken = request.headers.get("Authorization")?.replace('Bearer ', '')
@@ -63,16 +75,16 @@ export async function POST({ request, site, url }: APIContext) {
 
 		//  TODO: Create note here
 
+		console.log("hello world")
 		if (contentType === "application/x-www-form-urlencoded") {
-			let body = new URLSearchParams(await request.text())
 
-			const content = body.get('content')
-			if (!content) {
+
+			if (!hasOwnProperty(formBodyObject, 'content')) {
 				return Error(422)
 			}
 
 			const records = await db.insert(Note).values({
-				content: content
+				content: formBodyObject.content
 			}).returning()
 
 			return new Response(null, {
@@ -82,7 +94,6 @@ export async function POST({ request, site, url }: APIContext) {
 					"Location": "https://yusuf.fyi/notes/" + records[0].published
 				}
 			})
-
 		}
 
 	} else {
