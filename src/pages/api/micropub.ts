@@ -1,13 +1,23 @@
 import type { APIContext } from "astro";
-import { extendTailwindMerge } from "tailwind-merge";
 
-// Outputs: /builtwith.json
-export async function POST({ request, site, params }: APIContext) {
-	const authToken = request.headers.get("Authorization")?.replace('Bearer ', '')
+export async function POST({ request, site, url }: APIContext) {
+
+	const bodyAuthToken = url.searchParams.get("access_token")
+	const headerAuthToken = request.headers.get("Authorization")?.replace('Bearer ', '')
+
+	if (url.searchParams.has('access_token') && request.headers.has('Authorization')) {
+		return new Response(null, {
+			status: 400,
+			statusText: 'invalid request'
+		})
+	}
+
+	const authToken = bodyAuthToken || headerAuthToken
+
 	if (!authToken) {
 		return new Response(null, {
 			status: 401,
-			statusText: 'Unauthorized'
+			statusText: 'no token'
 		})
 	}
 
@@ -23,21 +33,15 @@ export async function POST({ request, site, params }: APIContext) {
 	if (typeof indieToken.me === 'undefined' && indieToken.me !== site) {
 		return new Response(null, {
 			status: 401,
-			statusText: 'Unauthorized'
+			statusText: 'invalid token'
 		})
 	}
 
 	//  TODO: Create note here
-	let data;
-	const contentType = request.headers.get('Content-type')
-	if (contentType === 'application/x-www-form-urlencoded') {
-		data = params
-	} else {
-		data = request.body
-	}
 
 
-	return new Response(JSON.stringify(data), {
+
+	return new Response(null, {
 		statusText: "Created",
 		status: 201,
 		headers: {
