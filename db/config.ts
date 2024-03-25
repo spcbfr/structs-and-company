@@ -1,6 +1,12 @@
-import { defineDb } from 'astro:db';
+import { NOW, column, defineDb, defineTable } from 'astro:db';
 
-// https://astro.build/db/config
+const Note = defineTable({
+  columns: {
+    content: column.text(),
+    published: column.date({ default: NOW })
+  }
+})
+
 export default defineDb({
-  tables: {}
+  tables: { Note }
 });

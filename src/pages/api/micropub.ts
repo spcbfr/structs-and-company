@@ -1,4 +1,5 @@
 import type { APIContext } from "astro";
+import { db, Note } from "astro:db";
 
 interface SuccessfulIndieToken {
 	me: string;
@@ -62,13 +63,28 @@ export async function POST({ request, site, url }: APIContext) {
 
 		//  TODO: Create note here
 
-		return new Response(null, {
-			statusText: "Created",
-			status: 201,
-			headers: {
-				"Location": "https://yusuf.fyi/notes/2021"
+		if (contentType === "application/json") {
+			let body = new URLSearchParams(await request.text())
+
+			const content = body.get('content')
+			if (!content) {
+				return Error(422)
 			}
-		})
+
+			const records = await db.insert(Note).values({
+				content: content
+			}).returning()
+
+			return new Response(null, {
+				statusText: "Created",
+				status: 201,
+				headers: {
+					"Location": "https://yusuf.fyi/notes/" + records[0].published
+				}
+			})
+
+		}
+
 	} else {
 		return Error(401, 'invalid token')
 	}
