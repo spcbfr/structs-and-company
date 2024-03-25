@@ -21,12 +21,18 @@ const { title, description, image } = Astro.props;
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <link rel="icon" type="image/svg+xml" href="/favicon-100x100.png" />
 <meta name="generator" content={Astro.generator} />
+
+<!-- Microformats -->
 <link rel="feed" type="text/html" title="My Articles" href="/posts" />
 <link rel="me" href="https://github.com/spcbfr" />
+
+<!-- Indieweb endpoints -->
+
 <link rel="authorization_endpoint" href="https://indieauth.com/auth" />
 <link rel="webmention" href="https://webmention.io/yusuf.fyi/webmention" />
+<link rel="micropub" href="https://yusuf.fyi/micropub" />
+<link rel="token_endpoint" href="https://tokens.indieauth.com/token" />
 
-<!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
 
 <!-- RSS auto-discovery -->
