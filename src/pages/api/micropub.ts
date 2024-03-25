@@ -38,6 +38,7 @@ export async function POST({ request, site, url }: APIContext) {
 
 	const headerAuthToken = request.headers.get("Authorization")?.replace('Bearer ', '')
 	const authToken = headerAuthToken || bodyAuthToken
+	console.log(authToken)
 
 	if (!authToken) return Error(401, 'no token')
 
@@ -51,7 +52,10 @@ export async function POST({ request, site, url }: APIContext) {
 
 	const indieToken: IndieTokenResponse = await res.json()
 
-	if (hasOwnProperty(indieToken, 'me') && indieToken.me !== site?.toString()) {
+	if (hasOwnProperty(indieToken, 'me') && indieToken.me === site?.toString()) {
+
+		//  TODO: Create note here
+
 		return new Response(null, {
 			statusText: "Created",
 			status: 201,
@@ -63,6 +67,5 @@ export async function POST({ request, site, url }: APIContext) {
 		return Error(401, 'invalid token')
 	}
 
-	//  TODO: Create note here
 
 }
