@@ -10,15 +10,15 @@ export async function POST({ request, params }: APIContext) {
 		})
 	}
 
-	const indieToken = fetch('https://tokens.indieauth.com/tokens', {
+	const res = await fetch('https://tokens.indieauth.com/token', {
 		method: "GET",
 		headers: {
 			'Accept': 'application/json',
 			'Authorization': 'Bearer ' + authToken
 		}
 	})
+	const indieToken = await res.json()
+
 
 	return new Response(JSON.stringify(indieToken))
-
-
 }
