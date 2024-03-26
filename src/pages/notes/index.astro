@@ -1,0 +1,43 @@
+---
+import { db, Note } from "astro:db";
+const notes = await db.select().from(Note);
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Link from "../../components/Link.astro";
+---
+
+<BaseLayout>
+  <nav class="flex text-xl my-2 font-medium font-serif justify-between">
+    <Link href="/">home/</Link>
+    <Link href="/posts">posts/</Link>
+    <Link href="/about">about/</Link>
+  </nav>
+  {
+    notes.map((note) => (
+      <article class="px-4 py-2 space-y-4 border-amber-800 border-[1px] rounded-sm bg-[#f2f1e9]">
+        <div class=" flex items-start gap-3">
+          <img src="/yusuf.jpg" width="65" class="rounded-md" />
+          <p class="text-xl">{note.content}</p>
+        </div>
+        <div>
+          <a
+            class="text-amber-900 font-medium underline underline-offset-2 decoration-amber-800/30 hover:decoration-amber-800"
+            href={Astro.site + "notes/" + note.published.getTime()}
+          >
+            <time class="text-sm" datetime={note.published.toISOString()}>
+              {note.published.toLocaleDateString("en-GB", {
+                weekday: "short",
+                day: "2-digit",
+                month: "short",
+                year: "numeric",
+                minute: "2-digit",
+                hour: "2-digit",
+                hour12: false,
+                era: "short",
+              })}
+            </time>
+          </a>
+        </div>
+      </article>
+    ))
+  }
+</BaseLayout>

@@ -1,0 +1,54 @@
+---
+import { eq } from "astro:db";
+import { db, Note } from "astro:db";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Link from "../../components/Link.astro";
+import Webmentions from "../../components/Webmentions.svelte";
+
+const { slug } = Astro.params;
+
+const date = new Date(Number(slug));
+console.log(date);
+
+const notes = await db
+  .select()
+  .from(Note)
+  .where(eq(Note.published, date))
+  .limit(1);
+
+const note = notes[0];
+---
+
+<BaseLayout title="x">
+  <nav class="flex text-xl my-2 font-medium font-serif justify-between">
+    <Link href="/">home/</Link>
+    <Link href="/posts">posts/</Link>
+    <Link href="/about">about/</Link>
+  </nav>
+
+  <article
+    class="px-4 py-2 space-y-4 border-amber-800 border-[1px] rounded-sm bg-[#f2f1e9]"
+  >
+    <div class="flex items-start gap-3">
+      <img src="/yusuf.jpg" width="65" class="rounded-md" />
+      <p class="text-xl">{note.content}</p>
+    </div>
+    <div>
+      <time class="text-sm" datetime={note.published.toISOString()}>
+        {
+          note.published.toLocaleDateString("en-GB", {
+            weekday: "short",
+            day: "2-digit",
+            month: "short",
+            year: "numeric",
+            minute: "2-digit",
+            hour: "2-digit",
+            hour12: false,
+            era: "short",
+          })
+        }
+      </time>
+    </div>
+  </article>
+  <Webmentions urlSlug={"posts/" + slug} client:load />
+</BaseLayout>
