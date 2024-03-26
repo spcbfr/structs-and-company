@@ -17,6 +17,7 @@ const notes = await db
   .where(eq(Note.published, date))
   .limit(1);
 
+console.log(notes);
 const note = notes[0];
 ---
 
