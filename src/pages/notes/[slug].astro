@@ -1,17 +1,19 @@
 ---
-import { eq } from "astro:db";
-import { db, Note } from "astro:db";
+import { db, Note, eq } from "astro:db";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Link from "../../components/Link.astro";
 import Webmentions from "../../components/Webmentions.svelte";
-
 import dayjs from "dayjs";
 const { slug } = Astro.params;
-
-const notes = await db.select().from(Note).where(eq(slug, Note.published))
+const formattedSlug = Number(slug);
+const notes = await db
+  .select()
+  .from(Note)
+  .limit(1)
+  // @ts-expect-error
+  .where(eq(formattedSlug, Note.published));
 
 const note = notes[0];
-
 ---
 
 <BaseLayout
@@ -33,9 +35,7 @@ const note = notes[0];
     </div>
     <div>
       <time class="text-sm" datetime={dayjs(note.published).toISOString()}>
-        {
-        dayjs(note.published).format("ddd, D MMM, YYYY, HH:mm")
-        }
+        {dayjs(note.published).format("ddd, D MMM, YYYY, HH:mm")}
       </time>
     </div>
   </article>
