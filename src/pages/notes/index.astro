@@ -1,10 +1,12 @@
 ---
 import { db, Note } from "astro:db";
 const notes = await db.select().from(Note).orderBy(desc(Note.published));
+import timezone from "dayjs/plugin/timezone";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Link from "../../components/Link.astro";
 import { desc } from "astro:db";
 import dayjs from "dayjs";
+dayjs.extend(timezone);
 ---
 
 <BaseLayout title="notes!" description="Yusuf's note hub">
@@ -28,9 +30,15 @@ import dayjs from "dayjs";
             >
               <time
                 class="text-sm"
-                datetime={dayjs.unix(note.published).toISOString()}
+                datetime={dayjs
+                  .unix(note.published)
+                  .tz("Africa/Tunis")
+                  .toISOString()}
               >
-                {dayjs.unix(note.published).format("ddd, D MMM, YYYY, HH:mm")}
+                {dayjs
+                  .unix(note.published)
+                  .tz("Africa/Tunis")
+                  .format("ddd, D MMM, YYYY, HH:mm")}
               </time>
             </a>
           </div>
