@@ -1,7 +1,7 @@
 import type { APIContext } from "astro";
 import { db, Note } from "astro:db";
 import { record } from "zod";
-import { Dayjs } from "dayjs";
+import dayjs from "dayjs";
 
 interface SuccessfulIndieToken {
   me: string;
@@ -81,7 +81,7 @@ export async function POST({ request, site, url }: APIContext) {
       if (!hasOwnProperty(formBodyObject, "content")) {
         return Error(422);
       }
-      const sinceEpoch = new Dayjs().unix();
+      const sinceEpoch = dayjs().unix();
 
       const records = await db
         .insert(Note)

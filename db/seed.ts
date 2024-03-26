@@ -1,15 +1,12 @@
 import { Note, db } from "astro:db";
-import dayjs from "dayjs";
 
 // https://astro.build/db/seed
 export default async function seed() {
-  await db
-    .insert(Note)
-    .values([
-      {
-        content:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.",
-        published: 0,
-      },
-    ]);
+  await db.insert(Note).values([
+    {
+      content:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.",
+      published: 0,
+    },
+  ]);
 }
