@@ -4,6 +4,7 @@ import { db, Note } from "astro:db";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Link from "../../components/Link.astro";
 import Webmentions from "../../components/Webmentions.svelte";
+import { desc } from "astro:db";
 
 const { slug } = Astro.params;
 
