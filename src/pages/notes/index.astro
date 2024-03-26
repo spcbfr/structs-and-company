@@ -4,6 +4,7 @@ const notes = await db.select().from(Note).orderBy(desc(Note.published));
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Link from "../../components/Link.astro";
 import { desc } from "astro:db";
+import dayjs from "dayjs";
 ---
 
 <BaseLayout title="notes!" description="Yusuf's note hub">
@@ -23,19 +24,13 @@ import { desc } from "astro:db";
           <div>
             <a
               class="text-amber-900 font-medium underline underline-offset-2 decoration-amber-800/30 hover:decoration-amber-800"
-              href={Astro.site + "notes/" + note.published.getTime()}
+              href={"/notes/" + note.published}
             >
-              <time class="text-sm" datetime={note.published.toISOString()}>
-                {note.published.toLocaleDateString("en-GB", {
-                  weekday: "short",
-                  day: "2-digit",
-                  month: "short",
-                  year: "numeric",
-                  minute: "2-digit",
-                  hour: "2-digit",
-                  hour12: false,
-                  era: "short",
-                })}
+              <time
+                class="text-sm"
+                datetime={dayjs(note.published).toISOString()}
+              >
+                {dayjs(note.published).format("ddd, D MMM, YYYY, HH:mm")}
               </time>
             </a>
           </div>

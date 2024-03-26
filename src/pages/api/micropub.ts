@@ -1,6 +1,7 @@
 import type { APIContext } from "astro";
 import { db, Note } from "astro:db";
 import { record } from "zod";
+import { Dayjs } from "dayjs"
 
 interface SuccessfulIndieToken {
 	me: string;
@@ -82,9 +83,11 @@ export async function POST({ request, site, url }: APIContext) {
 			if (!hasOwnProperty(formBodyObject, 'content')) {
 				return Error(422)
 			}
+			const sinceEpoch = new Dayjs().unix
 
 			const records = await db.insert(Note).values({
-				content: formBodyObject.content
+				content: formBodyObject.content,
+				published: sinceEpoch
 			}).returning()
 			console.log(records)
 
@@ -92,7 +95,7 @@ export async function POST({ request, site, url }: APIContext) {
 				statusText: "Created",
 				status: 201,
 				headers: {
-					"Location": "https://yusuf.fyi/notes/" + records[0].published.getTime()
+					"Location": "https://yusuf.fyi/notes/" + records[0].published
 				}
 			})
 		}

@@ -4,18 +4,14 @@ import { db, Note } from "astro:db";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Link from "../../components/Link.astro";
 import Webmentions from "../../components/Webmentions.svelte";
-import { desc } from "astro:db";
 
+import dayjs from "dayjs";
 const { slug } = Astro.params;
 
-const date = new Date(Number(slug));
-console.log(date);
-
-const notes = await db.select().from(Note);
+const notes = await db.select().from(Note).where(eq(slug, Note.published))
 
 const note = notes[0];
 
-console.log(notes);
 ---
 
 <BaseLayout
@@ -36,18 +32,9 @@ console.log(notes);
       <p class="text-xl">{note.content}</p>
     </div>
     <div>
-      <time class="text-sm" datetime={note.published.toISOString()}>
+      <time class="text-sm" datetime={dayjs(note.published).toISOString()}>
         {
-          note.published.toLocaleDateString("en-GB", {
-            weekday: "short",
-            day: "2-digit",
-            month: "short",
-            year: "numeric",
-            minute: "2-digit",
-            hour: "2-digit",
-            hour12: false,
-            era: "short",
-          })
+        dayjs(note.published).format("ddd, D MMM, YYYY, HH:mm")
         }
       </time>
     </div>
