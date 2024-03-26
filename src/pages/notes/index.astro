@@ -3,6 +3,7 @@ import { db, Note } from "astro:db";
 const notes = await db.select().from(Note).orderBy(desc(Note.published));
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Link from "../../components/Link.astro";
+import { desc } from "astro:db";
 ---
 
 <BaseLayout title="notes!" description="Yusuf's note hub">
