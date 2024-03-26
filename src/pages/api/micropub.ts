@@ -39,6 +39,29 @@ function paramsToObject(entries: any) {
   }
   return result;
 }
+export async function GET({ request, url }: APIContext) {
+  const q = url.searchParams.get("q");
+  if (q === "config") {
+    return new Response(
+      JSON.stringify({
+        "syndicate-to": [
+          {
+            uid: "https://fosstodon.org/@spacebuffer",
+            name: "Yusuf on mastodon",
+            service: {
+              name: "Mastodon",
+              url: "https://fosstodon.org",
+            },
+            url: {
+              name: "spacebuffer",
+              url: "https://fosstodon.org/@spacebuffer",
+            },
+          },
+        ],
+      })
+    );
+  }
+}
 
 export async function POST({ request, site, url }: APIContext) {
   const contentType = request.headers.get("Content-type");
