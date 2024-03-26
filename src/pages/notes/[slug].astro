@@ -34,8 +34,8 @@ const note = notes[0];
       <p class="text-xl">{note.content}</p>
     </div>
     <div>
-      <time class="text-sm" datetime={dayjs(note.published).toISOString()}>
-        {dayjs(note.published).format("ddd, D MMM, YYYY, HH:mm")}
+      <time class="text-sm" datetime={dayjs.unix(note.published).toISOString()}>
+        {dayjs.unix(note.published).format("ddd, D MMM, YYYY, HH:mm")}
       </time>
     </div>
   </article>

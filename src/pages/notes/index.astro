@@ -28,9 +28,9 @@ import dayjs from "dayjs";
             >
               <time
                 class="text-sm"
-                datetime={dayjs(note.published).toISOString()}
+                datetime={dayjs.unix(note.published).toISOString()}
               >
-                {dayjs(note.published).format("ddd, D MMM, YYYY, HH:mm")}
+                {dayjs.unix(note.published).format("ddd, D MMM, YYYY, HH:mm")}
               </time>
             </a>
           </div>
