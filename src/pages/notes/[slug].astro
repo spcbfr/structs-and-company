@@ -11,11 +11,7 @@ const { slug } = Astro.params;
 const date = new Date(Number(slug));
 console.log(date);
 
-const notes = await db
-  .select()
-  .from(Note)
-  .where(eq(Note.published, date))
-  .limit(1);
+const notes = await db.select().from(Note);
 
 const note = notes[0];
 
