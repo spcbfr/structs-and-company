@@ -76,6 +76,7 @@ export async function POST({ request, site, url }: APIContext) {
 
   if (hasOwnProperty(indieToken, "me") && indieToken.me === site?.toString()) {
     //  TODO: Create note here
+    const now = dayjs().unix();
 
     console.log("hello world");
     if (contentType === "application/x-www-form-urlencoded") {
@@ -83,7 +84,7 @@ export async function POST({ request, site, url }: APIContext) {
 
       const records = await db
         .insert(Note)
-        .values({ content: formBodyObject.content })
+        .values({ content: formBodyObject.content, published: now })
         .returning();
 
       return Respond(201, "Created", {
@@ -95,7 +96,7 @@ export async function POST({ request, site, url }: APIContext) {
       if (typeof body.properties.content[0] === "string") {
         const records = await db
           .insert(Note)
-          .values({ content: body.properties.content[0] })
+          .values({ content: body.properties.content[0], published: now })
           .returning();
 
         return Respond(201, "Created", {
