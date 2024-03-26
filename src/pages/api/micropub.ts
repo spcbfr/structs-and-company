@@ -18,10 +18,11 @@ interface ErrorIndieToken {
 
 type IndieTokenResponse = SuccessfulIndieToken | ErrorIndieToken;
 
-function Error(code: number, message?: string) {
+function Respond(code: number, message?: string, headers?: HeadersInit) {
   return new Response(null, {
     statusText: message ?? undefined,
     status: code,
+    headers: headers ?? undefined,
   });
 }
 function hasOwnProperty<T, K extends PropertyKey>(
@@ -56,12 +57,12 @@ export async function POST({ request, site, url }: APIContext) {
 
   // NOTE: rejecting multiple authentication attempts as per RFC 6750
   if (headerAuthToken && bodyAuthToken) {
-    return Error(400, "invalid request");
+    return Respond(400, "invalid request");
   }
 
   const authToken = headerAuthToken || bodyAuthToken;
 
-  if (!authToken) return Error(401);
+  if (!authToken) return Respond(401);
 
   const res = await fetch("https://tokens.indieauth.com/token", {
     method: "GET",
@@ -78,29 +79,31 @@ export async function POST({ request, site, url }: APIContext) {
 
     console.log("hello world");
     if (contentType === "application/x-www-form-urlencoded") {
-      if (!hasOwnProperty(formBodyObject, "content")) {
-        return Error(422);
-      }
-      const sinceEpoch = dayjs().unix();
+      if (!hasOwnProperty(formBodyObject, "content")) return Respond(422);
 
       const records = await db
         .insert(Note)
-        .values({
-          content: formBodyObject.content,
-          published: sinceEpoch,
-        })
+        .values({ content: formBodyObject.content })
         .returning();
-      console.log(records);
 
-      return new Response(null, {
-        statusText: "Created",
-        status: 201,
-        headers: {
-          Location: "https://yusuf.fyi/notes/" + records[0].published,
-        },
+      return Respond(201, "Created", {
+        Location: "https://yusuf.fyi/notes/" + records[0].published,
       });
     }
+    if (contentType === "application/json") {
+      const body = await request.json();
+      if (typeof body.properties.content[0] === "string") {
+        const records = await db
+          .insert(Note)
+          .values({ content: body.properties.content[0] })
+          .returning();
+
+        return Respond(201, "Created", {
+          Location: "https://yusuf.fyi/notes/" + records[0].published,
+        });
+      }
+    }
   } else {
-    return Error(401, "invalid token");
+    return Respond(401, "invalid token");
   }
 }
