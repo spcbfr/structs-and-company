@@ -1,0 +1,194 @@
+---
+title: Linux text manipulation
+description: learning a lot about sed, awk and other commands by making a spotify statusbar widget
+pubDate: 2024/03/28 13:00
+---
+
+Today, I wanted to make a module for my AwesomeWM status bar that shows the currently playing Spotify song, it'd be nice if it could show something human-readable like this: _Wild World by Yusuf/Cat Stevens_.
+
+Through a quick search, I found a tiny bash script, [sp](https://gist.github.com/streetturtle/fa6258f3ff7b17747ee3), that does what I need. except the output must be cleaned up.
+
+```fish title="sp current's output"
+joe@popos> sp current
+Album        Tea For The Tillerman (Remastered 2020)
+AlbumArtist  Yusuf / Cat Stevens
+Artist       Yusuf / Cat Stevens
+Title        Wild World
+```
+
+I could ask chatgpt to format this or write a Lua script, but that wouldn't be much fun, _would it?_ in this article, we'll learn how to use <Code code="awk" />, <Code code="sed" /> and other commands to get the desired output.
+<Callout title="Intended Audience"> this is intended for people who have used Linux but are otherwise new to the terminal, if you've at least created a file from the command line, you're good to go, I'll cover everything else throughout the article</Callout>
+
+If you want to follow along, download the bash script, and experiment with the commands we'll learn, but that's not required per se.
+
+### Mini Problem #1
+
+To get started <Code code="sp current" lang="bash" /> returns the album name, album artist, song artist, and song title, whereas we only need the artist and title. we can use <Code code="sed" /> to pick the specific lines we need.
+
+sed works by looping through lines of the input and doing a given action, by default it prints the resulting lines to <abbr title="standard output">stdout</abbr>. we can give sed a file to work with but more commonly you'll pipe a command into sed, as we'll do later on.
+
+> <details><summary>What do you mean by **_pipe_**? </summary>Generally, in Linux, a command's input is read from the keyboard and its output (along with any errors) is printed on your screen. we can, however, change this behavior. <br /> <br/> 
+> piping essentially lets you pass a command's output onto another command's input. programs can choose whether or not to support piping, but most basic Linux programs (and all the ones we'll discuss today) support it. </details>
+
+let's look into sed in more detail
+```bash
+sp current | sed '' # no action given, sed will print the lines as is
+sp current | sed 's/Cat/Dog/g' # replace Cat with Dog and print every line
+```
+
+```bash /-n/
+# the n flag suppresses the automatic printing
+# this will replace Cat with Dog but print nothing!
+sp current | sed -n 's/Cat/Dog/g' 
+```
+
+```bash /'p'/
+# p prints a line
+# so this will print each line twice (default + p action)
+sp current | sed 'p'
+  
+# if we combine -n with the p action we can do this
+# this is equivalent to plain sed ''
+sp current | sed -n 'p'
+  
+# we can print a specific line too (we'll need this later!)
+# this will print every line AND print the second line an extra time
+sp current | sed '2p'
+```
+
+```bash
+# finally, we can chain actions.
+# this substitutes Cat with Dog and prints ONLY the 2nd line, because of the n flag.
+sp current | sed -n 's/Cat/Dog/g;2p'
+```
+
+and now—as you may have already figured out—we can print the artist and song name only like so:
+
+```bash
+sp current | sed -n '3p;4p'
+```
+and we end up with
+```plaintext 
+Artist       Yusuf/Cat Stevens
+Title        Wild World
+```
+
+### Mini Problem #2
+
+Next, we need to get rid of the column labels, we can use <Code code="cut" /> for this. As with <Code code="sed" />, <Code code="cut" /> accepts a file as its input, if no file is given it'll read from <abbr title="standard input">stdin</abbr>.
+
+Here is how we usually work with <Code code="cut" />, you give it a delimiter and a set of columns to print, and it will split each line by that delimiter and return the selected columns.
+
+in our case, columns are separated with a space, so we can do the following
+
+```bash /-d ' '/ /-f2/
+# we're splitting the input by spaces and picking the 2nd column
+sp current | cut -d ' ' -f2
+```
+
+our columns are seperated by multiple spaces though, so cut will treat the empty-ness between each space as its own column, to avoid this we can inject the command <Code code="tr" /> to trim the extra spaces:
+
+```bash /tr -s ' '/
+# the s flag specifies what to trim
+sp current | tr -s ' ' | cut -d ' ' -f2
+```
+
+
+But this is still not totally right. if a song's title contains more than one word we'll get this
+```plaintext
+Artist       Yusuf/Cat Stevens // [!code --]
+Title        Wild World // [!code --]
+ 
+Yusuf/Cat  // [!code ++] 
+Wild // [!code ++]
+```
+
+you can pass <Code code="cut" /> a column range to print, as in <Code code="cut -d ' ' -f2-4" lang="bash" /> to select the 2nd, 3rd, and 4th columns, **if the range is open-ended**, <Code code="cut" /> **will print every column until the end of the line**, so let's incorporate that into our script.
+
+```bash /-f2-/
+sp current | tr -s ' ' | cut -d ' ' -f2- | sed -n '3p;4p'
+```
+output:
+
+```plaintext
+Yusuf/Cat Stevens
+Wild World
+```
+
+**note**: as I've shown you <Code code="tr" /> needs to be applied before <Code code="cut" /> on the contrary, <Code code="cut" /> and <Code code="sed" /> can be swapped because they serve entirely different purposes.
+
+
+### Mini Problem #3
+
+Now, what's left is to simply join the lines and format them nicely. we can use <Code code="awk" /> to do this.
+
+<Code code="awk" /> is based on a condition-script model, It's similar to <Code code="sed" /> it checks if the current line matches the condition and executes the appropriate script, although I find <Code code="awk" /> to have a more expressive syntax.
+
+awk scripts are written in quotes like this:
+
+```bash
+sp current | awk '{print $1}'
+```
+let's look at a few examples. any of these can be passed to awk in quotes.
+
+```awk
+{print} # no condition given, prints every line.
+  
+# NR==1 matches the 1st line only
+# thus, this will print the 1st line
+NR==1{print} 
+  
+# any subsequent script isn't part of the condition. 
+# despite them being on the same line.
+# this will print the print every line + the first line again
+NR==1{print}{print}
+```
+
+```awk
+# awk has pre-defined globals corresponding to columns in your input
+# this behaves like sed and will print the first column.
+{print $1}
+ 
+# $0 matches the entire line
+# this is equivalent to {print}
+{print $0}
+```
+Lastly, you can assign globals to variables, 
+
+this assigns a to the 1st column of the 1st line and then prints <Code code="x" /> for every line in the input. 
+ note that the first script only runs once, thus a will stay the same for every line
+```awk
+NR==1{x=$1}{print x}
+```
+now we can combine everything we know to get this script:
+
+```bash
+sp current | ... | awk 'NR==1{a=$0; next}{print $0 " by " a}'
+```
+
+this does the following:
+1. we assign <Code code="a" /> to the artist name (entire first line)
+2. <Code code="skip" lang="awk" /> tells <Code code="awk" /> to _skip_ the execution of the second script and to move to the next line
+3. we're on the second line now so <Code code="NR==1" lang="awk" /> isn't matched and the first script is skipped.
+4. print the song name (<Code code="$0" lang="awk" />) then the string literal <Code code="by" /> then the artist name (content of variable <Code code="a" />)
+
+```
+Yusuf/Cat Stevens // [!code --]
+Wild World // [!code --]
+ 
+Wild World by Yusuf/Cat Stevens // [!code ++]
+```
+
+## Final Thoughts
+That concludes our script, here is what we ended up with:
+```bash 
+sp current | tr -s ' ' | cut -d ' ' -f2- | sed -n '3p;4p' | awk 'NR==1{a=$0; next}{print $0 " by " a}'
+```
+
+Now this script could be optimized in different ways, but instead of showing you how to do it here, I leave that as _an exercise to the reader_. here are a couple of things you can do, ranging from easiest to hardest:
+- replace the <Code code="cut" /> command with an additional <Code code="sed" /> action
+- re-write the entire thing from memory
+- make the script as short as possible
+- write the entire script in <Code code="awk" />
+
+Finally, I hope you learned something new today and if you attempt any of these, please share what you did either in the mastodon replies or through an article on your blog. I promise to take a look and I'll probably learn something myself!

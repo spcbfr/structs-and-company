@@ -25,6 +25,16 @@ code.astro-code {
 .highlighted {
   @apply bg-amber-700/5 py-1 border-l-amber-700 border-l-4;
 }
+.add {
+  @apply bg-green-400/30 before:content-['+_']
+}
+
+.remove {
+  @apply bg-red-400/30 before:content-['-_']
+}
+.prose abbr {
+  @apply underline-offset-2
+}
 
 .highlighted-word {
   @apply bg-orange-100 text-orange-950 border-b-2 border-b-orange-600 font-semibold px-1 py-px rounded-md;
@@ -54,10 +64,16 @@ figure > img {
   @apply font-display sm:text-2xl text-xl;
 }
 .prose blockquote {
-  @apply border-l-amber-800 border-l-4 pl-2 py-5 bg-amber-400/10;
+  @apply border-l-amber-800 border-l-4 pl-2 py-3 bg-amber-400/10;
 }
 .prose a {
   @apply text-amber-800 underline-offset-2 underline decoration-2 decoration-amber-800/20 hover:decoration-amber-700   hover:border-b-yellow-800 transition-all print:no-underline print:font-bold print:text-black;
+}
+.prose summary {
+  @apply cursor-pointer mb-1
+}
+.prose blockquote:has(details) {
+  @apply pb-2
 }
 
 .prose h3 {

@@ -2,7 +2,7 @@ import { defineConfig } from "astro/config";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
-import { transformerMetaWordHighlight, transformerMetaHighlight } from '@shikijs/transformers';
+import { transformerMetaWordHighlight, transformerMetaHighlight, transformerNotationDiff } from '@shikijs/transformers';
 import vercel from "@astrojs/vercel/serverless";
 
 import svelte from "@astrojs/svelte";
@@ -27,7 +27,7 @@ export default defineConfig({
       wrap: true,
       // Add custom transformers: https://shiki.style/guide/transformers
       // Find common transformers: https://shiki.style/packages/transformers
-      transformers: [transformerMetaWordHighlight(), transformerMetaHighlight(), {
+      transformers: [transformerMetaWordHighlight(), transformerMetaHighlight(), transformerNotationDiff(), {
         pre(node) {
           if (!this.options.meta) {
             return;
