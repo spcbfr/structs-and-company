@@ -9,6 +9,22 @@
   let error: string;
   let note: string;
 
+  const fallback = (resource: any) => {
+    const domain = new URL(resource.url).host;
+    let path;
+    switch (domain) {
+      case "news.ycombinator.com":
+        path = "/hackernews.png";
+        break;
+      case "lobste.rs":
+        path = "/lobsters.png";
+        break;
+      default:
+        path = "/fallback-person.png";
+    }
+    return path;
+  };
+
   const send = async () => {
     try {
       const response = await fetch(sendingURL, {
@@ -60,6 +76,7 @@
 
   onMount(() => {
     asyncWebmentions = loadingWebmentions();
+    console.log(asyncWebmentions);
   });
 
   function filterComments(children: any) {
@@ -69,14 +86,13 @@
   }
 
   function filterLikes(children: any) {
-    return children.filter(
-      (entry: any) => entry["wm-property"] === "like-of" && entry.author.photo,
-    );
+    return children.filter((entry: any) => entry["wm-property"] === "like-of");
   }
   function filterReposts(children: any) {
     return children.filter(
       (entry: any) =>
-        entry["wm-property"] === "repost-of" && entry.author.photo,
+        entry["wm-property"] === "repost-of" ||
+        entry["wm-property"] === "bookmark-of",
     );
   }
 
@@ -122,24 +138,24 @@
       {#if filterLikes(data).length !== 0}
         <section class="flex items-center flex-wrap gap-1 mt-3">
           <span
-            class="text-3xl select-none text-stone-900/80 w-12 mr-2 text-center"
+            class="text-3xl select-none text-stone-900/80 w-12 mr-3 text-center"
             >★</span
           >
           {#each filterLikes(data) as like}
-            <span class="">
+            <a href={like.url} class="mr-1">
               <img
-                src={like.author.photo}
+                src={like.author.photo || fallback(like)}
                 width="36"
                 class=" rounded-sm"
                 alt={like.author.name}
               />
-            </span>
+            </a>
           {/each}
         </section>
       {/if}
 
       {#if filterReposts(data).length !== 0}
-        <section class="flex items-center flex-wrap gap-1 mt-3">
+        <section class="flex items-center flex-wrap gap-2 !mt-2">
           <span
             class="text-3xl relative left-2 select-none text-stone-900/80 w-12 mr-2 text-center"
           >
@@ -155,15 +171,15 @@
               /></svg
             >
           </span>
-          {#each filterReposts(data) as like}
-            <span class="">
+          {#each filterReposts(data) as repost}
+            <a href={repost.url} class="">
               <img
-                src={like.author.photo}
+                src={repost.author.photo || fallback(repost)}
                 width="36"
                 class=" rounded-sm"
-                alt={like.author.name}
+                alt={repost.author.name}
               />
-            </span>
+            </a>
           {/each}
         </section>
       {/if}
@@ -172,7 +188,7 @@
         {#each filterComments(data) as comment}
           <article class="flex mt-3 items-start gap-3 py-1">
             <img
-              src={comment.author.photo || "/fallback-person.png"}
+              src={comment.author.photo || fallback(comment)}
               width={48}
               height={48}
               alt=""
