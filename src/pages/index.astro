@@ -4,6 +4,7 @@ import { getCollection } from "astro:content";
 import Link from "../components/Link.astro";
 import { Image } from "astro:assets";
 import face from "../assets/face.jpg";
+import Nav from "../components/Nav.astro";
 
 const posts = (await getCollection("blog")).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
@@ -16,11 +17,7 @@ const starred = posts.filter((post) => post.data.starred);
   title="Structs & Company"
   description="A blog by Yusuf Bouzekri about tech, romance, movies and jokes"
 >
-  <nav class="flex text-xl my-2 font-medium font-serif justify-between">
-    <Link href="/">home/</Link>
-    <Link href="/posts">posts/</Link>
-    <Link href="/about">about/</Link>
-  </nav>
+  <Nav />
   <header class="mt-5 h-card">
     <Image
       src={face}

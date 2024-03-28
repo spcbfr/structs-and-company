@@ -4,6 +4,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import Link from "../../components/Link.astro";
 import { Image } from "astro:assets";
 import face from "../../assets/face.jpg";
+import Nav from "../../components/Nav.astro";
 
 const posts = (await getCollection("blog")).sort(
 	(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf(),
@@ -48,11 +49,8 @@ resultArray.forEach((group) => {
 	title="All Articles | S&C"
 	description="All the articles I've ever wrote"
 >
-	<nav class="flex text-xl my-2 font-medium font-serif justify-between">
-		<Link href="/">home/</Link>
-		<Link href="/posts">posts/</Link>
-		<Link href="/about">about/</Link>
-	</nav>
+	<Nav />
+
 	<header class="mt-5">
 		<Image
 			src={face}
@@ -84,7 +82,7 @@ resultArray.forEach((group) => {
 								<div class="flex gap-4">
 									<time
 										datetime={post.data.pubDate.toISOString()}
-										class="font-smallcaps dt-published text-stone-700 w-8"
+										class="font-smallcaps dt-published text-stone-700 w-9"
 									>
 										{post.data.pubDate.toLocaleString(
 											"en-US",
