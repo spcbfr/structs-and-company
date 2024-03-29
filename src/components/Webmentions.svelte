@@ -19,6 +19,9 @@
       case "lobste.rs":
         path = "/lobsters.png";
         break;
+      case "lemmy.ml":
+        path = "/lemmy.png";
+        break;
       default:
         path = "/fallback-person.png";
     }
