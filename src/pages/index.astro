@@ -11,6 +11,12 @@ const posts = (await getCollection("blog")).sort(
 );
 const recent = posts.slice(0, 3);
 const starred = posts.filter((post) => post.data.starred);
+// Pick one of these slogans
+const slogans = ["A hacker's best friend", "Attorneys at Law", "Timey wimey stuff"]
+const rand = Math.floor(Math.random() * slogans.length);
+const randSlogan = slogans[rand]
+// Unless this Breaking News is set
+const news = "";
 ---
 
 <BaseLayout
@@ -28,7 +34,7 @@ const starred = posts.filter((post) => post.data.starred);
     <h1 class="sm:text-5xl text-4xl text-center font-display">
       Structs & Company
     </h1>
-    <p class="font-smallcaps text-xl text-center">Attorneys at Law</p>
+    <p class="font-smallcaps text-xl text-center">{ news || randSlogan }</p>
     <article class="font-serif mt-5 p-note sm:text-xl text-lg">
       <p>
         Hello, I Hope you're doing well today. My name is <Link
