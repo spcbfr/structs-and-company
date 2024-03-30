@@ -189,7 +189,7 @@
 
       <section class="flex flex-col gap-1">
         {#each filterComments(data) as comment}
-          <article class="flex mt-3 items-start gap-3 py-1">
+          <article class="flex mt-3 u-comment h-cite items-start gap-3 py-1">
             <img
               src={comment.author.photo || fallback(comment)}
               width={48}
@@ -202,7 +202,9 @@
                 <h3
                   class="text-sm text-amber-700 font-medium hover:underline underline-offset-1"
                 >
-                  <a href={comment.author.url}>{comment.author.name}</a>
+                  <a href={comment.author.url} class="u-author h-card"
+                    >{comment.author.name}</a
+                  >
                 </h3>
                 <a
                   href={comment.author.url}
@@ -213,21 +215,23 @@
               <div>
                 {#if comment.content.html}
                   <p
-                    class="[&_a]:text-amber-700 [&_code]:bg-stone-200 [&_code]:py-px [&_code]:text-sm [&_code]:rounded-md [&_code]:px-1 [&_a]:font-semibold"
+                    class="[&_a]:text-amber-700 p-content p-name [&_code]:bg-stone-200 [&_code]:py-px [&_code]:text-sm [&_code]:rounded-md [&_code]:px-1 [&_a]:font-semibold"
                   >
                     <Render html={comment.content.html} />
                   </p>
                 {:else}
-                  <p class="[&_a]:text-amber-700 [&_a]:font-semibold">
+                  <p
+                    class="[&_a]:text-amber-700 p-content p-name [&_a]:font-semibold"
+                  >
                     {comment.content.text}
                   </p>
                 {/if}
                 <a
                   href={comment.url}
-                  class="hover:underline underline-offset-1"
+                  class="hover:underline underline-offset-1 u-url"
                 >
                   <time
-                    class="text-sm text-stone-700"
+                    class="text-sm text-stone-700 dt-published"
                     datetime={new Date(comment.published).toISOString()}
                     >{new Date(comment.published).toLocaleDateString("en-GB", {
                       weekday: "short",
