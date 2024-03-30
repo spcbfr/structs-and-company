@@ -21,6 +21,7 @@
     "@fontsource-variable/vollkorn": "^5.0.20",
     "@fontsource/ibm-plex-mono": "^5.0.12",
     "@fontsource/rakkas": "^5.0.19",
+    "@fontsource/roboto-mono": "^5.0.17",
     "@fontsource/vollkorn": "^5.0.19",
     "@fontsource/vollkorn-sc": "^5.0.12",
     "@jill64/svelte-sanitize": "^1.2.11",

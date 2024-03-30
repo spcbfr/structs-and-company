@@ -7,7 +7,7 @@ export default {
         serif: "vollkorn variable",
         smallcaps: "vollkorn SC",
         display: "Rakkas",
-        mono: "IBM Plex Mono",
+        mono: "Roboto Mono",
       },
     },
   },

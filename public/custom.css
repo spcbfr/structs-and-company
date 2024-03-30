@@ -22,7 +22,7 @@
 
 /* Styles for .markdown-body */
 .markdown-body {
-  font-family: Arial, sans-serif; /* Example font */
+  font-family: sans-serif; /* Example font */
   font-size: 16px; /* Example font size */
   line-height: 1.5; /* Example line height */
   word-wrap: break-word;
