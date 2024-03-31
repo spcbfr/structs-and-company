@@ -2,21 +2,9 @@
 import { Image } from "astro:assets";
 import bowling from "../assets/bowling.png";
 import Link from "../components/Link.astro";
-
-const currentTime = [
-	"Carbon::now()",
-	"new Date()",
-	"DateTime.utc_now",
-	"NOW()",
-	"SystemTime::now()",
-	"datetime.today()",
-	"(get-decoded-time)",
-	"DateTime.now",
-];
-const rand = Math.floor(Math.random() * currentTime.length);
 ---
 
-<footer class="font-serif mb-5 text-center print:hidden">
+<footer class="font-serif mt-16 mb-2 text-center print:hidden">
 	<div class="sm:text-xl text-lg mb-2 flex justify-between">
 		<Link href="/rss.xml">RSS/</Link>
 		<Link href="/now">now/</Link>
@@ -30,7 +18,7 @@ const rand = Math.floor(Math.random() * currentTime.length);
 			alt="Bowling ball striking"
 		/>
 		<p class="font-smallcaps text-sm">
-			{currentTime[rand]} &copy; Yusuf Bouzekri
+			(get-decoded-time) &copy; Yusuf Bouzekri
 		</p>
 	</div>
 </footer>
