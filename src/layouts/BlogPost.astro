@@ -5,6 +5,7 @@ import Link from "../components/Link.astro";
 import Webmentions from "../components/Webmentions.svelte";
 import Footer from "../components/Footer.astro";
 import Nav from "../components/Nav.astro";
+import Jsonld from "../components/Jsonld.astro"
 let { title, pubDate, description, slug } =
   Astro.props.frontmatter || Astro.props;
 if (typeof pubDate == "string") {
@@ -15,6 +16,7 @@ if (typeof pubDate == "string") {
 <!doctype html>
 <html lang="en">
   <BaseHead title={title} description={description} />
+  <Jsonld title={title} description={description} pubDate={pubDate} />
 
   <body class="flex flex-col items-center justify-center bg-[#faf9f5]">
     <main
