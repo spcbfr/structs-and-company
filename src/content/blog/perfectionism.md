@@ -6,7 +6,6 @@ starred: true
 ---
 
 Perfectionism is often seen as a good thing, and people should try and reach it whenever they can, but that may not always be true, being a perfectionist can stop you from finishing what you started or even not starting at all...
-
 # Quantity over Quality
 
 You should aspire to make and publish so much, because only a subset of the things you publish is going to be popular and you don’t know which “thing” will be a hit because it depends on many factors that you aren’t in control of. Let’s look at some examples:
@@ -26,29 +25,11 @@ As an example I am about to publish this post even though, I know it’s far fro
 
 Successful people publish so much because they are working to publish not working for pleasure. Working for pleasure is very important but it only should take a limited amount of your time.
 
-<table>
-  <thead>
-    <tr>
-      <th>Working to publish</th>
-      <th>Working for pleasure</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Selfless</td>
-      <td>Inward Focused</td>
-    </tr>
-    <tr>
-      <td>Outward Focused</td>
-      <td>Giving to oneself</td>
-    </tr>
-    <tr>
-      <td>Contributing to the world</td>
-      <td>Extremly fun</td>
-    </tr>
-  </tbody>
-</table>
-
+| Working to publish        | Working for pleasure      |
+| ------------------------- | ------------------------- |
+| Outward Focused           | Inward Focused            |
+| Selfless                  | Selfish (in a good sense) |
+| Contributing to the world | Extremely fun             |
 # Raw can be better
 
 In certain cases, polishing up can make things look worse, that’s because humans, by nature, love when something is raw = can have mistakes = is relatable.
