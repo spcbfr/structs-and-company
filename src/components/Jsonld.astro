@@ -6,6 +6,7 @@ const { title, description, pubDate } = Astro.props;
 
 const schema = {
   "@context": "https://schema.org",
+  "image": Astro.site + "og-image.png",
   "@type": "BlogPosting",
   "headline": title,
   "description": description,
@@ -16,7 +17,7 @@ const schema = {
     "url": "https://yusuf.fyi"
   },
   /* the schema expects Date or DateTime using ISO 8601 format. For Date that is yyyy-MM-dd */
-  "datePublished": pubDate.toISOString().substring(0, 10),
+  "datePublished": pubDate.toISOString(),
 };
 ---
 
