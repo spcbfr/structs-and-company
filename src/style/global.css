@@ -94,8 +94,21 @@ figure > img {
   @apply rounded-lg bg-inherit border-amber-900/40 border-b-4 border-t-2 text-sm py-px px-1 relative bottom-px hover:border-b-2 hover:top-0 -top-[2px] cursor-default transition-all border-x-2;
 }
 .prose table {
-  @apply font-serif w-full table-auto [&>thead]:border-b-2 [&>thead>tr>th]:p-2 [&>thead]:bg-stone-300 border-2 border-stone-500 [&>tbody>tr>td]:p-2 [&>tbody>tr>td]:bg-stone-200 [&>thead]:rounded-t-lg rounded-lg border-separate;
+  @apply w-full table-auto border-hidden rounded-lg border-collapse text-lg;
 }
+.prose thead {
+  @apply font-smallcaps rounded-t-lg
+}
+.prose tbody > tr > td{
+  @apply  p-2
+}
+.prose table td {
+  @apply border-[1px] border-stone-300 text-center
+}
+.prose tr:first-of-type td {
+  @apply border-t-0
+}
+
 
 .p-category {
   @apply hidden
