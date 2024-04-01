@@ -87,29 +87,33 @@ if (typeof pubDate == "string") {
       var div = document.getElementById("prose");
       if (div) {
         var firstParagraph = div.firstElementChild;
-
-        // Find the first direct paragraph inside myDiv
-        while (firstParagraph && firstParagraph.tagName.toLowerCase() !== "p") {
-          firstParagraph = firstParagraph.nextElementSibling;
-        }
         if (firstParagraph) {
-          var text = firstParagraph.textContent.trim();
-          var firstChar = text[0];
-          var words = text.split(" ");
-          var firstWord = words[0].substring(1); // Exclude the first character of the first word
-          var firstThreeWords = firstWord + " " + words.slice(1, 5).join(" "); // Select the first three words
+          // Find the first direct paragraph inside myDiv
+          while (
+            firstParagraph &&
+            firstParagraph.tagName.toLowerCase() !== "p"
+          ) {
+            firstParagraph = firstParagraph.nextElementSibling;
+          }
+          if (firstParagraph) {
+            var text = firstParagraph.textContent?.trim() || "";
+            var firstChar = text[0];
+            var words = text.split(" ");
+            var firstWord = words[0].substring(1); // Exclude the first character of the first word
+            var firstThreeWords = firstWord + " " + words.slice(1, 5).join(" "); // Select the first three words
 
-          var restOfText = words.slice(5).join(" ");
+            var restOfText = words.slice(5).join(" ");
 
-          // Create a span element
-          var span = document.createElement("span");
-          span.textContent = firstThreeWords;
-          span.classList.add("font-smallcaps", "text-xl", "font-medium");
+            // Create a span element
+            var span = document.createElement("span");
+            span.textContent = firstThreeWords;
+            span.classList.add("font-smallcaps", "text-xl", "font-medium");
 
-          // Replace the original text with modified version
-          firstParagraph.innerHTML = firstChar;
-          firstParagraph.appendChild(span);
-          firstParagraph.innerHTML += " " + restOfText;
+            // Replace the original text with modified version
+            firstParagraph.innerHTML = firstChar;
+            firstParagraph.appendChild(span);
+            firstParagraph.innerHTML += " " + restOfText;
+          }
         }
       }
     </script>
