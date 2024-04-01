@@ -5,7 +5,7 @@ import Link from "../components/Link.astro";
 import Webmentions from "../components/Webmentions.svelte";
 import Footer from "../components/Footer.astro";
 import Nav from "../components/Nav.astro";
-import Jsonld from "../components/Jsonld.astro"
+import Jsonld from "../components/Jsonld.astro";
 let { title, pubDate, description, slug } =
   Astro.props.frontmatter || Astro.props;
 if (typeof pubDate == "string") {
@@ -59,7 +59,7 @@ if (typeof pubDate == "string") {
         {title}
       </h1>
 
-      <article class="prose space-y-5 e-content">
+      <article id="prose" class="prose space-y-5 e-content">
         <slot />
         <a href="https://brid.gy/publish/mastodon"></a>
       </article>
@@ -81,7 +81,37 @@ if (typeof pubDate == "string") {
       </section>
 
       <Webmentions urlSlug={slug} client:load />
-    <Footer />
+      <Footer />
     </main>
+    <script>
+      var div = document.getElementById("prose");
+      if (div) {
+        var firstParagraph = div.firstElementChild;
+
+        // Find the first direct paragraph inside myDiv
+        while (firstParagraph && firstParagraph.tagName.toLowerCase() !== "p") {
+          firstParagraph = firstParagraph.nextElementSibling;
+        }
+        if (firstParagraph) {
+          var text = firstParagraph.textContent.trim();
+          var firstChar = text[0];
+          var words = text.split(" ");
+          var firstWord = words[0].substring(1); // Exclude the first character of the first word
+          var firstThreeWords = firstWord + " " + words.slice(1, 5).join(" "); // Select the first three words
+
+          var restOfText = words.slice(5).join(" ");
+
+          // Create a span element
+          var span = document.createElement("span");
+          span.textContent = firstThreeWords;
+          span.classList.add("font-smallcaps", "text-xl", "font-medium");
+
+          // Replace the original text with modified version
+          firstParagraph.innerHTML = firstChar;
+          firstParagraph.appendChild(span);
+          firstParagraph.innerHTML += " " + restOfText;
+        }
+      }
+    </script>
   </body>
 </html>

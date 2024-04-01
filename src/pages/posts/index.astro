@@ -7,31 +7,31 @@ import face from "../../assets/face.jpg";
 import Nav from "../../components/Nav.astro";
 
 const posts = (await getCollection("blog")).sort(
-	(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf(),
+  (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
 );
 
 // Sample array of objects
 
 // Step 1: Group by y
 type GroupedObj = {
-	[P: string]: typeof posts;
+  [P: string]: typeof posts;
 };
 
 const groupedByYear: GroupedObj = posts.reduce((acc: GroupedObj, item) => {
-	const year = item.data.pubDate.getFullYear().toString();
-	if (!acc[year]) {
-		acc[year] = [];
-	}
-	acc[year].push(item);
-	return acc;
+  const year = item.data.pubDate.getFullYear().toString();
+  if (!acc[year]) {
+    acc[year] = [];
+  }
+  acc[year].push(item);
+  return acc;
 }, {});
 
 // Step 2: Convert object to array
 const resultArray: { year: number; items: typeof posts }[] = Object.entries(
-	groupedByYear,
+  groupedByYear
 ).map(([year, items]) => ({
-	year: parseInt(year),
-	items,
+  year: parseInt(year),
+  items,
 }));
 
 // Step 3: Sort array by year
@@ -39,78 +39,71 @@ resultArray.sort((a, b) => b.year - a.year);
 
 // Optionally, Step 4: Sort items within each year
 resultArray.forEach((group) => {
-	group.items.sort(
-		(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-	);
+  group.items.sort(
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+  );
 });
 ---
 
 <BaseLayout
-	title="All Articles | S&C"
-	description="All the articles I've ever wrote"
+  title="All Articles | S&C"
+  description="All the articles I've ever wrote"
 >
-	<Nav />
+  <Nav />
 
-	<header class="mt-5">
-		<Image
-			src={face}
-			height={160}
-			class="mb-3 mx-auto"
-			alt="A somewhat surprised white man, Black and White, light face on dark background with a broken glass effect"
-		/>
-		<h1 class="text-5xl text-center font-display">Structs & Company</h1>
-	</header>
-	<section class="h-feed">
-		<h2 class="p-name hidden">Articles</h2>
-		<h3 class="p-summary hidden">
-			A blog about tech, romance, movies and jokes
-		</h3>
-		<address class="p-author hidden author h-card vcard">
-			<a href={Astro.site} class="u-url url p-name fn" rel="author">
-				Yusuf Bouzekri
-			</a>
-		</address>
-		{
-			resultArray.map((item) => (
-				<article class="mb-5">
-					<h2 class="font-smallcaps font-bold text-4xl">
-						{item.year}
-					</h2>
-					<ul class="space-y-2 ">
-						{item.items.map((post) => (
-							<li class="font-serif flex h-entry justify-between text-xl">
-								<div class="flex gap-4">
-									<time
-										datetime={post.data.pubDate.toISOString()}
-										class="font-smallcaps dt-published text-stone-700 w-9"
-									>
-										{post.data.pubDate.toLocaleString(
-											"en-US",
-											{
-												month: "short",
-											},
-										)}
-									</time>
-									<Link
-										href={"/posts/" + post.slug}
-										styles="p-name u-url u-uid"
-									>
-										{post.data.title}
-									</Link>
-									<p class="p-summary entry-summary hidden">
-										{post.data.description}
-									</p>
-								</div>
-								{post.data.starred ? (
-									<span class="text-2xl text-amber-900/40">
-										★
-									</span>
-								) : null}
-							</li>
-						))}
-					</ul>
-				</article>
-			))
-		}
-	</section>
+  <header class="mt-5">
+    <Image
+      src={face}
+      height={160}
+      class="mb-3 mx-auto"
+      alt="A somewhat surprised white man, Black and White, light face on dark background with a broken glass effect"
+    />
+    <h1 class="text-5xl text-center font-display">Structs & Company</h1>
+  </header>
+  <section class="h-feed">
+    <h2 class="p-name hidden">Articles</h2>
+    <h3 class="p-summary hidden">
+      A blog about tech, romance, movies and jokes
+    </h3>
+    <address class="p-author hidden author h-card vcard">
+      <a href={Astro.site} class="u-url url p-name fn" rel="author">
+        Yusuf Bouzekri
+      </a>
+    </address>
+    {
+      resultArray.map((item) => (
+        <article class="mb-5">
+          <h2 class="font-smallcaps font-semibold text-4xl">{item.year}</h2>
+          <ul class="space-y-2 ">
+            {item.items.map((post) => (
+              <li class="font-serif flex h-entry justify-between text-xl">
+                <div class="flex gap-4">
+                  <time
+                    datetime={post.data.pubDate.toISOString()}
+                    class="font-smallcaps dt-published text-stone-700 w-9"
+                  >
+                    {post.data.pubDate.toLocaleString("en-US", {
+                      month: "short",
+                    })}
+                  </time>
+                  <Link
+                    href={"/posts/" + post.slug}
+                    styles="p-name u-url u-uid"
+                  >
+                    {post.data.title}
+                  </Link>
+                  <p class="p-summary entry-summary hidden">
+                    {post.data.description}
+                  </p>
+                </div>
+                {post.data.starred ? (
+                  <span class="text-2xl text-amber-900/40">★</span>
+                ) : null}
+              </li>
+            ))}
+          </ul>
+        </article>
+      ))
+    }
+  </section>
 </BaseLayout>

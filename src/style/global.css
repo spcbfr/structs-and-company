@@ -1,9 +1,10 @@
-html, body {
-  min-height: 100%
+html,
+body {
+  min-height: 100%;
 }
 
 pre.astro-code {
-  @apply py-3 -mx-4 rounded-xl !bg-[#fbfbf9] border-amber-800/10 border-2 sm:-mx-9 !mb-3 sm:text-base text-sm; 
+  @apply py-3 -mx-4 rounded-xl !bg-[#fbfbf9] border-amber-800/10 border-2 sm:-mx-9 !mb-3 sm:text-base text-sm;
 }
 pre.astro-code > code {
   @apply grid;
@@ -16,7 +17,7 @@ pre > .code-title {
 }
 
 pre:has(.code-title) {
-  @apply !pt-0
+  @apply !pt-0;
 }
 
 code.astro-code {
@@ -26,14 +27,14 @@ code.astro-code {
   @apply bg-amber-700/5 py-1 border-l-amber-700 border-l-4;
 }
 .add {
-  @apply bg-green-400/30 before:content-['+_']
+  @apply bg-green-400/30 before:content-['+_'];
 }
 
 .remove {
-  @apply bg-red-400/30 before:content-['-_']
+  @apply bg-red-400/30 before:content-['-_'];
 }
 .prose abbr {
-  @apply underline-offset-2
+  @apply underline-offset-2;
 }
 
 .highlighted-word {
@@ -52,7 +53,7 @@ figure > img {
   @apply sm:text-4xl text-2xl font-display;
 }
 .prose > p:first-of-type:first-letter {
-  @apply text-amber-400 sm:text-6xl text-5xl float-left font-semibold bg-amber-950 -mb-2 leading-[0.7] pt-[13px] pr-2 pl-2 mr-2 pb-1 ;
+  @apply text-amber-400 sm:leading-[0.7] sm:text-6xl text-5xl float-left font-semibold bg-amber-950 -mb-2 leading-[0.7] pt-[13px] pr-2 pl-2 mr-2 pb-1;
 }
 @-moz-document url-prefix() {
   .prose > p:first-of-type:first-letter {
@@ -70,10 +71,10 @@ figure > img {
   @apply text-amber-800 underline-offset-2 underline decoration-2 decoration-amber-800/20 hover:decoration-amber-700   hover:border-b-yellow-800 transition-all print:no-underline print:font-bold print:text-black;
 }
 .prose summary {
-  @apply cursor-pointer mb-1
+  @apply cursor-pointer mb-1;
 }
 .prose blockquote:has(details) {
-  @apply pb-2
+  @apply pb-2;
 }
 
 .prose h3 {
@@ -87,7 +88,7 @@ figure > img {
   @apply list-inside list-decimal space-y-3 sm:text-lg;
 }
 .prose ul > li {
-  @apply mt-3 relative pl-7 before:absolute before:left-1 before:top-3 before:h-1.5 before:w-1.5 before:rounded-full before:bg-stone-900/20
+  @apply mt-3 relative pl-7 before:absolute before:left-1 before:top-3 before:h-1.5 before:w-1.5 before:rounded-full before:bg-stone-900/20;
 }
 
 .prose kbd {
@@ -97,21 +98,20 @@ figure > img {
   @apply w-full table-auto border-hidden rounded-lg border-collapse text-lg;
 }
 .prose thead {
-  @apply font-smallcaps rounded-t-lg
+  @apply font-smallcaps rounded-t-lg;
 }
-.prose tbody > tr > td{
-  @apply  p-2
+.prose tbody > tr > td {
+  @apply p-2;
 }
 .prose table td {
-  @apply border-[1px] border-stone-300 text-center
+  @apply border-[1px] border-stone-300 text-center;
 }
 .prose tr:first-of-type td {
-  @apply border-t-0
+  @apply border-t-0;
 }
 
-
 .p-category {
-  @apply hidden
+  @apply hidden;
 }
 
 /* Credit to Juha-Matti Santala (hamatti.org)*/
