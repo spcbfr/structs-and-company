@@ -23,13 +23,12 @@ const { Content } = await post.render();
 <BlogPost {...post.data} slug={"posts/" + post.slug}>
   {
     post.data.archived ? (
-      <Callout title="notice">
-        <p>
+      <blockquote >
+          <strong>notice:</strong>
           This post has been archived, probably because it's content isn't too
           good or because I added it to my website after it's published data for
           historic reasons but don't want it to show up on the RSS Feed
-        </p>
-      </Callout>
+      </blockquote>
     ) : null
   }
   <Content

@@ -1,6 +1,6 @@
 ---
 import { getCollection } from "astro:content";
-import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageLayout from "../../layouts/PageLayout.astro";
 import Link from "../../components/Link.astro";
 import { Image } from "astro:assets";
 import face from "../../assets/face.jpg";
@@ -45,7 +45,7 @@ resultArray.forEach((group) => {
 });
 ---
 
-<BaseLayout
+<PageLayout
   title="All Articles | S&C"
   description="All the articles I've ever wrote"
 >
@@ -106,4 +106,4 @@ resultArray.forEach((group) => {
       ))
     }
   </section>
-</BaseLayout>
+</PageLayout>

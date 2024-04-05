@@ -1,5 +1,5 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import PageLayout from "../layouts/PageLayout.astro";
 import { getCollection } from "astro:content";
 import Link from "../components/Link.astro";
 import { Image } from "astro:assets";
@@ -19,7 +19,7 @@ const randSlogan = slogans[rand]
 const news = "";
 ---
 
-<BaseLayout
+<PageLayout
   title="Structs & Company"
   description="A blog by Yusuf Bouzekri about tech, romance, movies and jokes"
 >
@@ -112,4 +112,4 @@ const news = "";
   >
     All Posts &rarr;
   </Link>
-</BaseLayout>
+</PageLayout>

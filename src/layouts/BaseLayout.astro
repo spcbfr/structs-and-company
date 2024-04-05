@@ -1,22 +1,17 @@
 ---
 import BaseHead from "../components/BaseHead.astro";
+const props = Astro.props
 
-import Footer from "../components/Footer.astro";
 interface Props {
-  title: string;
-  description: string;
-  ogImage?: string;
+  title: string,
+  description: string
 }
-const props = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark">
   <BaseHead {...props} />
-  <body class="flex flex-col items-center justify-center bg-[#faf9f5]">
-    <main class="2xl:w-1/3 flex-grow lg:w-1/2 md:w-3/4 w-5/6 font-serif">
-      <slot />
-      <Footer />
-    </main>
+  <body class="flex flex-col items-center justify-center dark:bg-[#1B180E] bg-[#faf9f5]">
+    <slot />
   </body>
 </html>
