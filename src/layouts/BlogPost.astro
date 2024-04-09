@@ -15,102 +15,64 @@ if (typeof pubDate == "string") {
 
 <BaseLayout title={title} description={description}>
   <Jsonld title={title} description={description} pubDate={pubDate} />
-    <main
-      class="2xl:w-1/3 h-entry flex-grow lg:w-1/2 md:w-3/4 w-5/6 font-serif"
-    >
-      <Nav />
-      <div class="flex mt-8 justify-between items-center ">
-        <div class="h-card items-center gap-3 flex u-auther">
-          <img
-            src="/yusuf.jpg"
-            alt={"A white young man wearing a coat, outside a home, early morning, misty weather"}
-            width="64"
-            class="u-photo hidden"
-          />
-          <Link
-            rel="author"
-            styles="p-author p-name u-url text-lg sm:block hidden font-semibold"
-            href="/">Yusuf Bouzekri</Link
-          >
-        </div>
-
-        <a class="u-url hidden" href={Astro.site + slug}></a>
-        <time
-          datetime={pubDate.toISOString()}
-          class="sm:text-lg font-semibold dt-published"
+  <main class="2xl:w-1/3 h-entry flex-grow lg:w-1/2 md:w-3/4 w-5/6 font-serif">
+    <Nav />
+    <div class="flex mt-8 justify-between items-center">
+      <div class="h-card items-center gap-3 flex u-auther">
+        <img
+          src="/yusuf.jpg"
+          alt={"A white young man wearing a coat, outside a home, early morning, misty weather"}
+          width="64"
+          class="u-photo hidden"
+        />
+        <Link
+          rel="author"
+          styles="p-author p-name u-url text-lg sm:block hidden font-semibold"
+          href="/">Yusuf Bouzekri</Link
         >
-          {
-            pubDate.toLocaleDateString("en-US", {
-              weekday: "long",
-              month: "short",
-              day: "numeric",
-              year: "numeric",
-            })
-          }
-        </time>
       </div>
-      <h1
-        class="text-3xl text-balance sm:text-5xl mb-5 mt-3 font-display p-name"
+
+      <a class="u-url hidden" href={Astro.site + slug}></a>
+      <time
+        datetime={pubDate.toISOString()}
+        class="sm:text-lg font-semibold dt-published"
       >
-        {title}
-      </h1>
-
-      <article id="prose" class="prose space-y-5 e-content">
-        <slot />
-        <a href="https://brid.gy/publish/mastodon"></a>
-      </article>
-      <section class="flex sm:mx-0 mx-auto gap-3 mt-4 print:hidden">
-        <a
-          href={"https://news.ycombinator.com/submitlink?t=" +
-            encodeURIComponent(title) +
-            "&u=" +
-            encodeURIComponent(Astro.site + slug)}
-          class="text-white sm:text-lg font-semibold bg-black p-2 pb-1 block w-fit mt-3"
-          >Share on Hackernews</a
-        >
-
-        <a
-          href="https://ko-fi.com/spacebuffer"
-          class="bg-amber-700 sm:text-lg font-semibold text-white p-2 pb-1 block w-fit mt-3"
-          >Donate on Ko-fi</a
-        >
-      </section>
-
-      <Webmentions urlSlug={slug} client:load />
-      <Footer />
-    </main>
-    <script>
-      var div = document.getElementById("prose");
-      if (div) {
-        var firstParagraph = div.firstElementChild;
-        if (firstParagraph) {
-          // Find the first direct paragraph inside myDiv
-          while (
-            firstParagraph &&
-            firstParagraph.tagName.toLowerCase() !== "p"
-          ) {
-            firstParagraph = firstParagraph.nextElementSibling;
-          }
-          if (firstParagraph) {
-            var text = firstParagraph.textContent?.trim() || "";
-            var firstChar = text[0];
-            var words = text.split(" ");
-            var firstWord = words[0].substring(1); // Exclude the first character of the first word
-            var firstThreeWords = firstWord + " " + words.slice(1, 5).join(" "); // Select the first three words
-
-            var restOfText = words.slice(5).join(" ");
-
-            // Create a span element
-            var span = document.createElement("span");
-            span.textContent = firstThreeWords;
-            span.classList.add("font-smallcaps", "text-xl", "font-medium");
-
-            // Replace the original text with modified version
-            firstParagraph.innerHTML = firstChar;
-            firstParagraph.appendChild(span);
-            firstParagraph.innerHTML += " " + restOfText;
-          }
+        {
+          pubDate.toLocaleDateString("en-US", {
+            weekday: "long",
+            month: "short",
+            day: "numeric",
+            year: "numeric",
+          })
         }
-      }
-    </script>
+      </time>
+    </div>
+    <h1 class="text-3xl text-balance sm:text-5xl mb-5 mt-3 font-display p-name">
+      {title}
+    </h1>
+
+    <article id="prose" class="prose space-y-5 e-content">
+      <slot />
+      <a href="https://brid.gy/publish/mastodon"></a>
+    </article>
+    <section class="flex sm:mx-0 mx-auto gap-3 mt-4 print:hidden">
+      <a
+        href={"https://news.ycombinator.com/submitlink?t=" +
+          encodeURIComponent(title) +
+          "&u=" +
+          encodeURIComponent(Astro.site + slug)}
+        class="text-white sm:text-lg font-semibold bg-black p-2 pb-1 block w-fit mt-3"
+        >Share on Hackernews</a
+      >
+
+      <a
+        href="https://ko-fi.com/spacebuffer"
+        class="bg-amber-700 sm:text-lg font-semibold text-white p-2 pb-1 block w-fit mt-3"
+        >Donate on Ko-fi</a
+      >
+    </section>
+
+    <Webmentions urlSlug={slug} client:load />
+    <Footer />
+  </main>
 </BaseLayout>
