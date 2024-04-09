@@ -85,6 +85,24 @@ figure>img {
   @apply cursor-pointer mb-1;
 }
 
+pre[line-numbers] {
+  counter-reset: numbers;
+  .line::before  {
+    counter-increment: numbers;
+    content: counter(numbers);
+    text-align: right;
+  }
+}
+
+.line:last-child::before {
+  @apply !content-none 
+}
+
+pre[line-numbers]  .line::before  {
+  @apply text-stone-800/50 pe-3
+}
+
+
 .prose blockquote:has(details) {
   @apply pb-2;
 }

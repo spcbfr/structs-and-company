@@ -10,7 +10,9 @@ import svelte from "@astrojs/svelte";
 // https://astro.build/config
 export default defineConfig({
   site: "https://yusuf.fyi",
-  integrations: [mdx(), sitemap(), tailwind(), svelte()],
+  integrations: [mdx(), sitemap(), tailwind({
+    nesting: true
+  }), svelte()],
   experimental: {
     contentCollectionCache: true,
   },
@@ -40,7 +42,22 @@ export default defineConfig({
           const title = titleMatch?.[1] ?? null;
           node.properties['data-title'] = title;
         }
-      }]
+      },
+
+      {
+        pre(node) {
+          if (!this.options.meta) {
+            return;
+          }
+          if (!this.options.meta.__raw) {
+            return;
+          }
+          const meta = this.options.meta.__raw;
+          const lineNumbers = meta.includes('line-numbers')
+          if (lineNumbers) node.properties['line-numbers'] = '';
+        }
+      }
+      ]
     }
   },
   output: "server",
