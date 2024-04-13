@@ -12,9 +12,13 @@ const posts = (await getCollection("blog")).sort(
 const recent = posts.slice(0, 3);
 const starred = posts.filter((post) => post.data.starred);
 // Pick one of these slogans
-const slogans = ["A hacker's best friend", "Attorneys at Law", "Timey wimey stuff"]
+const slogans = [
+  "A hacker's best friend",
+  "Attorneys at Law",
+  "Timey wimey stuff",
+];
 const rand = Math.floor(Math.random() * slogans.length);
-const randSlogan = slogans[rand]
+const randSlogan = slogans[rand];
 // Unless this Breaking News is set
 const news = "";
 ---
@@ -34,7 +38,7 @@ const news = "";
     <h1 class="sm:text-5xl text-4xl text-center font-display">
       Structs & Company
     </h1>
-    <p class="font-smallcaps text-xl text-center">{ news || randSlogan }</p>
+    <p class="font-smallcaps text-xl text-center">{news || randSlogan}</p>
     <article class="font-serif mt-5 p-note sm:text-xl text-lg">
       <p>
         Hello, I Hope you're doing well today. My name is <Link
@@ -59,7 +63,7 @@ const news = "";
     </article>
   </header>
   <article class="font-serif text-xl mt-5">
-    <h2 class="text-2xl font-bold mt-3 mb-2 text-amber-700 font-smallcaps">
+    <h2 class="text-2xl font-semibold mt-3 mb-2 text-amber-700 font-smallcaps">
       Latest posts
     </h2>
     <ul class="list-disc space-y-3 list-inside">
@@ -82,7 +86,7 @@ const news = "";
     </ul>
   </article>
   <article class="mt-5 font-serif text-xl">
-    <h2 class="text-2xl font-bold mt-3 mb-2 text-amber-700 font-smallcaps">
+    <h2 class="text-2xl font-semibold mt-3 mb-2 text-amber-700 font-smallcaps">
       ★ La crème de la crème
     </h2>
     <ul class="list-disc space-y-3 list-inside">
