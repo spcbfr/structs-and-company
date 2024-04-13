@@ -1,0 +1,175 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Yusuf Bouzekri's Resume"
+  description="My resume in HTML form"
+>
+  <main class="font-serif max-w-2xl mt-6 text-lg">
+    <!-- <a -->
+    <!--   href="/" -->
+    <!--   class="block text-amber-800 underline underline-offset-2 decoration-2 font-bold print:hidden" -->
+    <!--   >Back to main site</a -->
+    <!-- > -->
+    <div class="flex gap-3 items-center">
+      <!-- <img
+        src="https://avatars.githubusercontent.com/u/77839865?v=4"
+        class="w-16"
+        alt="Yusuf's Image"
+      /> -->
+      <div class="flex flex-col justify-between">
+        <h1 class="text-4xl font-extrabold">Yusuf Bouzekri</h1>
+        <section class="flex font-mono text-sm gap-2">
+          <p class="select-all">yusufbouzekri@gmail.com</p>
+          <span>•</span>
+          <p class="select-all">+216 53 484 441</p>
+          <!-- <span>•</span>
+          <a
+            href="/portfolio"
+            class="text-amber-800 font-bold underline-offset-2 underline decoration-2"
+            >Portfolio</a
+          > -->
+          <span>•</span>
+          <span class="text-sm font-mono">Ben Arous, Tunisia</span>
+          <span>•</span>
+          <a
+            href="https://linkedin.com/in/yusuf-bouzekri"
+            class="text-amber-800 font-bold underline-offset-2 underline"
+            >Linkedin</a
+          >
+        </section>
+      </div>
+    </div>
+    <section class="mt-3">
+      <h2
+        class="font-smallcaps text-xl font-bold border-b border-stone-300 mb-3"
+        >Work Experience</h2
+      >
+      <div class="space-y-3">
+        <article>
+          <div class="justify-between flex items-baseline">
+            <h3 class="font-semibold text-xl">Highscale</h3>
+            <p>June – August 2023</p>
+          </div>
+          <div class="italic justify-between flex items-baseline">
+            <p>Software Engineer</p>
+            <p>Internship • Tunis</p>
+          </div>
+          <ul class="list-disc list-inside">
+            <li
+              >Implemented the backend for highscale's SMS and Email marketing
+              services.</li
+            >
+            <li
+              >Tested multiple SMS & email providers to find the provider with
+              the best developer experience for the lowest price.
+            </li>
+            <li
+              >Wrote the first version of <em>superagents</em>, an all-in-one
+              project management web app. written in Flask (backend) and Next.JS
+              (frontend).
+            </li>
+          </ul>
+        </article>
+        <article>
+          <div class="justify-between flex items-baseline">
+            <h3 class="font-semibold text-xl">IPST Ben Arous</h3>
+            <p>October – November 2020</p>
+          </div>
+          <div class="italic justify-between flex items-baseline">
+            <p>Wordpress Developer</p>
+            <p>Contract • Rades</p>
+          </div>
+          <ul class="list-disc list-inside">
+            <li
+              >Collaborated with the Ben Arous branch of the IPST to design and
+              develop their brand new website experience. See
+              <a
+                href="http://71440788.com/"
+                class="text-amber-800 underline underline-offset-2 decoration-2 font-semibold"
+                target="_blank">the site in action</a
+              > (content is in arabic).
+            </li>
+
+            <li
+              >Listened to feedback from students of the IPST to improved the
+              site's user experience and accessiblity.
+            </li>
+            <li
+              >the IPST specializes in upskilling working professionals for new
+              career opportunities through targeted technical training.
+            </li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="mt-3">
+      <h2
+        class="font-smallcaps text-xl font-bold border-b border-stone-300 mb-3"
+        >Certifications & Skills</h2
+      >
+      <div class="space-y-3">
+        <article>
+          <ul class="list-disc list-inside">
+            <li
+              ><strong>Languages & Tools</strong>: React, Laravel, Go, Python,
+              Git, Linux
+            </li>
+            <li
+              ><strong>Skills</strong>: Frontend & Backend development,
+              Technical writing, Communication.
+            </li>
+            <li
+              ><strong>Certifications</strong>: Just Javascript, MySQL for
+              Developers, Computer Forensics by RITx, JavaScript Algorithms and
+              Data Structures, Certified in Cybersecurity by ISC2, Cybersecurity
+              Fundamentals by RITx.
+            </li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="mt-3">
+      <h2
+        class="font-smallcaps text-xl font-bold border-b border-stone-300 mb-3"
+        >Education</h2
+      >
+      <div class="space-y-3">
+        <article>
+          <ul class="list-disc list-inside">
+            <div class="justify-between flex items-baseline">
+              <h3 class="font-semibold text-xl">Ben Arous High School</h3>
+              <p>2021 – 2025</p>
+            </div>
+            <div class="italic justify-between flex items-baseline">
+              <p>Computer Science Major</p>
+              <p>Ben Arous</p>
+            </div>
+            <p>
+              <ul class="list-disc list-inside">
+                <li
+                  >Joined various clubs, most notably spanish and computer
+                  science.
+                </li>
+                <li>Won a local web developement hackathon.</li>
+              </ul>
+            </p>
+          </ul>
+        </article>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+<style>
+  @media print {
+    a::after {
+      content: "" !important;
+    }
+  }
+  p {
+    font-feature-settings: "ss11" 1;
+  }
+</style>
