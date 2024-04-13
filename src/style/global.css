@@ -51,7 +51,7 @@ code.astro-code {
 }
 
 .highlighted-word {
-  @apply bg-orange-100 [&>span]:!text-orange-900 border-b-2 border-b-orange-600 font-semibold px-1 py-px rounded-md;
+  @apply bg-orange-100 [&>span]:!text-orange-900 !text-orange-900 border-b-2 border-b-orange-600 font-semibold px-1 py-px rounded-md;
 }
 
 .prose p {
@@ -72,6 +72,17 @@ figure>img {
 
 .prose h3 {
   @apply font-bold text-xl font-smallcaps;
+}
+.quote {
+  @apply font-bold !bg-transparent border-none text-center text-3xl
+}
+.quote::before {
+  content: "“";
+  font-size: 2.5rem;
+}
+.quote::after {
+  font-size: 2.5rem;
+  content: "”"
 }
 
 .prose>p:first-of-type:first-letter {
@@ -127,6 +138,9 @@ pre[line-numbers]  .line::before  {
 
 .prose ol {
   @apply list-inside list-decimal space-y-3 sm:text-lg;
+}
+.prose ol>li::marker {
+  @apply  font-mono
 }
 
 .prose ul>li {
