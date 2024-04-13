@@ -6,6 +6,9 @@ body {
 pre.astro-code {
   @apply py-3 -mx-4 rounded-xl /* !bg-[#fbfbf9] */ border-amber-800/10 border-2 sm:-mx-9 !mb-3 sm:text-base text-sm;
 }
+.leadin {
+  @apply font-smallcaps font-semibold
+}
 
 .font-smallcaps {
   @apply tracking-wide
@@ -64,7 +67,7 @@ figure>img {
 }
 
 .prose>p:first-of-type:first-letter {
-  @apply text-amber-400 sm:leading-[0.7] sm:text-6xl text-5xl float-left font-semibold bg-amber-950 -mb-2 leading-[0.7] pt-[13px] pr-2 pl-2 mr-2 pb-1;
+  @apply font-serif text-amber-400 sm:leading-[0.7] sm:text-6xl text-5xl float-left font-semibold bg-amber-950 -mb-2 leading-[0.7] pt-[13px] pr-2 pl-2 mr-2 pb-1;
 }
 
 @-moz-document url-prefix() {

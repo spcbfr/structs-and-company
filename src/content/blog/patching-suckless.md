@@ -5,7 +5,7 @@ pubDate: "Mar 28 2021"
 archived: true
 ---
 
-Suckless is a group of developers who make programs that stick to the unix philosophy of **doing one thing and doing it well**. they have developed programs like dwm, dmenu and st, which are all minimal by design.
+<span class="leadin">Suckless is a group of developers</span> who make programs that stick to the unix philosophy of _"doing one thing and doing it well"_. they have developed programs like dwm, dmenu and st, which are all minimal by design.
 
 The main feature of suckless programs is the way they are configured. instead of having to edit a config file that has a weird syntax. you go and edit the source code of the actual program itself. that means that every different configuration of suckless programs is almost like a fork of the original project.
 

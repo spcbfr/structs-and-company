@@ -1,6 +1,4 @@
 ---
-import "@fontsource-variable/vollkorn/wght-italic.css";
-import "@fontsource-variable/vollkorn/";
 import "@fontsource/vollkorn-sc";
 import "@fontsource/rakkas";
 import "@fontsource/roboto-mono";
@@ -26,6 +24,13 @@ const { title, description, image } = Astro.props;
 <link rel="me" href="https://github.com/spcbfr" />
 <link rel="authorization_endpoint" href="https://indieauth.com/auth" />
 <link rel="webmention" href="https://webmention.io/yusuf.fyi/webmention" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+	href="https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@0,400..900;1,400..900&display=swap"
+	rel="stylesheet"
+/>
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />

@@ -5,7 +5,7 @@ description: Perfectionism is often seen as a good thing, and people should try 
 starred: true
 ---
 
-Perfectionism is often seen as a good thing, and people should try and reach it whenever they can, but that may not always be true, being a perfectionist can stop you from finishing what you started or even not starting at all...
+<span class="leadin">Perfectionism is often seen as a good thing,</span> and people should try and reach it whenever they can, but that may not always be true, being a perfectionist can stop you from finishing what you started or even not starting at all...
 # Quantity over Quality
 
 You should aspire to make and publish so much, because only a subset of the things you publish is going to be popular and you don’t know which “thing” will be a hit because it depends on many factors that you aren’t in control of. Let’s look at some examples:

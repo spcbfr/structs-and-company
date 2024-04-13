@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        serif: "vollkorn variable",
+        serif: "vollkorn",
         smallcaps: "vollkorn SC",
         display: "Rakkas",
         mono: "Roboto Mono",

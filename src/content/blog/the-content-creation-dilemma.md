@@ -4,7 +4,7 @@ pubDate: "oct 09 2022"
 description: Every blogger needs to have a goal and an audience they are writting for in order to successed, today I shared my struggles in trying to figure out my goal and how it ended up being harder that expected
 ---
 
-So I just finished redesigning my blog, for the 4th and hopefully the last time in a while, it looks amazing and minimal and has all the bells and whistles I've wanted, but I've just now realized that I am missing the most important thing: **the content**. I still haven't figured out what I want to write about, now being the person who I am, I have a ton of hobbies:
+<span class="leadin">So I just finished redesigning my blog,</span> for the 4th and hopefully the last time in a while, it looks amazing and minimal and has all the bells and whistles I've wanted, but I've just now realized that I am missing the most important thing: **the content**. I still haven't figured out what I want to write about, now being the person who I am, I have a ton of hobbies:
 
 - Programming, specifically Web Development. that's why I chose to become a Computer Science Major, even though most people I've spoken to told me not to
 - Tech in general, let that be hardware or software
