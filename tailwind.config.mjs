@@ -6,7 +6,6 @@ export default {
       fontFamily: {
         serif: "vollkorn",
         smallcaps: "vollkorn SC",
-        display: "Rakkas",
         mono: "Roboto Mono",
       },
     },
