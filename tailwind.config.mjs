@@ -4,9 +4,10 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        serif: "vollkorn",
-        smallcaps: "vollkorn SC",
+        serif: "Vollkorn",
+        smallcaps: "Vollkorn SC",
         mono: "Roboto Mono",
+        display: "Cooper"
       },
     },
   },

@@ -1,3 +1,46 @@
+@font-face {
+  font-family: 'Cooper';
+  src: url('/fonts/Cooper-Black.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cooper';
+  src: url('/fonts/Cooper-BlackItalic.woff2') format('woff2');
+  font-weight: 900;
+  font-style: italic;
+}
+
+
+@font-face {
+  font-family: 'Cooper';
+  src: url('/fonts/Cooper-ExtraBold.woff2') format('woff2');
+  font-weight: 800; /* Extra Bold weight */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cooper';
+  src: url('/fonts/Cooper-ExtraBoldItalic.woff2') format('woff2');
+  font-weight: 800; /* Extra Bold weight */
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Cooper';
+  src: url('/fonts/Cooper-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cooper';
+  src: url('/fonts/Cooper-BoldItalic.woff2') format('woff2');
+  font-weight: 700;
+  font-style: italic;
+}
+
 html,
 body {
   min-height: 100%;
@@ -11,7 +54,8 @@ pre.astro-code {
 }
 
 .font-smallcaps {
-  @apply tracking-wide
+  letter-spacing: 0.025em;
+  font-feature-settings: "smcp";
 }
 
 pre.astro-code>code {
@@ -23,7 +67,7 @@ pre>code>.line {
 }
 
 pre>.code-title {
-  @apply block bg-stone-200 text-stone-950 font-bold py-px px-2 font-smallcaps mb-3;
+  @apply block bg-stone-200 font-bold py-px px-2 font-smallcaps mb-3;
 }
 
 pre:has(.code-title) {
@@ -63,30 +107,33 @@ figure>img {
 }
 
 .prose h1 {
-  @apply text-2xl font-bold;
+  @apply text-2xl font-display font-bold;
 }
 
 .prose h2 {
-  @apply font-bold text-xl font-smallcaps;
+  @apply font-bold text-2xl font-display;
 }
 
 .prose h3 {
   @apply font-bold text-xl font-smallcaps;
 }
 .quote {
-  @apply font-bold !bg-transparent border-none text-center text-3xl
+  @apply font-extrabold font-display !bg-transparent border-none text-center text-3xl
 }
 .quote::before {
   content: "“";
+  margin-right: 0.3rem;
+  font-weight: 700;
   font-size: 2.5rem;
 }
 .quote::after {
   font-size: 2.5rem;
+  font-weight: 700;
   content: "”"
 }
 
 .prose>p:first-of-type:first-letter {
-  @apply font-serif  sm:leading-[0.7] sm:text-7xl text-5xl float-left font-semibold -mb-3 leading-[0.7] pt-[13px] mr-1;
+  @apply font-serif sm:leading-[0.7] sm:text-7xl text-6xl  float-left font-semibold -mb-3 leading-[0.7] pt-[13px] mr-1;
 }
 
 
