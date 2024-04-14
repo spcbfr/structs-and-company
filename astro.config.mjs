@@ -20,7 +20,11 @@ export default defineConfig({
     shikiConfig: {
       // Choose from Shiki's built-in themes (or add your own)
       // https://shiki.style/themes
-      theme: "vitesse-light",
+      themes: {
+        dark: "github-dark",
+        light: "vitesse-light"
+      },
+      defaultColor: 'light',
       // Add custom languages
       // Note: Shiki has countless langs built-in, including .astro!
       // https://shiki.style/languages

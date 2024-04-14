@@ -1,3 +1,16 @@
+@media (prefers-color-scheme: dark) {
+  pre.astro-code,
+  pre.astro-code span, 
+  code.astro-code span {
+    color: var(--shiki-dark) !important;
+    background-color: var(--shiki-dark-bg) !important;
+    /* Optional, if you also want font styles */
+    font-style: var(--shiki-dark-font-style) !important;
+    font-weight: var(--shiki-dark-font-weight) !important;
+    text-decoration: var(--shiki-dark-text-decoration) !important;
+  }
+}
+
 html,
 body {
   min-height: 100%;
@@ -31,7 +44,7 @@ pre:has(.code-title) {
 }
 
 code.astro-code {
-  @apply text-sm px-1 rounded-md py-[2px] !bg-[#f2f1e9];
+  @apply dark:!bg-sage-900 text-sm px-1 rounded-md py-[2px] !bg-[#f2f1e9];
 }
 
 .highlighted {
@@ -55,7 +68,7 @@ code.astro-code {
 }
 
 .prose p {
-  @apply relative font-serif sm:text-lg text-base leading-relaxed text-stone-900;
+  @apply dark:text-sage-100 relative font-serif sm:text-lg text-base leading-relaxed text-stone-900;
 }
 
 figure>img {
@@ -98,11 +111,11 @@ figure>img {
 
 
 .prose blockquote {
-  @apply border-l-amber-800 border-l-4 px-2 py-3 bg-amber-400/10;
+  @apply dark:bg-amber-800/20 dark:border-l-amber-500 border-l-amber-800 border-l-4 px-2 py-3 bg-amber-400/10;
 }
 
 .prose a {
-  @apply text-amber-900 underline-offset-2 underline decoration-2 decoration-amber-800/60 hover:decoration-transparent box-decoration-clone transition-all print:no-underline print:font-bold print:text-black font-medium hover:bg-amber-800/10 rounded-md px-px -mx-px;
+  @apply text-amber-900 dark:text-amber-400 dark:decoration-amber-500/70 dark:hover:bg-amber-500/20 underline-offset-2 underline decoration-2 decoration-amber-800/60 hover:decoration-transparent box-decoration-clone transition-all print:no-underline print:font-bold print:text-black font-medium hover:bg-amber-800/10 rounded-md px-px -mx-px;
 }
 
 .prose summary {

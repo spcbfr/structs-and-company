@@ -113,13 +113,14 @@
 
 <div class="print:hidden">
   <section
-    class="space-y-1 bg-[#F1EFE4] py-2 px-3 sm:static sm:mx-0 sm:w-full relative w-screen left-1/2 right-1/2 ml-[-50vw] mr-[-50vw] rounded-sm mt-5"
+    class="space-y-1 bg-sage-100 dark:bg-sage-900 py-2 px-3 sm:static sm:mx-0 sm:w-full relative w-screen left-1/2 right-1/2 ml-[-50vw] mr-[-50vw] rounded-sm mt-5"
   >
     <form class="mb-3 space-y-1" on:submit={handleSubmit}>
       <label for="reply" class="font-semibold"
         >Have you written a <a
           href="https://indieweb.org/reply"
-          class="text-amber-700 underline underline-offset-2">reply</a
+          class="text-amber-700 dark:text-amber-500 underline underline-offset-2"
+          >reply</a
         > to this post? Let me know the URL</label
       >
       <div class="flex gap-2">

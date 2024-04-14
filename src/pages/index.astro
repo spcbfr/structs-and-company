@@ -32,13 +32,15 @@ const news = "";
     <Image
       src={face}
       height={160}
-      class="mb-3 mx-auto u-photo"
+      class="mb-3 mx-auto u-photo dark:sepia"
       alt="A somewhat surprised white man, Black and White Picture, light face on dark background with a broken glass effect"
     />
-    <h1 class="sm:text-5xl text-4xl text-center font-black">
+    <h1 class="sm:text-5xl text-4xl text-center dark:text-sage-100 font-black">
       Structs & Company
     </h1>
-    <p class="font-smallcaps text-xl text-center">{news || randSlogan}</p>
+    <p class="font-smallcaps text-xl text-center dark:text-sage-100"
+      >{news || randSlogan}</p
+    >
     <article class="font-serif mt-5 p-note sm:text-xl text-lg">
       <p>
         Hello, I Hope you're doing well today. My name is <Link
@@ -63,7 +65,9 @@ const news = "";
     </article>
   </header>
   <article class="font-serif text-xl mt-5">
-    <h2 class="text-2xl font-semibold mt-3 mb-2 text-amber-700 font-smallcaps">
+    <h2
+      class="text-2xl font-semibold mt-3 mb-2 text-amber-700 dark:text-amber-500 font-smallcaps"
+    >
       Latest posts
     </h2>
     <ul class="list-disc space-y-3 list-inside">
@@ -86,7 +90,9 @@ const news = "";
     </ul>
   </article>
   <article class="mt-5 font-serif text-xl">
-    <h2 class="text-2xl font-semibold mt-3 mb-2 text-amber-700 font-smallcaps">
+    <h2
+      class="text-2xl font-semibold mt-3 mb-2 text-amber-700 dark:text-amber-500 font-smallcaps"
+    >
       ★ La crème de la crème
     </h2>
     <ul class="list-disc space-y-3 list-inside">
