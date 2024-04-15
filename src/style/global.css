@@ -131,7 +131,10 @@ body {
 }
 
 pre.astro-code {
-  @apply py-3 -mx-4 rounded-xl /* !bg-[#fbfbf9] */ border-amber-800/10 border-2 sm:-mx-9 !mb-3 sm:text-base text-sm;
+  @apply py-3 -mx-4 rounded-xl /* !bg-[#fbfbf9] */ border-amber-800/10 border-2 sm:-mx-9 mb-5 sm:text-base text-sm;
+}
+.reset {
+  all: revert-layer !important;
 }
 .leadin {
   /* @apply font-smallcaps */
@@ -180,6 +183,7 @@ code.astro-code {
 .prose abbr {
   @apply underline-offset-2;
 }
+
 
 .highlighted-word {
   @apply bg-orange-100 [&>span]:!text-orange-900 !text-orange-900 border-b-2 border-b-orange-600 font-semibold px-1 py-px rounded-md;
@@ -232,7 +236,7 @@ figure>img {
 
 
 .prose blockquote {
-  @apply border-l-amber-800 border-l-4 px-2 py-3 bg-amber-400/10;
+  @apply border-l-amber-800 border-l-4 mb-5 px-2 py-3 bg-amber-400/10;
 }
 
 .prose a {
@@ -260,11 +264,9 @@ pre[line-numbers]  .line::before  {
   @apply text-stone-800/50 pe-3
 }
 
-
 .prose blockquote:has(details) {
   @apply pb-2;
 }
-
 
 .prose ul {
   @apply space-y-3 sm:text-lg;
@@ -275,6 +277,13 @@ pre[line-numbers]  .line::before  {
 }
 .prose ol>li::marker {
   @apply  font-mono
+}
+.prose > p, .prose ul, .prose hr {
+  @apply mb-4
+}
+.prose h1, .prose h2, .prose h3, .prose h4 {
+  @apply mt-3 mb-2
+
 }
 
 .prose ul>li {

@@ -52,11 +52,11 @@ if (typeof pubDate == "string") {
       >{title}</h1
     >
 
-    <article id="prose" class="prose space-y-5 e-content">
+    <article id="prose" class="prose e-content">
       <slot />
       <a href="https://brid.gy/publish/mastodon"></a>
     </article>
-    <section class="flex sm:mx-0 mx-auto gap-3 mt-4 print:hidden">
+    <section class="flex sm:mx-0 mx-auto gap-3 print:hidden">
       <a
         href={"https://news.ycombinator.com/submitlink?t=" +
           encodeURIComponent(title) +
