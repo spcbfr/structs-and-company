@@ -10,7 +10,7 @@ starred: true
 
 You should aspire to make and publish so much, because only a subset of the things you publish is going to be popular and you don’t know which “thing” will be a hit because it depends on many factors that you aren’t in control of. Let’s look at some examples:
 
-- A photography professor ran a month-long experiment in which he divided his students in 2 groups, the first had to take 1 photo throughout the whole month on which they will be graded, and the second had to take as they can and they were graded on the number of ones they took, surprisingly the group that had more time to polish up that single photo, on average, **did worse** than the one that took more photos in a short period.
+- A photography professor ran a month-long experiment in which he divided his students in 2 groups, the first had to take 1 photo throughout the whole month on which they will be graded, and the second had to take as they can and they were graded on the number of ones they took, surprisingly the group that had more time to polish up that single photo, on average, did _worse_ than the one that took more photos in a short period.
 - Irving Berlin wrote 1500 songs, out of which, only 25 hit #1, this perfectly illustrates that no one can know what things will become popular, if Irving had only published the songs that _he_ thought were good, then he probably would have never gotten a single hit.
 - Ali Abdaal said in many of his [videos](https://twitter.com/aliabdaal/status/1362144792197611523) that the first 100 videos of any Youtuber are going to be crap, so Youtubers who are just starting out should focus on getting those first videos out of the way and not care much about their quality.
 
@@ -35,7 +35,7 @@ Successful people publish so much because they are working to publish not workin
 In certain cases, polishing up can make things look worse, that’s because humans, by nature, love when something is raw = can have mistakes = is relatable.
 
 - Pomplamoose, a band that’s very close to my heart has used a take where the singer forgot the lyrics and started laughing, most people loved this and thought it made the song so much better
-- The National Arab Orchestra ran a program called [Building Bridges Through Music](https://www.youtube.com/playlist?list=PLWygykGd2MWhVO-JFk1hgclyMoCv34ktr) where they would go to schools in the USA and teach them Arabic music to get a chance to sing in an orchestra, even though their Arabic accent was far from perfect, it made the experience much better by allowing me, an Arabic speaker who grew up listening to these songs, rediscover them in a new way.
+- The National Arab Orchestra ran a program called _[Building Bridges Through Music](https://www.youtube.com/playlist?list=PLWygykGd2MWhVO-JFk1hgclyMoCv34ktr)_ where they would go to schools in the USA and teach them Arabic music to get a chance to sing in an orchestra, even though their Arabic accent was far from perfect, it made the experience much better by allowing me, an Arabic speaker who grew up listening to these songs, rediscover them in a new way.
 
 ---
 

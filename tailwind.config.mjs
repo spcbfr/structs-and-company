@@ -5,7 +5,6 @@ export default {
     extend: {
       fontFamily: {
         serif: "Vollkorn",
-        smallcaps: "Vollkorn SC",
         mono: "Roboto Mono",
         display: "Cooper"
       },

@@ -19,24 +19,26 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         alt="Yusuf's Image"
       /> -->
       <div class="flex flex-col justify-between">
-        <h1 class="text-4xl font-display font-black">Yusuf Bouzekri</h1>
-        <section class="flex font-mono text-sm gap-2">
-          <p class="select-all">yusufbouzekri@gmail.com</p>
-          <span>•</span>
-          <p class="select-all">+216 53 484 441</p>
-          <!-- <span>•</span>
+        <h1 class="text-4xl font-display font-extrabold">Yusuf Bouzekri</h1>
+        <section>
+          <div class="flex gap-2">
+            <p class="select-all">yusufbouzekri@gmail.com</p>
+            <span>•</span>
+            <p class="select-all">+216 53 484 441</p>
+            <span>•</span>
+            <span>Ben Arous, Tunisia</span>
+            <span>•</span>
+            <a
+              href="https://linkedin.com/in/yusuf-bouzekri"
+              class="text-amber-800 underline-offset-2 underline">Linkedin</a
+            >
+            <!-- <span>•</span>
           <a
             href="/portfolio"
             class="text-amber-800 font-bold underline-offset-2 underline decoration-2"
             >Portfolio</a
           > -->
-          <span>•</span>
-          <span class="text-sm">Ben Arous, Tunisia</span>
-          <span>•</span>
-          <a
-            href="https://linkedin.com/in/yusuf-bouzekri"
-            class="text-amber-800 underline-offset-2 underline">Linkedin</a
-          >
+          </div>
         </section>
       </div>
     </div>
@@ -167,8 +169,5 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     a::after {
       content: "" !important;
     }
-  }
-  p {
-    font-feature-settings: "ss11" 1;
   }
 </style>

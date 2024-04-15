@@ -41,6 +41,90 @@
   font-style: italic;
 }
 
+@font-face {
+  font-family: 'Vollkorn';
+  src: url('/fonts/Vollkorn-Regular.woff2') format('woff2');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Vollkorn';
+  src: url('/fonts/Vollkorn-Italic.woff2') format('woff2');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Vollkorn';
+  src: url('/fonts/Vollkorn-Medium.woff2') format('woff2');
+  font-weight: 500; /* Medium weight */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Vollkorn';
+  src: url('/fonts/Vollkorn-MediumItalic.woff2') format('woff2');
+  font-weight: 500; /* Medium weight */
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Vollkorn';
+  src: url('/fonts/Vollkorn-SemiBold.woff2') format('woff2');
+  font-weight: 600; /* Semi-bold weight */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Vollkorn';
+  src: url('/fonts/Vollkorn-SemiBoldItalic.woff2') format('woff2');
+  font-weight: 600; /* Semi-bold weight */
+  font-style: italic;
+}
+
+
+@font-face {
+  font-family: 'Vollkorn';
+  src: url('/fonts/Vollkorn-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Vollkorn';
+  src: url('/fonts/Vollkorn-BoldItalic.woff2') format('woff2');
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Vollkorn';
+  src: url('/fonts/Vollkorn-ExtraBold.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Vollkorn';
+  src: url('/fonts/Vollkorn-ExtraBoldItalic.woff2') format('woff2');
+  font-weight: 800;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Vollkorn';
+  src: url('/fonts/Vollkorn-Black.woff2') format('woff2');
+  font-weight: 900; /* Black weight */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Vollkorn';
+  src: url('/fonts/Vollkorn-BlackItalic.woff2') format('woff2');
+  font-weight: 900;
+  font-style: italic;
+}
+
+
 html,
 body {
   min-height: 100%;
@@ -57,6 +141,9 @@ pre.astro-code {
   letter-spacing: 0.025em;
   font-feature-settings: "smcp";
 }
+.font-serif {
+  font-feature-settings: "lnum", "pnum";
+}
 
 pre.astro-code>code {
   @apply grid;
@@ -67,7 +154,7 @@ pre>code>.line {
 }
 
 pre>.code-title {
-  @apply block bg-stone-200 font-bold py-px px-2 font-smallcaps mb-3;
+  @apply block bg-amber-800/15 text-amber-950  px-2 font-serif font-bold;
 }
 
 pre:has(.code-title) {
