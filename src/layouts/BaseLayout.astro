@@ -1,6 +1,7 @@
 ---
 import BaseHead from "../components/BaseHead.astro";
 const props = Astro.props;
+import SpeedInsights from "@vercel/speed-insights/astro";
 
 interface Props {
   title: string;
@@ -27,5 +28,6 @@ interface Props {
         <span class="max-2xl:hidden">2XL</span>
       </div>
     -->
+    <SpeedInsights />
   </body></html
 >

@@ -23,6 +23,7 @@
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
     "@vercel/analytics": "^1.2.2",
+    "@vercel/speed-insights": "^1.0.10",
     "astro": "^4.5.5",
     "prettier": "^3.2.5",
     "prettier-plugin-astro": "^0.13.0",
