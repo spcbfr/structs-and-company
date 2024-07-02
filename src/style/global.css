@@ -175,7 +175,7 @@ pre>code>.line {
 }
 
 pre>.code-title {
-  @apply block bg-amber-800/15 text-amber-950  px-2 font-serif font-bold;
+  @apply mb-1 block bg-amber-800/15 text-amber-950  px-2 font-serif font-bold;
 }
 
 pre:has(.code-title) {
