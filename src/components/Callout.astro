@@ -1,5 +1,7 @@
 ---
 const props = Astro.props;
+
+const attributes = !props.title && { "data-hasNoTitle": "T" };
 ---
 
 <div class="-mt-5 mb-5">
@@ -11,7 +13,8 @@ const props = Astro.props;
     ) : null
   }
   <div
-    class="[&>p]:!text-lg text-lg bg-orange-50 [&>p]:font-serif border-2 border-amber-950 px-5 pt-5 pb-3 rounded-lg"
+    {...attributes}
+    class="[&>p]:!text-lg data-[hasnotitle=T]:!top-2 data-[hasnotitle=T]:relative text-lg bg-orange-50 [&>p]:font-serif border-2 border-amber-950 px-5 pt-5 pb-3 rounded-lg"
   >
     <slot />
   </div>
