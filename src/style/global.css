@@ -19,7 +19,8 @@
   font-family: 'Cooper';
   src: url('/fonts/Cooper-ExtraBold.woff2') format('woff2');
   font-display: swap;
-  font-weight: 800; /* Extra Bold weight */
+  font-weight: 800;
+  /* Extra Bold weight */
   font-style: normal;
 }
 
@@ -27,7 +28,8 @@
   font-family: 'Cooper';
   font-display: swap;
   src: url('/fonts/Cooper-ExtraBoldItalic.woff2') format('woff2');
-  font-weight: 800; /* Extra Bold weight */
+  font-weight: 800;
+  /* Extra Bold weight */
   font-style: italic;
 }
 
@@ -64,7 +66,8 @@
 @font-face {
   font-family: 'Vollkorn';
   src: url('/fonts/Vollkorn-Medium.woff2') format('woff2');
-  font-weight: 500; /* Medium weight */
+  font-weight: 500;
+  /* Medium weight */
   font-style: normal;
   font-display: swap;
 }
@@ -72,7 +75,8 @@
 @font-face {
   font-family: 'Vollkorn';
   src: url('/fonts/Vollkorn-MediumItalic.woff2') format('woff2');
-  font-weight: 500; /* Medium weight */
+  font-weight: 500;
+  /* Medium weight */
   font-style: italic;
   font-display: swap;
 }
@@ -80,7 +84,8 @@
 @font-face {
   font-family: 'Vollkorn';
   src: url('/fonts/Vollkorn-SemiBold.woff2') format('woff2');
-  font-weight: 600; /* Semi-bold weight */
+  font-weight: 600;
+  /* Semi-bold weight */
   font-style: normal;
   font-display: swap;
 }
@@ -88,7 +93,8 @@
 @font-face {
   font-family: 'Vollkorn';
   src: url('/fonts/Vollkorn-SemiBoldItalic.woff2') format('woff2');
-  font-weight: 600; /* Semi-bold weight */
+  font-weight: 600;
+  /* Semi-bold weight */
   font-style: italic;
   font-display: swap;
 }
@@ -129,7 +135,8 @@
 @font-face {
   font-family: 'Vollkorn';
   src: url('/fonts/Vollkorn-Black.woff2') format('woff2');
-  font-weight: 900; /* Black weight */
+  font-weight: 900;
+  /* Black weight */
   font-style: normal;
   font-display: swap;
 }
@@ -149,11 +156,15 @@ body {
 }
 
 pre.astro-code {
-  @apply py-3 -mx-4 rounded-xl /* !bg-[#fbfbf9] */ border-amber-800/10 border-2 sm:-mx-9 mb-5 sm:text-base text-sm;
+  @apply py-3 -mx-4 rounded-xl
+  /* !bg-[#fbfbf9] */
+  border-amber-800/10 border-2 sm:-mx-9 mb-5 sm:text-base text-sm;
 }
+
 .reset {
   all: revert-layer !important;
 }
+
 .leadin {
   /* @apply font-smallcaps */
 }
@@ -162,6 +173,7 @@ pre.astro-code {
   letter-spacing: 0.025em;
   font-feature-settings: "smcp";
 }
+
 .font-serif {
   font-feature-settings: "lnum", "pnum";
 }
@@ -175,7 +187,7 @@ pre>code>.line {
 }
 
 pre>.code-title {
-  @apply mb-1 block bg-amber-800/15 text-amber-950  px-2 font-serif font-bold;
+  @apply mb-1 block bg-amber-800/15 text-amber-950 px-2 font-serif font-bold;
 }
 
 pre:has(.code-title) {
@@ -204,7 +216,7 @@ code.astro-code {
 
 
 .highlighted-word {
-  @apply bg-orange-100 [&>span]:!text-orange-900 !text-orange-900 border-b-2 border-b-orange-600 font-semibold px-1 py-px rounded-md;
+  @apply bg-orange-100 [&>span]:text-orange-900 !text-orange-900 border-b-2 border-b-orange-600 font-semibold px-1 py-px rounded-md;
 }
 
 .prose p {
@@ -226,15 +238,18 @@ figure>img {
 .prose h3 {
   @apply font-bold text-xl font-smallcaps;
 }
+
 .quote {
   @apply font-extrabold font-display !bg-transparent border-none text-center text-3xl
 }
+
 .quote::before {
   content: "“";
   margin-right: 0.3rem;
   font-weight: 700;
   font-size: 2.5rem;
 }
+
 .quote::after {
   font-size: 2.5rem;
   font-weight: 700;
@@ -242,7 +257,7 @@ figure>img {
 }
 
 .prose>p:first-of-type:first-letter {
-  @apply font-serif sm:leading-[0.7] sm:text-7xl text-6xl  float-left font-semibold -mb-3 leading-[0.7] pt-[13px] mr-1;
+  @apply font-serif sm:leading-[0.7] sm:text-7xl text-6xl float-left font-semibold -mb-3 leading-[0.7] pt-[13px] mr-1;
 }
 
 
@@ -267,7 +282,8 @@ figure>img {
 
 pre[line-numbers] {
   counter-reset: numbers;
-  .line::before  {
+
+  .line::before {
     counter-increment: numbers;
     content: counter(numbers);
     text-align: right;
@@ -275,10 +291,10 @@ pre[line-numbers] {
 }
 
 .line:last-child::before {
-  @apply !content-none 
+  @apply !content-none
 }
 
-pre[line-numbers]  .line::before  {
+pre[line-numbers] .line::before {
   @apply text-stone-800/50 pe-3
 }
 
@@ -293,15 +309,17 @@ pre[line-numbers]  .line::before  {
 .prose ol {
   @apply list-inside list-decimal space-y-3 sm:text-lg;
 }
+
 .prose ol>li::marker {
-  @apply  font-mono
+  @apply font-mono
 }
-.prose > p, .prose ul, .prose hr {
+
+.prose>p, .prose ul, .prose hr {
   @apply mb-4
 }
+
 .prose h1, .prose h2, .prose h3, .prose h4 {
   @apply mt-3 mb-2
-
 }
 
 .prose ul>li {
@@ -336,13 +354,15 @@ pre[line-numbers]  .line::before  {
   @apply hidden;
 }
 
-/* Credit to Juha-Matti Santala (hamatti.org)*/
-@media print {
-  a::after {
-    content: " (" attr(href) ") ";
-  }
-
-  a[href^="/"]::after {
-    content: " (https://yusuf.fyi" attr(href) ") ";
-  }
-}
+/* /* Credit to Juha-Matti Santala (hamatti.org)*/
+/* @media print { */
+/*   a::after { */
+/*     content: " (" attr(href) ") "; */
+/*     font-size: 10px; */
+/*   } */
+/**/
+/**/
+/*   a[href^="/"]::after { */
+/*     content: " (https://yusuf.fyi" attr(href) ") "; */
+/*   } */
+/* } */

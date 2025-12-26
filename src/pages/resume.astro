@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import "../style//global.css";
 ---
 
 <BaseLayout
@@ -19,9 +20,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         alt="Yusuf's Image"
       /> -->
       <div class="flex flex-col justify-between">
-        <h1 class="text-4xl font-display font-extrabold">Yusuf Bouzekri</h1>
+        <h1 class="text-4xl text-center font-display font-extrabold">Yusuf Bouzekri</h1>
         <section>
-          <div class="flex gap-2">
+          <div class="flex gap-1">
             <p class="select-all">yusufbouzekri@gmail.com</p>
             <span>•</span>
             <p class="select-all">+216 53 484 441</p>
@@ -31,6 +32,11 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             <a
               href="https://linkedin.com/in/yusuf-bouzekri"
               class="text-amber-800 underline-offset-2 underline">Linkedin</a
+            >
+            <span>•</span>
+            <a
+              href="https://linkedin.com/in/yusuf-bouzekri"
+              class="text-amber-800 underline-offset-2 underline">Github</a
             >
             <!-- <span>•</span>
           <a
@@ -50,11 +56,49 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       <div class="space-y-3">
         <article>
           <div class="justify-between flex items-baseline">
+            <h3 class="font-semibold text-xl">LeadWizard</h3>
+            <p>November 2025 – Present</p>
+          </div>
+          <div class="italic justify-between flex items-baseline">
+            <p>Software Engineer</p>
+            <p>Remote</p>
+          </div>
+          <ul class="list-disc list-inside">
+            <li>Leading the development of a lead distribution app to collect and route leads to the most eligible buyer.</li>
+            <li>Built the financial dashboard to generate and keep track of partner invoices.</li>
+            <li>Re-wrote the theme from the ground-up to align more with our vision and follow UX standards.</li>
+          </ul>
+        </article>
+        <article>
+          <div class="justify-between flex items-baseline">
+            <h3 class="font-semibold text-xl">CNFCPP</h3>
+            <p>October 2024 – February 2025</p>
+          </div>
+          <div class="italic justify-between flex items-baseline">
+            <p>Software Engineer</p>
+            <p>Contract • Rades</p>
+          </div>
+          <ul class="list-disc list-inside">
+            <li>
+              Built a portal to manage students and accept payment through the
+              Mastercard API.
+            </li>
+            <li
+              >Developed a performant system to generate thousands of student certifications.</li
+            >
+            <li
+              >Developed a fraud detection feature to identify students
+              enrolling in incompatible courses.</li
+            >
+          </ul>
+        </article>
+        <article>
+          <div class="justify-between flex items-baseline">
             <h3 class="font-semibold text-xl">Highscale</h3>
             <p>June – August 2023</p>
           </div>
           <div class="italic justify-between flex items-baseline">
-            <p>Software Engineer</p>
+            <p>Software Engineering Trainee</p>
             <p>Internship • Tunis</p>
           </div>
           <ul class="list-disc list-inside">
@@ -73,36 +117,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             </li>
           </ul>
         </article>
-        <article>
-          <div class="justify-between flex items-baseline">
-            <h3 class="font-semibold text-xl">IPST Ben Arous</h3>
-            <p>October – November 2020</p>
-          </div>
-          <div class="italic justify-between flex items-baseline">
-            <p>Wordpress Developer</p>
-            <p>Contract • Rades</p>
-          </div>
-          <ul class="list-disc list-inside">
-            <li
-              >Collaborated with the Ben Arous branch of the IPST to design and
-              develop their brand new website experience. See
-              <a
-                href="http://71440788.com/"
-                class="text-amber-800 underline underline-offset-2 decoration-2 font-semibold"
-                target="_blank">the site in action</a
-              > (content is in arabic).
-            </li>
-
-            <li
-              >Listened to feedback from students of the IPST to improved the
-              site's user experience and accessiblity.
-            </li>
-            <li
-              >the IPST specializes in upskilling working professionals for new
-              career opportunities through targeted technical training.
-            </li>
-          </ul>
-        </article>
       </div>
     </section>
 
@@ -114,12 +128,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       <div class="space-y-3">
         <article>
           <ul class="list-disc list-inside">
+              <li><strong>Languages & Tools</strong>: PHP, Laravel, Go, Git, Linux </li>
             <li
-              ><strong>Languages & Tools</strong>: React, Laravel, Go, Python,
-              Git, Linux
-            </li>
-            <li
-              ><strong>Skills</strong>: Frontend & Backend development,
+                    ><strong>Skills</strong>: Full-stack developement, Systems Administration,
               Technical writing, Communication.
             </li>
             <li
@@ -142,21 +153,18 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         <article>
           <ul class="list-disc list-inside">
             <div class="justify-between flex items-baseline">
-              <h3 class="font-semibold text-xl">Ben Arous high-school</h3>
-              <p>2021 – 2025</p>
+              <h3 class="font-semibold text-xl">Tunis Business School</h3>
+              <p>2025 – 2029</p>
             </div>
             <div class="italic justify-between flex items-baseline">
-              <p>Computer Science Major</p>
-              <p>Ben Arous</p>
+              <p>Bacholar of Business Administration</p>
+              <p>Tunis</p>
             </div>
             <p>
-              <ul class="list-disc list-inside">
-                <li
-                  >Joined various clubs, most notably spanish and computer
-                  science.
-                </li>
-                <li>Won a local web developement hackathon.</li>
-              </ul>
+              <!-- <ul class="list-disc list-inside"> -->
+              <!--     <li>Joined the leading Computer Science Club MERIT as an External Relations Member, where I negociated deals with potential sponsors</li> -->
+              <!--     <li>Took Computer Science, Management and English courses</li> -->
+              <!-- </ul> -->
             </p>
           </ul>
         </article>
@@ -164,10 +172,3 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     </section>
   </main>
 </BaseLayout>
-<style>
-  @media print {
-    a::after {
-      content: "" !important;
-    }
-  }
-</style>
