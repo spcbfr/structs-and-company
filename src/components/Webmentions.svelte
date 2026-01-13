@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import { Render } from "@jill64/svelte-sanitize";
+  import DOMPurify from 'dompurify';
 
   export let urlSlug;
 
@@ -254,7 +254,7 @@
                   <p
                     class="[&_a]:text-amber-700 p-content p-name [&_code]:bg-stone-200 [&_code]:py-px [&_code]:text-sm [&_code]:rounded-md [&_code]:px-1 [&_a]:font-semibold"
                   >
-                    <Render html={comment.content.html} />
+                    {@html DOMPurify.sanitize(comment.content.html)}
                   </p>
                 {:else}
                   <p
